@@ -32,11 +32,10 @@ export default defineUniPages({
     iconWidth: '24px',
     spacing: '3px',
     list: [
-      { pagePath: 'pages/index/index' },
-      { pagePath: 'pages/order/order' },
-      { pagePath: 'pages/market/market' },
-      { pagePath: 'pages/goldCoupon/goldCoupon' },
-      { pagePath: 'pages/user/user' },
+      { pagePath: 'pages/home/home' },
+      { pagePath: 'pages/resident/resident' },
+      { pagePath: 'pages/message/message' },
+      { pagePath: 'pages/mine/mine' },
     ],
   },
 })

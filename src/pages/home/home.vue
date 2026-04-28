@@ -26,7 +26,7 @@ function pageToDemo() {
       去demo页面
     </view>
 
-    <Tabbar tabbar-path="/pages/index/index" />
+    <Tabbar tabbar-path="/pages/home/home" />
   </view>
 </template>
 
@@ -34,7 +34,7 @@ function pageToDemo() {
 {
   layout: 'default',
   style: {
-    navigationStyle: 'custom',
+    navigationStyle: 'default',
     navigationBarTitleText: '首页',
   },
   needLogin: false,

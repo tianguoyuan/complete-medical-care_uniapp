@@ -13,7 +13,7 @@ const tabbarList = [
     title: '首页',
     icon: getImage('home'),
     activeIcon: getImage('homeActive'),
-    path: '/pages/index/index',
+    path: '/pages/home/home',
   },
   {
     title: '居民',

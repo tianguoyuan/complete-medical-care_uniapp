@@ -24,68 +24,59 @@
     "spacing": "3px",
     "list": [
       {
-        "pagePath": "pages/index/index"
+        "pagePath": "pages/home/home"
       },
       {
-        "pagePath": "pages/order/order"
+        "pagePath": "pages/resident/resident"
       },
       {
-        "pagePath": "pages/market/market"
+        "pagePath": "pages/message/message"
       },
       {
-        "pagePath": "pages/goldCoupon/goldCoupon"
-      },
-      {
-        "pagePath": "pages/user/user"
+        "pagePath": "pages/mine/mine"
       }
     ]
   },
   "pages": [
     {
-      "path": "pages/index/index",
+      "path": "pages/home/home",
       "type": "home",
       "layout": "default",
       "style": {
-        "navigationStyle": "custom",
+        "navigationStyle": "default",
         "navigationBarTitleText": "首页"
       },
       "needLogin": false
     },
     {
-      "path": "pages/goldCoupon/goldCoupon",
+      "path": "pages/message/message",
       "type": "page",
       "layout": "default",
       "style": {
-        "navigationBarTitleText": "金喜卡",
-        "navigationStyle": "custom"
-      }
+        "navigationStyle": "default",
+        "navigationBarTitleText": "消息"
+      },
+      "needLogin": false
     },
     {
-      "path": "pages/market/market",
+      "path": "pages/mine/mine",
       "type": "page",
       "layout": "default",
       "style": {
-        "navigationBarTitleText": "百货",
-        "navigationStyle": "custom"
-      }
+        "navigationStyle": "default",
+        "navigationBarTitleText": "首页"
+      },
+      "needLogin": false
     },
     {
-      "path": "pages/order/order",
+      "path": "pages/resident/resident",
       "type": "page",
       "layout": "default",
       "style": {
-        "navigationBarTitleText": "点单",
-        "navigationStyle": "custom"
-      }
-    },
-    {
-      "path": "pages/user/user",
-      "type": "page",
-      "layout": "default",
-      "style": {
-        "navigationBarTitleText": "我的",
-        "navigationStyle": "custom"
-      }
+        "navigationStyle": "default",
+        "navigationBarTitleText": "首页"
+      },
+      "needLogin": false
     }
   ],
   "subPackages": [
