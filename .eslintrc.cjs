@@ -80,6 +80,7 @@ module.exports = {
         order: ['script', 'template', 'style', 'route'],
       },
     ],
+    'import/no-named-as-default-member': 'off',
   },
   // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-import-resolver-typescript
   settings: {

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const url = ref('')
 onLoad((query) => {
+  if (!query || !query.url) return
   url.value = decodeURIComponent(query.url)
   console.log('query, url', query, url.value)
 })

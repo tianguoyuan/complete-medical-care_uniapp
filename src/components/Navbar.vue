@@ -29,6 +29,8 @@ const props = withDefaults(
     frosted: false,
     opacity: 1,
     placeholder: true,
+    clickBackIcon: undefined,
+    clickHomeIcon: undefined,
   },
 )
 

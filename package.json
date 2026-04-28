@@ -70,7 +70,7 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "prepare": "git init && husky install",
-    "type-check": "vue-tsc --noEmit",
+    "eslint": "eslint --fix src/**/*.{ts,vue}",
     "release": "standard-version",
     "cz": "czg",
     "openapi-ts-request": "openapi-ts",
