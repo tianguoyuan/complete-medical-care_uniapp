@@ -10,14 +10,12 @@ import PLATFORM from './platform'
 const tabbarImage = [
   'home',
   'homeActive',
-  'market',
-  'marketActive',
-  'user',
-  'userActive',
-  'order',
-  'orderActive',
-  'goldCoupon',
-  'goldCouponActive',
+  'resident',
+  'residentActive',
+  'message',
+  'messageActive',
+  'mine',
+  'mineActive',
 ] as const
 
 const commonImage = [] as const

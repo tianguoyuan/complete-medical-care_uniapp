@@ -16,28 +16,22 @@ const tabbarList = [
     path: '/pages/index/index',
   },
   {
-    title: '点单',
-    icon: getImage('order'),
-    activeIcon: getImage('orderActive'),
-    path: '/pages/order/order',
+    title: '居民',
+    icon: getImage('resident'),
+    activeIcon: getImage('residentActive'),
+    path: '/pages/resident/resident',
   },
   {
-    title: '百货',
-    icon: getImage('market'),
-    activeIcon: getImage('marketActive'),
-    path: '/pages/market/market',
-  },
-  {
-    title: '金喜卡',
-    icon: getImage('goldCoupon'),
-    activeIcon: getImage('goldCouponActive'),
-    path: '/pages/goldCoupon/goldCoupon',
+    title: '消息',
+    icon: getImage('message'),
+    activeIcon: getImage('messageActive'),
+    path: '/pages/message/message',
   },
   {
     title: '我的',
-    icon: getImage('user'),
-    activeIcon: getImage('userActive'),
-    path: '/pages/user/user',
+    icon: getImage('mine'),
+    activeIcon: getImage('mineActive'),
+    path: '/pages/mine/mine',
   },
 ] as const
 type PathType = (typeof tabbarList)[number]['path']
@@ -66,13 +60,11 @@ function pageTo(index: number) {
 <template>
   <!-- h5多一个占位tabbar高度, 其它没有 -->
   <view v-if="!PLATFORM.isH5" class="h-12.5" />
-
   <TnTabbar
     v-if="!tabbarStore.hideTabbar"
     :model-value="tabbarStore.tabbarIndex"
     fixed
     :bg-color="StyleEnum.MAIN_COLOR"
-    active-color="#000"
     safe-area-inset-bottom
     :top-shadow="props.topShadow"
     placeholder
@@ -90,12 +82,17 @@ function pageTo(index: number) {
               />
               <image v-show="index !== tabbarStore.tabbarIndex" :src="item.icon" class="w-5 h-5" />
             </view>
-            <view class="mt-1">{{ item.title }}</view>
+            <view
+              class="mt-1"
+              :class="[index === tabbarStore.tabbarIndex ? 'text-[#49b9ad]' : 'text-[#1c2023]']"
+            >
+              {{ item.title }}
+            </view>
           </view>
         </view>
 
         <view v-else class="flex-1 flex items-start">
-          <image :src="item.icon" class="w-9 h-9 mt-1" />
+          <image :src="(item as (typeof tabbarList)[0]).icon" class="w-9 h-9 mt-1" />
         </view>
       </template>
     </TnTabbarItem>
