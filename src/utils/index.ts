@@ -81,7 +81,7 @@ export const getAllPages = (key = 'needLogin') => {
   // 这里处理主包
   const mainPages = [
     ...pages
-      .filter((page) => !key || page[key])
+      .filter((page) => !key || (page as any)[key])
       .map((page) => ({
         ...page,
         path: `/${page.path}`,
@@ -94,7 +94,7 @@ export const getAllPages = (key = 'needLogin') => {
     const { root } = subPageObj
 
     subPageObj.pages
-      .filter((page) => !key || page[key])
+      .filter((page) => !key || (page as any)[key])
       .forEach((page: { path: string } & Record<string, any>) => {
         subPages.push({
           ...page,

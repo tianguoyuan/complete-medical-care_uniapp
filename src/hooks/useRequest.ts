@@ -1,4 +1,4 @@
-import { UnwrapRef } from 'vue'
+import { type UnwrapRef } from 'vue'
 
 type IUseRequestOptions<T> = {
   /** 是否立即执行 */
@@ -21,7 +21,7 @@ export default function useRequest<T>(
 ) {
   const loading = ref(false)
   const error = ref(false)
-  const data = ref<T>(options.initialData)
+  const data = ref<T | undefined>(options.initialData)
   const run = async () => {
     loading.value = true
     return func()
