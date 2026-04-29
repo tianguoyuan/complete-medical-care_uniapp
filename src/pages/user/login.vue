@@ -8,9 +8,12 @@ import TnInput from '@tuniao/tnui-vue3-uniapp/components/input/src/input.vue'
 import TnButton from '@tuniao/tnui-vue3-uniapp/components/button/src/button.vue'
 
 import type { FormRules, TnFormInstance } from '@tuniao/tnui-vue3-uniapp'
+import { useUserStore } from '@/store'
 
 const { navBarInfo } = useUniAppSystemRectInfo()
 console.log('navBarInfo', navBarInfo)
+
+const userStore = useUserStore()
 
 const formRules: FormRules = {
   username: [
@@ -49,16 +52,12 @@ const formData = reactive({
 })
 
 const formRef = ref<TnFormInstance | null>(null)
-function onSubmit() {
+async function onSubmit() {
   if (!formRef.value) return
-  formRef.value.validate((valid: boolean) => {
-    if (valid) {
-      console.log('表单验证通过，提交数据', formData)
-      // 在这里执行登录逻辑，例如调用登录接口
-    } else {
-      console.log('表单验证失败')
-      return false
-    }
+  await formRef.value.validate()
+  userStore.changeToken(atob(formData.username))
+  uni.switchTab({
+    url: '/pages/home/home',
   })
 }
 //
@@ -67,7 +66,7 @@ function onSubmit() {
 <template>
   <view class="">
     <view class="relative">
-      <view class="absolute bg-#b6e9e5 h-60 w-60 translate-x--60% z-1"></view>
+      <view class="absolute bg-#b6e9e5 h-65 w-30 left-0 z-1"></view>
       <view class="absolute left-3 z-2" :style="{ marginTop: navBarInfo.height + 30 + 'px' }">
         <view class="text-6">登录</view>
         <view class="mt-1 text-3.5">欢迎使用家医医生端</view>
