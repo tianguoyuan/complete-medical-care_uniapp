@@ -93,7 +93,7 @@
       "layout": "default",
       "style": {
         "navigationStyle": "custom",
-        "navigationBarTitleText": "登陆"
+        "navigationBarTitleText": "登录"
       }
     }
   ],

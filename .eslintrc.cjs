@@ -81,6 +81,13 @@ module.exports = {
       },
     ],
     'import/no-named-as-default-member': 'off',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+        disallowTypeAnnotations: false,
+      },
+    ],
   },
   // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-import-resolver-typescript
   settings: {

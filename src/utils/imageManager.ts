@@ -21,9 +21,12 @@ const tabbarImage = [
 // dashboard 图标
 const dashboardImage = ['dashboardCover', 'dashboardTitle'] as const
 
+// user
+const userImage = ['userLoginBg'] as const
+
 const commonImage = [] as const
 
-const imageNames = [...tabbarImage, ...dashboardImage, ...commonImage] as const
+const imageNames = [...tabbarImage, ...dashboardImage, ...userImage, ...commonImage] as const
 
 const isHttpImage = PLATFORM.isMp
 const imageBaseUrl = 'https://het-tea-uniapp.netlify.app'
