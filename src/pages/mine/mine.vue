@@ -19,7 +19,7 @@ const { navBarInfo } = useUniAppSystemRectInfo()
   layout: 'default',
   style: {
     navigationStyle: 'default',
-    navigationBarTitleText: '首页',
+    navigationBarTitleText: '我的',
   },
   needLogin: false,
 }

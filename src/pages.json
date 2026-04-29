@@ -73,7 +73,7 @@
       "layout": "default",
       "style": {
         "navigationStyle": "default",
-        "navigationBarTitleText": "首页"
+        "navigationBarTitleText": "我的"
       },
       "needLogin": false
     },
@@ -83,7 +83,7 @@
       "layout": "default",
       "style": {
         "navigationStyle": "default",
-        "navigationBarTitleText": "首页"
+        "navigationBarTitleText": "居民"
       },
       "needLogin": false
     },
