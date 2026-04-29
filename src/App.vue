@@ -9,7 +9,7 @@ const appStore = useAppStore()
 function setAppInfo(options: { path: string }) {
   navigateToInterceptor.invoke({ url: '/' + options.path })
   const windowInfo = uni.getWindowInfo()
-  console.log('屏幕高度：', windowInfo.screenHeight)
+  console.log('屏幕高度：', windowInfo.screenHeight, windowInfo)
   appStore.changeSystemScreenHeight(windowInfo.screenHeight)
 }
 onLaunch((options) => {

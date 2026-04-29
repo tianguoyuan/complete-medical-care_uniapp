@@ -18,9 +18,12 @@ const tabbarImage = [
   'mineActive',
 ] as const
 
+// dashboard 图标
+const dashboardImage = ['dashboardCover', 'dashboardTitle'] as const
+
 const commonImage = [] as const
 
-const imageNames = [...tabbarImage, ...commonImage] as const
+const imageNames = [...tabbarImage, ...dashboardImage, ...commonImage] as const
 
 const isHttpImage = PLATFORM.isMp
 const imageBaseUrl = 'https://het-tea-uniapp.netlify.app'
@@ -36,7 +39,8 @@ type ImageName = (typeof imageNames)[number]
  */
 export const getImage = (imageName: ImageName, suffix = '.svg'): string => {
   // tabbar图片使用本地
-  if (tabbarImage.includes(imageName)) return `/static/icons/${imageName + suffix}`
+  if (tabbarImage.includes(imageName as (typeof tabbarImage)[number]))
+    return `/static/icons/${imageName + suffix}`
 
   return (isHttpImage ? imageBaseUrl : '') + `/static/icons/${imageName + suffix}`
 }

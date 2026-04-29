@@ -39,8 +39,17 @@
   },
   "pages": [
     {
-      "path": "pages/home/home",
+      "path": "pages/index/index",
       "type": "home",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "引导页"
+      }
+    },
+    {
+      "path": "pages/home/home",
+      "type": "page",
       "layout": "default",
       "style": {
         "navigationStyle": "default",
@@ -77,6 +86,15 @@
         "navigationBarTitleText": "首页"
       },
       "needLogin": false
+    },
+    {
+      "path": "pages/user/login",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "登陆"
+      }
     }
   ],
   "subPackages": [

@@ -5,12 +5,12 @@ export const useUserStore = defineStore(
   'user',
   () => {
     const token = ref('')
-    function changeToken(v) {
+    function changeToken(v: string) {
       token.value = v
     }
 
     const userId = ref('')
-    function changeUserId(v) {
+    function changeUserId(v: string) {
       userId.value = v
     }
 

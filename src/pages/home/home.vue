@@ -30,7 +30,7 @@ function pageToDemo() {
   </view>
 </template>
 
-<route lang="json5" type="home">
+<route lang="json5" type="page">
 {
   layout: 'default',
   style: {
