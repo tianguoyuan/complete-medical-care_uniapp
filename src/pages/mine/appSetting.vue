@@ -2,9 +2,13 @@
 import { useUserStore } from '@/store'
 import { getImage } from '@/utils/imageManager'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+import TnModal from '@tuniao/tnui-vue3-uniapp/components/modal/src/modal.vue'
+import type { TnModalInstance } from '@tuniao/tnui-vue3-uniapp/components/modal'
 
 const { systemScreenInfo } = useUniAppSystemRectInfo()
 const userStore = useUserStore()
+const modalRef = ref<TnModalInstance>()
+
 const appSettingList = ref([
   {
     title: '个人资料',
@@ -34,9 +38,16 @@ const appSettingList = ref([
   },
 ])
 function handleLogout() {
-  userStore.clearUserInfo()
-  uni.reLaunch({
-    url: '/pages/user/login',
+  modalRef.value?.showModal({
+    title: '提示',
+    content: '是否退出登录？',
+    showCancel: true,
+    confirm() {
+      userStore.clearUserInfo()
+      uni.reLaunch({
+        url: '/pages/user/login',
+      })
+    },
   })
 }
 //
@@ -44,6 +55,7 @@ function handleLogout() {
 
 <template>
   <view class="bg-#F5F7FB" :style="{ minHeight: systemScreenInfo.height + 'px' }">
+    <TnModal ref="modalRef" />
     <view v-for="(item, index) in appSettingList" :key="index" class="bg-white">
       <view
         class="flex items-center justify-between py-4 mx-4 border-0 border-b border-#E3E4E5 border-solid"
