@@ -24,9 +24,29 @@ const dashboardImage = ['dashboardCover', 'dashboardTitle'] as const
 // user
 const userImage = ['userLoginBg'] as const
 
-const commonImage = [] as const
+// mine
+const mineImage = [
+  'mineAvatar',
+  'mineList1',
+  'mineList2',
+  'mineList3',
+  'mineList4',
+  'mineList5',
+  'mineQrcode',
+  'mineTag1',
+  'mineTag2',
+  'mineUserTag',
+] as const
 
-const imageNames = [...tabbarImage, ...dashboardImage, ...userImage, ...commonImage] as const
+const commonImage = ['commonArrowRight'] as const
+
+const imageNames = [
+  ...tabbarImage,
+  ...dashboardImage,
+  ...userImage,
+  ...mineImage,
+  ...commonImage,
+] as const
 
 const isHttpImage = PLATFORM.isMp
 const imageBaseUrl = 'https://het-tea-uniapp.netlify.app'

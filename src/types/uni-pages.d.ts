@@ -7,6 +7,7 @@ interface NavigateToOptions {
   url: "/pages/index/index" |
        "/pages/home/home" |
        "/pages/message/message" |
+       "/pages/mine/appSetting" |
        "/pages/mine/mine" |
        "/pages/resident/resident" |
        "/pages/user/login" |

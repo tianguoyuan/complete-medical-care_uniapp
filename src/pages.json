@@ -68,11 +68,20 @@
       "needLogin": false
     },
     {
-      "path": "pages/mine/mine",
+      "path": "pages/mine/appSetting",
       "type": "page",
       "layout": "default",
       "style": {
         "navigationStyle": "default",
+        "navigationBarTitleText": "设置"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
         "navigationBarTitleText": "我的"
       },
       "needLogin": false
