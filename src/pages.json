@@ -52,7 +52,7 @@
       "type": "page",
       "layout": "default",
       "style": {
-        "navigationStyle": "default",
+        "navigationStyle": "custom",
         "navigationBarTitleText": "首页"
       },
       "needLogin": false

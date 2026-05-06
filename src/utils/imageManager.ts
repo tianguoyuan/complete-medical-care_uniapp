@@ -38,13 +38,17 @@ const mineImage = [
   'mineUserTag',
 ] as const
 
-const commonImage = ['commonArrowRight'] as const
+// home
+const homeImage = ['homeCreate1', 'homeCreate2', 'homeCreate3'] as const
+
+const commonImage = ['commonArrowRight', 'commonBoy', 'commonGirl'] as const
 
 const imageNames = [
   ...tabbarImage,
   ...dashboardImage,
   ...userImage,
   ...mineImage,
+  ...homeImage,
   ...commonImage,
 ] as const
 
