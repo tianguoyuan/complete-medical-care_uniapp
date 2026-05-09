@@ -73,8 +73,10 @@ function handleClickHomeIcon() {
   >
     <!-- :status-height="navBarInfo.statusHeight"
     height="90rpx" -->
-    <slot name="title" />
-    {{ props.title }}
+    <view class="text-4">
+      <slot name="title" />
+      {{ props.title }}
+    </view>
 
     <!-- border -->
     <view

@@ -20,10 +20,10 @@ const countList = ref([
 ])
 
 const createList = ref([
-  { title: '新建档案', icon: getImage('homeCreate1') },
-  { title: '签约管理', icon: getImage('homeCreate2') },
-  { title: '服务管理', icon: getImage('homeCreate3') },
-])
+  { type: 'create', title: '新建档案', icon: getImage('homeCreate1') },
+  { type: 'signContract', title: '签约管理', icon: getImage('homeCreate2') },
+  { type: 'service', title: '服务管理', icon: getImage('homeCreate3') },
+] as const)
 
 const listData = ref([
   {
@@ -77,11 +77,12 @@ const listData = ref([
   },
 ])
 
-// 打开喜卡页面
-function pageToDemo() {
-  uni.navigateTo({
-    url: '/pagesA/demo/demo',
-  })
+function pageTo(item: (typeof createList.value)[number]) {
+  if (item.type === 'create') {
+    uni.navigateTo({
+      url: '/pages/home/createUserFile',
+    })
+  }
 }
 </script>
 
@@ -111,7 +112,12 @@ function pageToDemo() {
         </view>
 
         <view class="grid grid-cols-3 py-3.75">
-          <view v-for="(item, index) in createList" :key="index" class="flex flex-col items-center">
+          <view
+            v-for="(item, index) in createList"
+            :key="index"
+            class="flex flex-col items-center"
+            @click="pageTo(item)"
+          >
             <image :src="item.icon" class="w-12.5 h-12.5" />
             <view class="text-2.5 color-#1C2023 text-3.5">{{ item.title }}</view>
           </view>

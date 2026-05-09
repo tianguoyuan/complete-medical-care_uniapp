@@ -39,12 +39,21 @@
   },
   "pages": [
     {
-      "path": "pages/index/index",
+      "path": "pages/dashboard/dashboard",
       "type": "home",
       "layout": "default",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTitleText": "引导页"
+      }
+    },
+    {
+      "path": "pages/home/createUserFile",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "新建居民档案"
       }
     },
     {
