@@ -13,9 +13,9 @@ export const useTabbarStore = defineStore('tabbar', () => {
   }
 
   return {
-    hideTabbar,
     changeHideTabbar,
-    tabbarIndex,
     changeTabbarIndex,
+    hideTabbar,
+    tabbarIndex,
   }
 })

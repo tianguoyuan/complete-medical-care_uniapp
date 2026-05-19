@@ -1,14 +1,15 @@
 <script lang="ts" setup>
-import { getImage } from '@/utils/imageManager'
-import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
-import TnForm from '@tuniao/tnui-vue3-uniapp/components/form/src/form.vue'
-import TnFormItem from '@tuniao/tnui-vue3-uniapp/components/form/src/form-item.vue'
-import TnCheckbox from '@tuniao/tnui-vue3-uniapp/components/checkbox/src/checkbox.vue'
-import TnInput from '@tuniao/tnui-vue3-uniapp/components/input/src/input.vue'
-import TnButton from '@tuniao/tnui-vue3-uniapp/components/button/src/button.vue'
-
 import type { FormRules, TnFormInstance } from '@tuniao/tnui-vue3-uniapp'
+
+import TnButton from '@tuniao/tnui-vue3-uniapp/components/button/src/button.vue'
+import TnCheckbox from '@tuniao/tnui-vue3-uniapp/components/checkbox/src/checkbox.vue'
+import TnFormItem from '@tuniao/tnui-vue3-uniapp/components/form/src/form-item.vue'
+import TnForm from '@tuniao/tnui-vue3-uniapp/components/form/src/form.vue'
+import TnInput from '@tuniao/tnui-vue3-uniapp/components/input/src/input.vue'
+import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+
 import { useUserStore } from '@/store'
+import { getImage } from '@/utils/imageManager'
 
 const { navBarInfo } = useUniAppSystemRectInfo()
 console.log('navBarInfo', navBarInfo)
@@ -16,39 +17,39 @@ console.log('navBarInfo', navBarInfo)
 const userStore = useUserStore()
 
 const formRules: FormRules = {
-  username: [
-    { required: true, message: '请输入用户名', trigger: ['change', 'blur'] },
-    {
-      pattern: /^[\w-]{4,16}$/,
-      message: '请输入4-16位英文、数字、下划线、横线',
-      trigger: ['change', 'blur'],
-    },
-  ],
-  password: [
-    { required: true, message: '请输入密码', trigger: ['change', 'blur'] },
-    {
-      pattern: /^[\w-]{6,20}$/,
-      message: '请输入6-20位英文、数字、下划线、横线',
-      trigger: ['change', 'blur'],
-    },
-  ],
   agreement: [
     {
+      trigger: 'change',
       validator: (rule, value, callback) => {
         if (!value) {
           callback(new Error('请同意协议'))
         }
         callback()
       },
-      trigger: 'change',
+    },
+  ],
+  password: [
+    { message: '请输入密码', required: true, trigger: ['change', 'blur'] },
+    {
+      message: '请输入6-20位英文、数字、下划线、横线',
+      pattern: /^[\w-]{6,20}$/,
+      trigger: ['change', 'blur'],
+    },
+  ],
+  username: [
+    { message: '请输入用户名', required: true, trigger: ['change', 'blur'] },
+    {
+      message: '请输入4-16位英文、数字、下划线、横线',
+      pattern: /^[\w-]{4,16}$/,
+      trigger: ['change', 'blur'],
     },
   ],
 }
 // 表单数据
 const formData = reactive({
-  username: '',
-  password: '',
   agreement: false,
+  password: '',
+  username: '',
 })
 
 const formRef = ref<TnFormInstance | null>(null)
@@ -72,16 +73,16 @@ async function onSubmit() {
         <view class="mt-1 text-3.5">欢迎使用家医医生端</view>
       </view>
 
-      <image :src="getImage('userLoginBg')" mode="widthFix" class="w-full" />
+      <image class="w-full" mode="widthFix" :src="getImage('userLoginBg')" />
     </view>
     <view class="bg-#fff rounded-t-6 mt--6 z-3 relative h-300 py-7.5 px-3">
-      <TnForm ref="formRef" :model="formData" :rules="formRules" label-position="top">
+      <TnForm ref="formRef" label-position="top" :model="formData" :rules="formRules">
         <TnFormItem label="账号" prop="username">
           <TnInput v-model="formData.username" placeholder="请输入账号" />
         </TnFormItem>
 
         <TnFormItem label="密码" prop="password">
-          <TnInput v-model="formData.password" type="password" placeholder="请输入密码" />
+          <TnInput v-model="formData.password" placeholder="请输入密码" type="password" />
         </TnFormItem>
         <TnFormItem label="" prop="agreement">
           <TnCheckbox v-model="formData.agreement" active-color="#49B9AD">

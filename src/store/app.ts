@@ -9,8 +9,8 @@ export const useAppStore = defineStore(
       systemScreenHeight.value = v
     }
     return {
-      systemScreenHeight,
       changeSystemScreenHeight,
+      systemScreenHeight,
     }
   },
   {

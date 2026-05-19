@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import PLATFORM from '@/utils/platform'
-import Tabbar from '@/components/Tabbar.vue'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+
+import Tabbar from '@/components/Tabbar.vue'
+import PLATFORM from '@/utils/platform'
 //
 onLoad(() => PLATFORM.isApp && uni.hideTabBar())
 

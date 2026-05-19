@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import PLATFORM from '@/utils/platform'
-import Tabbar from '@/components/Tabbar.vue'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+
+import Tabbar from '@/components/Tabbar.vue'
 import { getImage } from '@/utils/imageManager'
+import PLATFORM from '@/utils/platform'
 //
 onLoad(() => PLATFORM.isApp && uni.hideTabBar())
 
@@ -11,28 +12,28 @@ const { navBarInfo } = useUniAppSystemRectInfo()
 const settingList = ref([
   {
     icon: getImage('mineList1'),
-    title: '我的医生团队',
     path: '/pages/mine/appSetting',
+    title: '我的医生团队',
   },
   {
     icon: getImage('mineList2'),
-    title: '签约管理',
     path: '/pages/mine/appSetting',
+    title: '签约管理',
   },
   {
     icon: getImage('mineList3'),
-    title: '服务管理',
     path: '/pages/mine/appSetting',
+    title: '服务管理',
   },
   {
     icon: getImage('mineList4'),
-    title: '使用指南',
     path: '/pages/mine/appSetting',
+    title: '使用指南',
   },
   {
     icon: getImage('mineList5'),
-    title: '设置',
     path: '/pages/mine/appSetting',
+    title: '设置',
   },
 ])
 
@@ -58,19 +59,19 @@ function handleSettingItemClick(item: { path: string }) {
       <!--头像 -->
       <view class="flex justify-between items-center px-3.75">
         <view class="flex items-center">
-          <image :src="getImage('mineAvatar')" class="w-15 h-15 rounded-full" />
+          <image class="w-15 h-15 rounded-full" :src="getImage('mineAvatar')" />
           <view class="ml-3.75 flex flex-col py-2.5 h-15">
             <view class="color-#333 text-4 line-height-none">张三四</view>
-            <image :src="getImage('mineUserTag')" class="w-17.5 h-5.25 mt-2 ml--1.5 shrink-0" />
+            <image class="w-17.5 h-5.25 mt-2 ml--1.5 shrink-0" :src="getImage('mineUserTag')" />
           </view>
         </view>
-        <image :src="getImage('mineQrcode')" class="w-5 h-5" />
+        <image class="w-5 h-5" :src="getImage('mineQrcode')" />
       </view>
 
       <!-- 信息标签 -->
       <view class="mt-3.25 flex bg-#F8FFFD h-17 flex items-center">
         <view class="flex-1 flex justify-center items-center">
-          <image :src="getImage('mineTag1')" class="h-4.5" mode="heightFix" />
+          <image class="h-4.5" mode="heightFix" :src="getImage('mineTag1')" />
           <view class="ml-2">
             <view class="line-height-none">所属团队</view>
             <view class="color-#606972 mt-1 line-height-none">阳兰广专科团队</view>
@@ -78,7 +79,7 @@ function handleSettingItemClick(item: { path: string }) {
         </view>
         <view class="h-5 w-1px bg-#E3E4E5"></view>
         <view class="flex-1 flex justify-center items-center">
-          <image :src="getImage('mineTag2')" class="h-4.5" mode="heightFix" />
+          <image class="h-4.5" mode="heightFix" :src="getImage('mineTag2')" />
           <view class="ml-2">
             <view class="line-height-none">所属机构</view>
             <view class="color-#606972 mt-1 line-height-none">桂雅卫生服务站</view>
@@ -95,10 +96,10 @@ function handleSettingItemClick(item: { path: string }) {
           @click="handleSettingItemClick(item)"
         >
           <view class="flex items-center ml-1.75">
-            <image :src="item.icon" class="w-3.75" mode="widthFix" />
+            <image class="w-3.75" mode="widthFix" :src="item.icon" />
             <view class="ml-2.5 text-3.75">{{ item.title }}</view>
           </view>
-          <image :src="getImage('commonArrowRight')" class="h-2.5 mr-1.75" mode="heightFix" />
+          <image class="h-2.5 mr-1.75" mode="heightFix" :src="getImage('commonArrowRight')" />
         </view>
       </view>
     </view>

@@ -11,6 +11,14 @@ const http = <T>(options: CustomRequestOptions) => {
     uni.request({
       ...options,
       dataType: 'json',
+      // 响应失败
+      fail(err) {
+        uni.showToast({
+          icon: 'none',
+          title: '网络错误，换个网络试试',
+        })
+        reject(err)
+      },
       // #ifndef MP-WEIXIN
       responseType: 'json',
       // #endif
@@ -34,14 +42,6 @@ const http = <T>(options: CustomRequestOptions) => {
             })
           reject(res)
         }
-      },
-      // 响应失败
-      fail(err) {
-        uni.showToast({
-          icon: 'none',
-          title: '网络错误，换个网络试试',
-        })
-        reject(err)
       },
     })
   })

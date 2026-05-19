@@ -41,6 +41,7 @@ module.exports = {
     'prettier',
     // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-import-resolver-typescript
     'import',
+    'perfectionist',
   ],
   rules: {
     // 3. 注意要加上这一句，开启 prettier 自动修复的功能
@@ -55,6 +56,8 @@ module.exports = {
     ],
     // 只允许1个默认导出，关闭，否则不能随意export xxx
     'import/prefer-default-export': ['off'],
+    'import/default': 'off',
+    'import/no-named-as-default': 'off',
     'no-console': ['off'],
     // 'no-unused-vars': ['off'],
     // '@typescript-eslint/no-unused-vars': ['off'],
@@ -86,6 +89,80 @@ module.exports = {
       {
         prefer: 'type-imports',
         disallowTypeAnnotations: false,
+      },
+    ],
+
+    'vue/no-mutating-props': 'off',
+
+    // 属性排序规则
+    'vue/attributes-order': [
+      'error',
+      {
+        order: [
+          'DEFINITION',
+          'LIST_RENDERING',
+          'CONDITIONALS',
+          'RENDER_MODIFIERS',
+          'GLOBAL',
+          'UNIQUE',
+          'TWO_WAY_BINDING',
+          'OTHER_DIRECTIVES',
+          'OTHER_ATTR',
+          'EVENTS',
+          'CONTENT',
+        ],
+        alphabetical: true,
+      },
+    ],
+
+    // 对象属性排序（支持自动修复）
+    'perfectionist/sort-objects': [
+      'error',
+      {
+        type: 'natural',
+        order: 'asc',
+        ignoreCase: true,
+      },
+    ],
+
+    // 接口/类型成员排序（支持自动修复）
+    'perfectionist/sort-interfaces': [
+      'error',
+      {
+        type: 'natural',
+        order: 'asc',
+        ignoreCase: true,
+      },
+    ],
+
+    // import 语句排序（支持自动修复）
+    'perfectionist/sort-imports': [
+      'error',
+      {
+        type: 'natural',
+        order: 'asc',
+        ignoreCase: true,
+        internalPattern: ['^@/'],
+        groups: [
+          'side-effect',
+          'side-effect-style',
+          'type',
+          ['builtin', 'external'],
+          'internal',
+          ['parent', 'sibling', 'index'],
+          'style',
+        ],
+        newlinesBetween: 1,
+      },
+    ],
+
+    // 命名导入排序，如 import { A, B, C }（支持自动修复）
+    'perfectionist/sort-named-imports': [
+      'error',
+      {
+        type: 'natural',
+        order: 'asc',
+        ignoreCase: true,
       },
     ],
   },

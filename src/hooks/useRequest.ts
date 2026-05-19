@@ -40,5 +40,5 @@ export default function useRequest<T>(
   }
 
   options.immediate && run()
-  return { loading, error, data, run }
+  return { data, error, loading, run }
 }

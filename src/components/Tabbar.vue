@@ -1,37 +1,38 @@
 <script lang="ts" setup>
-import TnTabbar from '@tuniao/tnui-vue3-uniapp/components/tabbar/src/tabbar.vue'
 import TnTabbarItem from '@tuniao/tnui-vue3-uniapp/components/tabbar/src/tabbar-item.vue'
+import TnTabbar from '@tuniao/tnui-vue3-uniapp/components/tabbar/src/tabbar.vue'
+
+import { StyleEnum } from '@/enums/StyleEnum'
 import { useTabbarStore } from '@/store/tabbar'
 import { getImage } from '@/utils/imageManager'
 import PLATFORM from '@/utils/platform'
-import { StyleEnum } from '@/enums/StyleEnum'
 
 const tabbarStore = useTabbarStore()
 
 const tabbarList = [
   {
-    title: '首页',
-    icon: getImage('home'),
     activeIcon: getImage('homeActive'),
+    icon: getImage('home'),
     path: '/pages/home/home',
+    title: '首页',
   },
   {
-    title: '居民',
-    icon: getImage('resident'),
     activeIcon: getImage('residentActive'),
+    icon: getImage('resident'),
     path: '/pages/resident/resident',
+    title: '居民',
   },
   {
-    title: '消息',
-    icon: getImage('message'),
     activeIcon: getImage('messageActive'),
+    icon: getImage('message'),
     path: '/pages/message/message',
+    title: '消息',
   },
   {
-    title: '我的',
-    icon: getImage('mine'),
     activeIcon: getImage('mineActive'),
+    icon: getImage('mine'),
     path: '/pages/mine/mine',
+    title: '我的',
   },
 ] as const
 type PathType = (typeof tabbarList)[number]['path']
@@ -62,13 +63,13 @@ function pageTo(index: number) {
   <view v-if="!PLATFORM.isH5" class="h-12.5" />
   <TnTabbar
     v-if="!tabbarStore.hideTabbar"
-    :model-value="tabbarStore.tabbarIndex"
-    fixed
     :bg-color="StyleEnum.MAIN_BG_COLOR"
+    fixed
+    height="100rpx"
+    :model-value="tabbarStore.tabbarIndex"
+    placeholder
     safe-area-inset-bottom
     :top-shadow="props.topShadow"
-    placeholder
-    height="100rpx"
   >
     <TnTabbarItem v-for="(item, index) in tabbarList" :key="index" @click="pageTo(index)">
       <template #default>
@@ -77,10 +78,10 @@ function pageTo(index: number) {
             <view>
               <image
                 v-show="index === tabbarStore.tabbarIndex"
-                :src="item.activeIcon"
                 class="w-5 h-5"
+                :src="item.activeIcon"
               />
-              <image v-show="index !== tabbarStore.tabbarIndex" :src="item.icon" class="w-5 h-5" />
+              <image v-show="index !== tabbarStore.tabbarIndex" class="w-5 h-5" :src="item.icon" />
             </view>
             <view
               class="mt-1"
@@ -92,7 +93,7 @@ function pageTo(index: number) {
         </view>
 
         <view v-else class="flex-1 flex items-start">
-          <image :src="(item as (typeof tabbarList)[0]).icon" class="w-9 h-9 mt-1" />
+          <image class="w-9 h-9 mt-1" :src="(item as (typeof tabbarList)[0]).icon" />
         </view>
       </template>
     </TnTabbarItem>

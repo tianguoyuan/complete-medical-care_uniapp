@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+
 import Navbar from '@/components/Navbar.vue'
 import { useAppStore } from '@/store/app'
-import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
 const { navBarInfo } = useUniAppSystemRectInfo()
 const appStore = useAppStore()
@@ -14,7 +15,7 @@ const appStore = useAppStore()
       'min-height': `${appStore.systemScreenHeight}px`,
     }"
   >
-    <Navbar title="Demo" show-back-icon show-home-icon />
+    <Navbar show-back-icon show-home-icon title="Demo" />
     <view>demo - page</view>
   </view>
 </template>

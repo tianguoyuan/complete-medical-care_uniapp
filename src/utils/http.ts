@@ -9,8 +9,18 @@ export const http = <T>(options: CustomRequestOptions) => {
     uni.showLoading({ title: '加载中...' })
     uni.request({
       ...options,
-      timeout: HttpEnum.TIMEOUT,
       dataType: 'json',
+      // 响应失败
+      fail(err) {
+        uni.hideLoading()
+
+        uni.showToast({
+          duration: 1000 * 2,
+          icon: 'none',
+          title: '网络错误，换个网络试试',
+        })
+        reject(err)
+      },
       // #ifndef MP-WEIXIN
       responseType: 'json',
       // #endif
@@ -29,9 +39,9 @@ export const http = <T>(options: CustomRequestOptions) => {
           // 401错误  -> 清理用户信息，跳转到登录页
           userStore.clearUserInfo()
           uni.showToast({
+            duration: 1000 * 2,
             icon: 'none',
             title: '登录过期, 请重新登录',
-            duration: 1000 * 2,
           })
           uni.navigateTo({ url: PageEnum.LOGIN_PATH })
           reject(res)
@@ -39,24 +49,14 @@ export const http = <T>(options: CustomRequestOptions) => {
           // 其他错误 -> 根据后端错误信息轻提示
           !options.hideErrorToast &&
             uni.showToast({
+              duration: 1000 * 2,
               icon: 'none',
               title: msg || '请求错误',
-              duration: 1000 * 2,
             })
           reject(res)
         }
       },
-      // 响应失败
-      fail(err) {
-        uni.hideLoading()
-
-        uni.showToast({
-          icon: 'none',
-          title: '网络错误，换个网络试试',
-          duration: 1000 * 2,
-        })
-        reject(err)
-      },
+      timeout: HttpEnum.TIMEOUT,
     })
   })
 }
@@ -69,9 +69,9 @@ export const http = <T>(options: CustomRequestOptions) => {
  */
 export const httpGet = <T>(url: string, query?: Record<string, any>) => {
   return http<T>({
-    url,
-    query,
     method: 'GET',
+    query,
+    url,
   })
 }
 
@@ -88,10 +88,10 @@ export const httpPost = <T>(
   query?: Record<string, any>,
 ) => {
   return http<T>({
-    url,
-    query,
     data,
     method: 'POST',
+    query,
+    url,
   })
 }
 

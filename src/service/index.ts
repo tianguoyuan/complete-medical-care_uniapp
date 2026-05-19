@@ -13,8 +13,8 @@ export const userGetPhoneCode = (data: UserGetPhoneCodeParams) => {
 
 // 登录
 interface UserLoginParams {
-  phone: string
   code: string
+  phone: string
 }
 interface UserLoginRes {
   token: string
@@ -37,8 +37,8 @@ export const getUserInfo = (data: UserInfoParams) => {
 
 // 用户注册
 interface UserRegisterParams {
-  phone: string
   code: string
+  phone: string
   username: string
 }
 interface UserRegisterRes {

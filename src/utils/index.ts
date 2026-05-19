@@ -1,4 +1,5 @@
 import { pages, subPackages, tabBar } from '@/pages.json'
+
 import PLATFORM, { isMpWeixin } from './platform'
 
 const getLastPage = () => {
@@ -180,8 +181,8 @@ export const getEnvBaseUploadUrl = () => {
 export const getSafeArea = () => {
   const system = uni.getWindowInfo()
   return {
-    statusBarHeight: system.statusBarHeight,
     safeArea: system.safeArea,
+    statusBarHeight: system.statusBarHeight,
   }
 }
 

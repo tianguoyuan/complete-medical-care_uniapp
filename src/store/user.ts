@@ -24,14 +24,14 @@ export const useUserStore = defineStore(
     }
 
     return {
-      token,
       changeToken,
-
-      userId,
       changeUserId,
-      isLogin,
 
       clearUserInfo,
+      isLogin,
+      token,
+
+      userId,
     }
   },
   {

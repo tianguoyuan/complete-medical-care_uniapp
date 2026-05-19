@@ -13,12 +13,12 @@ export const isMpAplipay = __UNI_PLATFORM__.startsWith('mp-alipay')
 export const isMpToutiao = __UNI_PLATFORM__.startsWith('mp-toutiao')
 
 const PLATFORM = {
-  platform,
-  isH5,
   isApp,
+  isH5,
   isMp,
-  isMpWeixin,
   isMpAplipay,
   isMpToutiao,
+  isMpWeixin,
+  platform,
 }
 export default PLATFORM

@@ -6,7 +6,7 @@
   //开启自动修复
   "editor.codeActionsOnSave": {
     "source.fixAll": "never",
-    "source.fixAll.eslint": "never",
+    "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "never"
   },
   // 配置stylelint检查的文件类型范围

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import PLATFORM from '@/utils/platform'
-import Tabbar from '@/components/Tabbar.vue'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
-import { getImage } from '@/utils/imageManager'
+
+import Tabbar from '@/components/Tabbar.vue'
 import { useAppStore } from '@/store/app'
+import { getImage } from '@/utils/imageManager'
+import PLATFORM from '@/utils/platform'
 //
 onLoad(() => PLATFORM.isApp && uni.hideTabBar())
 
@@ -11,69 +12,69 @@ const { navBarInfo } = useUniAppSystemRectInfo()
 const { systemScreenHeight } = useAppStore()
 
 const countList = ref([
-  { title: '已签约人数', content: '1000' },
-  { title: '签约指标', content: '2000' },
-  { title: '签约率', content: '50%' },
-  { title: '服务次数', content: '2500' },
-  { title: '服务人数', content: '3224' },
-  { title: '好评率', content: '80.3%' },
+  { content: '1000', title: '已签约人数' },
+  { content: '2000', title: '签约指标' },
+  { content: '50%', title: '签约率' },
+  { content: '2500', title: '服务次数' },
+  { content: '3224', title: '服务人数' },
+  { content: '80.3%', title: '好评率' },
 ])
 
 const createList = ref([
-  { type: 'create', title: '新建档案', icon: getImage('homeCreate1') },
-  { type: 'signContract', title: '签约管理', icon: getImage('homeCreate2') },
-  { type: 'service', title: '服务管理', icon: getImage('homeCreate3') },
+  { icon: getImage('homeCreate1'), title: '新建档案', type: 'create' },
+  { icon: getImage('homeCreate2'), title: '签约管理', type: 'signContract' },
+  { icon: getImage('homeCreate3'), title: '服务管理', type: 'service' },
 ] as const)
 
 const listData = ref([
   {
-    title: '申请签约',
     count: '2',
     list: [
       {
-        name: '韦栋',
         age: '58岁',
-        sex: '1',
-        status: 'pending',
-        statusText: '待审核',
         keys: [
           { name: '身份证', value: '442355******2225844' },
           { name: '签约团队', value: '阳兰广团队' },
           { name: '服务包', value: '老年人服务包' },
         ],
+        name: '韦栋',
+        sex: '1',
+        status: 'pending',
+        statusText: '待审核',
       },
 
       {
-        name: '化姣',
         age: '29岁',
-        sex: '0',
-        status: 'pending',
-        statusText: '待审核',
         keys: [
           { name: '身份证', value: '440682******9875624' },
           { name: '签约团队', value: '阳兰广团队' },
           { name: '服务包', value: '妇女保健包' },
         ],
+        name: '化姣',
+        sex: '0',
+        status: 'pending',
+        statusText: '待审核',
       },
     ],
+    title: '申请签约',
   },
   {
-    title: '服务申请',
     count: '3',
     list: [
       {
-        name: '韦栋',
         age: '58岁',
-        sex: '1',
-        status: 'pending',
-        statusText: '待审核',
         keys: [
           { name: '服务包', value: '老年人服务包' },
           { name: '服务项目', value: '高血压健康随访' },
           { name: '申请时间', value: '2022-09-25 10:00:30' },
         ],
+        name: '韦栋',
+        sex: '1',
+        status: 'pending',
+        statusText: '待审核',
       },
     ],
+    title: '服务申请',
   },
 ])
 
@@ -94,11 +95,11 @@ function pageTo(item: (typeof createList.value)[number]) {
       <view class="flex justify-between items-center px-3">
         <view class="flex items-center">
           <view class="rounded-full border-2px border-solid border-#fff">
-            <image :src="getImage('mineAvatar')" class="w-10 h-10" />
+            <image class="w-10 h-10" :src="getImage('mineAvatar')" />
           </view>
           <view class="ml-2.5 text-4">阳兰广医生</view>
         </view>
-        <image :src="getImage('mineQrcode')" class="w-5 h-5" />
+        <image class="w-5 h-5" :src="getImage('mineQrcode')" />
       </view>
 
       <view class="mt-5 mx-3">
@@ -118,7 +119,7 @@ function pageTo(item: (typeof createList.value)[number]) {
             class="flex flex-col items-center"
             @click="pageTo(item)"
           >
-            <image :src="item.icon" class="w-12.5 h-12.5" />
+            <image class="w-12.5 h-12.5" :src="item.icon" />
             <view class="text-2.5 color-#1C2023 text-3.5">{{ item.title }}</view>
           </view>
         </view>
@@ -139,16 +140,16 @@ function pageTo(item: (typeof createList.value)[number]) {
         </view>
 
         <view
-          class="mt-3.75 flex flex-col border-0 border-solid border-#E3E4E5"
           v-for="(item, index) in pItem.list"
           :key="index"
+          class="mt-3.75 flex flex-col border-0 border-solid border-#E3E4E5"
           :class="pItem.list.length - 1 === index ? 'pb-0 border-0' : 'pb-3.5 border-b-1'"
         >
           <view class="flex justify-between items-center">
             <view class="flex items-center">
               <image
-                :src="getImage(item.sex === '1' ? 'commonBoy' : 'commonGirl')"
                 class="w-5 h-5"
+                :src="getImage(item.sex === '1' ? 'commonBoy' : 'commonGirl')"
               />
 
               <view class="ml-2.5">

@@ -1,36 +1,37 @@
 <script lang="ts" setup>
-import { PageEnum } from '@/enums/PageEnum'
 import TnIcon from '@tuniao/tnui-vue3-uniapp/components/icon/src/icon.vue'
 import TnNavbar from '@tuniao/tnui-vue3-uniapp/components/navbar/src/navbar.vue'
 
+import { PageEnum } from '@/enums/PageEnum'
+
 const props = withDefaults(
   defineProps<{
-    title: string
-    showBackIcon: boolean
-    showHomeIcon: boolean
-    bottomShadow: boolean
-    showBorder: boolean
     bgColor: string
-    textColor: string
+    bottomShadow: boolean
+    clickBackIcon?: () => void
+    clickHomeIcon?: () => void
     frosted: boolean
     opacity: number
     placeholder: boolean
-    clickBackIcon?: () => void
-    clickHomeIcon?: () => void
+    showBackIcon: boolean
+    showBorder: boolean
+    showHomeIcon: boolean
+    textColor: string
+    title: string
   }>(),
   {
-    title: '',
-    showBackIcon: false,
-    showHomeIcon: false,
-    bottomShadow: true,
-    showBorder: false,
     bgColor: 'white',
-    textColor: 'black',
+    bottomShadow: true,
+    clickBackIcon: undefined,
+    clickHomeIcon: undefined,
     frosted: false,
     opacity: 1,
     placeholder: true,
-    clickBackIcon: undefined,
-    clickHomeIcon: undefined,
+    showBackIcon: false,
+    showBorder: false,
+    showHomeIcon: false,
+    textColor: 'black',
+    title: '',
   },
 )
 
@@ -63,13 +64,13 @@ function handleClickHomeIcon() {
 
 <template>
   <TnNavbar
-    fixed
-    :bottom-shadow="props.bottomShadow"
     :bg-color="props.bgColor"
-    :text-color="props.textColor"
+    :bottom-shadow="props.bottomShadow"
+    fixed
     :frosted="props.frosted"
     :opacity="props.opacity"
     :placeholder="props.placeholder"
+    :text-color="props.textColor"
   >
     <!-- :status-height="navBarInfo.statusHeight"
     height="90rpx" -->
@@ -91,9 +92,9 @@ function handleClickHomeIcon() {
       >
         <TnIcon
           v-if="props.showBackIcon"
-          name="left-arrow"
           color="#fff"
           :custom-class="[props.showBackIcon && props.showHomeIcon ? 'flex-1' : ''].join(' ')"
+          name="left-arrow"
           @click="handleClickBackIcon"
         />
         <view
@@ -102,9 +103,9 @@ function handleClickHomeIcon() {
         ></view>
         <TnIcon
           v-if="props.showHomeIcon"
-          name="home-capsule-fill"
           color="#fff"
           :custom-class="[props.showBackIcon && props.showHomeIcon ? 'flex-1' : ''].join(' ')"
+          name="home-capsule-fill"
           @click="handleClickHomeIcon"
         />
       </view>

@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+import type { TnModalInstance } from '@tuniao/tnui-vue3-uniapp/components/modal'
+
+import TnModal from '@tuniao/tnui-vue3-uniapp/components/modal/src/modal.vue'
+import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+
 import { useUserStore } from '@/store'
 import { getImage } from '@/utils/imageManager'
-import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
-import TnModal from '@tuniao/tnui-vue3-uniapp/components/modal/src/modal.vue'
-import type { TnModalInstance } from '@tuniao/tnui-vue3-uniapp/components/modal'
 
 const { systemScreenInfo } = useUniAppSystemRectInfo()
 const userStore = useUserStore()
@@ -11,43 +13,43 @@ const modalRef = ref<TnModalInstance>()
 
 const appSettingList = ref([
   {
+    rightIcon: getImage('commonArrowRight'),
     title: '个人资料',
-    rightIcon: getImage('commonArrowRight'),
   },
   {
+    rightIcon: getImage('commonArrowRight'),
     title: '修改密码',
-    rightIcon: getImage('commonArrowRight'),
   },
   {
-    title: '消息通知',
     switchBtn: true,
+    title: '消息通知',
   },
   {
-    title: '清除缓存',
+    rightIcon: getImage('commonArrowRight'),
     rightText: '6.4M',
-    rightIcon: getImage('commonArrowRight'),
+    title: '清除缓存',
   },
   {
-    title: '升级版本',
+    rightIcon: getImage('commonArrowRight'),
     rightText: '当前版本1.01.1',
-    rightIcon: getImage('commonArrowRight'),
+    title: '升级版本',
   },
   {
-    title: '关于我们',
     rightIcon: getImage('commonArrowRight'),
+    title: '关于我们',
   },
 ])
 function handleLogout() {
   modalRef.value?.showModal({
-    title: '提示',
-    content: '是否退出登录？',
-    showCancel: true,
     confirm() {
       userStore.clearUserInfo()
       uni.reLaunch({
         url: '/pages/user/login',
       })
     },
+    content: '是否退出登录？',
+    showCancel: true,
+    title: '提示',
   })
 }
 //
@@ -63,7 +65,7 @@ function handleLogout() {
         <text class="text-3.75 text-gray-800">{{ item.title }}</text>
         <view class="flex items-center">
           <text v-if="item.rightText" class="mr-2.5 color-#C5C8CB">{{ item.rightText }}</text>
-          <image v-if="item.rightIcon" :src="item.rightIcon" class="h2.5" mode="heightFix" />
+          <image v-if="item.rightIcon" class="h2.5" mode="heightFix" :src="item.rightIcon" />
         </view>
       </view>
     </view>

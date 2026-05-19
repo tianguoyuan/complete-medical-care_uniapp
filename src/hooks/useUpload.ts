@@ -18,52 +18,52 @@ export default function useUpload<T = string>(formData: Record<string, any> = {}
     // 微信小程序在2023年10月17日之后，使用本API需要配置隐私协议
     uni.chooseMedia({
       count: 1,
+      fail: (err) => {
+        console.error('uni.chooseMedia err->', err)
+        error.value = true
+      },
       mediaType: ['image'],
       success: (res) => {
         loading.value = true
         const tempFilePath = res.tempFiles[0].tempFilePath
-        uploadFile<T>({ tempFilePath, formData, data, error, loading })
-      },
-      fail: (err) => {
-        console.error('uni.chooseMedia err->', err)
-        error.value = true
+        uploadFile<T>({ data, error, formData, loading, tempFilePath })
       },
     })
     // #endif
     // #ifndef MP-WEIXIN
     uni.chooseImage({
       count: 1,
-      success: (res) => {
-        loading.value = true
-        const tempFilePath = res.tempFilePaths[0]
-        uploadFile<T>({ tempFilePath, formData, data, error, loading })
-      },
       fail: (err) => {
         console.error('uni.chooseImage err->', err)
         error.value = true
+      },
+      success: (res) => {
+        loading.value = true
+        const tempFilePath = res.tempFilePaths[0]
+        uploadFile<T>({ data, error, formData, loading, tempFilePath })
       },
     })
     // #endif
   }
 
-  return { loading, error, data, run }
+  return { data, error, loading, run }
 }
 
-function uploadFile<T>({ tempFilePath, formData, data, error, loading }) {
+function uploadFile<T>({ data, error, formData, loading, tempFilePath }) {
   uni.uploadFile({
-    url: VITE_UPLOAD_BASEURL,
-    filePath: tempFilePath,
-    name: 'file',
-    formData,
-    success: (uploadFileRes) => {
-      data.value = uploadFileRes.data as T
+    complete: () => {
+      loading.value = false
     },
     fail: (err) => {
       console.error('uni.uploadFile err->', err)
       error.value = true
     },
-    complete: () => {
-      loading.value = false
+    filePath: tempFilePath,
+    formData,
+    name: 'file',
+    success: (uploadFileRes) => {
+      data.value = uploadFileRes.data as T
     },
+    url: VITE_UPLOAD_BASEURL,
   })
 }

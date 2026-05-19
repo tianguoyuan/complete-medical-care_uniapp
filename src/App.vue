@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
+
+import { onHide, onLaunch, onShow } from '@dcloudio/uni-app'
+
 import { navigateToInterceptor } from './interceptors/route'
 import { useAppStore } from './store/app'
 

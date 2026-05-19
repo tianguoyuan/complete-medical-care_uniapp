@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+
 import { useUserStore } from '@/store'
 import { getImage } from '@/utils/imageManager'
-import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 const rectInfo = useUniAppSystemRectInfo()
 
 const count = ref(5)
@@ -44,12 +45,12 @@ function pageToHome() {
         @click="pageToHome"
       >
         <text>跳过</text>
-        <text class="ml-0.5" v-if="count !== 0">{{ count }}</text>
+        <text v-if="count !== 0" class="ml-0.5">{{ count }}</text>
       </view>
-      <image :src="getImage('dashboardCover')" class="w-full mt-16 px-2" mode="widthFix" />
+      <image class="w-full mt-16 px-2" mode="widthFix" :src="getImage('dashboardCover')" />
     </view>
     <view class="absolute flex justify-center w-full bottom-13">
-      <image :src="getImage('dashboardTitle')" class="h-7.75 w-40.5" />
+      <image class="h-7.75 w-40.5" :src="getImage('dashboardTitle')" />
       <view class="pb-safe bg-#f99"></view>
     </view>
   </view>

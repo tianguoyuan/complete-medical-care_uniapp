@@ -49,12 +49,7 @@
     },
     {
       "path": "pages/home/createUserFile",
-      "type": "page",
-      "layout": "default",
-      "style": {
-        "navigationStyle": "custom",
-        "navigationBarTitleText": "新建居民档案"
-      }
+      "type": "page"
     },
     {
       "path": "pages/home/home",
