@@ -3,7 +3,6 @@ import {
   type Preset,
   defineConfig,
   presetUno,
-  presetAttributify,
   presetIcons,
   transformerDirectives,
   transformerVariantGroup,
@@ -25,7 +24,7 @@ if (isMp) {
     // 非小程序用官方预设
     presetUno(),
     // 支持css class属性化
-    presetAttributify(),
+    // presetAttributify(),
   )
 }
 export default defineConfig({

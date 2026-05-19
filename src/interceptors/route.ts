@@ -10,7 +10,7 @@ import { needLoginPages as _needLoginPages, getNeedLoginPages } from '@/utils'
 // TODO Check
 const loginRoute = PageEnum.LOGIN_PATH
 
-const isLogined = () => {
+function isLogined() {
   const userStore = useUserStore()
   return userStore.isLogin
 }

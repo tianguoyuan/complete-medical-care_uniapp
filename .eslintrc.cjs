@@ -18,6 +18,18 @@ module.exports = {
     'plugin:prettier/recommended',
     './.eslintrc-auto-import.json',
   ],
+  globals: {
+    $t: true,
+    App: true,
+    getCurrentPages: true,
+    NodeJS: true,
+    Page: true,
+    uni: true,
+    UniApp: true,
+    UniHelper: true,
+    WechatMiniprogram: true,
+    wx: true,
+  },
   overrides: [
     {
       env: {
@@ -42,62 +54,107 @@ module.exports = {
     // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-import-resolver-typescript
     'import',
     'perfectionist',
+    'prefer-function-declarations',
   ],
   rules: {
-    // 3. 注意要加上这一句，开启 prettier 自动修复的功能
-    'prettier/prettier': 'error',
-    // turn on errors for missing imports
-    'import/no-unresolved': 'off',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        disallowTypeAnnotations: false,
+        prefer: 'type-imports',
+      },
+    ],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-redeclare': 'error',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'func-style': ['error', 'declaration', { allowArrowFunctions: false }],
+    'import/default': 'off',
     // 对后缀的检测，否则 import 一个ts文件也会报错，需要手动添加'.ts', 增加了下面的配置后就不用了
     'import/extensions': [
       'error',
       'ignorePackages',
       { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' },
     ],
-    // 只允许1个默认导出，关闭，否则不能随意export xxx
-    'import/prefer-default-export': ['off'],
-    'import/default': 'off',
-    'import/no-named-as-default': 'off',
-    'no-console': ['off'],
     // 'no-unused-vars': ['off'],
     // '@typescript-eslint/no-unused-vars': ['off'],
     // 解决vite.config.ts报错问题
     'import/no-extraneous-dependencies': 'off',
-    'no-plusplus': 'off',
-    'no-shadow': 'off',
-    'vue/multi-word-component-names': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    'no-underscore-dangle': 'off',
-    'no-use-before-define': 'off',
-    'no-undef': 'off',
-    'no-unused-vars': 'off',
+    'import/no-named-as-default': 'off',
+    'import/no-named-as-default-member': 'off',
+    // turn on errors for missing imports
+    'import/no-unresolved': 'off',
+    // 只允许1个默认导出，关闭，否则不能随意export xxx
+    'import/prefer-default-export': ['off'],
+    'no-console': ['off'],
     'no-param-reassign': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
+    'no-plusplus': 'off',
     // 避免 `eslint` 对于 `typescript` 函数重载的误报
     'no-redeclare': 'off',
-    '@typescript-eslint/no-redeclare': 'error',
+    'no-shadow': 'off',
+    'no-undef': 'off',
+    'no-underscore-dangle': 'off',
     'no-unused-expressions': 'off',
-    'vue/component-tags-order': [
+    'no-unused-vars': 'off',
+    'no-use-before-define': 'off',
+    // import 语句排序（支持自动修复）
+    'perfectionist/sort-imports': [
       'error',
       {
-        order: ['script', 'template', 'style', 'route'],
+        groups: [
+          'side-effect',
+          'side-effect-style',
+          'type',
+          ['builtin', 'external'],
+          'internal',
+          ['parent', 'sibling', 'index'],
+          'style',
+        ],
+        ignoreCase: true,
+        internalPattern: ['^@/'],
+        newlinesBetween: 1,
+        order: 'asc',
+        type: 'natural',
       },
     ],
-    'import/no-named-as-default-member': 'off',
-    '@typescript-eslint/consistent-type-imports': [
+    // 接口/类型成员排序（支持自动修复）
+    'perfectionist/sort-interfaces': [
       'error',
       {
-        prefer: 'type-imports',
-        disallowTypeAnnotations: false,
+        ignoreCase: true,
+        order: 'asc',
+        type: 'natural',
+      },
+    ],
+    // 命名导入排序，如 import { A, B, C }（支持自动修复）
+    'perfectionist/sort-named-imports': [
+      'error',
+      {
+        ignoreCase: true,
+        order: 'asc',
+        type: 'natural',
       },
     ],
 
-    'vue/no-mutating-props': 'off',
+    // 对象属性排序（支持自动修复）
+    'perfectionist/sort-objects': [
+      'error',
+      {
+        ignoreCase: true,
+        order: 'asc',
+        type: 'natural',
+      },
+    ],
+
+    'prefer-function-declarations/prefer-function-declarations': 'error',
+
+    // 3. 注意要加上这一句，开启 prettier 自动修复的功能
+    'prettier/prettier': 'error',
 
     // 属性排序规则
     'vue/attributes-order': [
       'error',
       {
+        alphabetical: true,
         order: [
           'DEFINITION',
           'LIST_RENDERING',
@@ -111,60 +168,19 @@ module.exports = {
           'EVENTS',
           'CONTENT',
         ],
-        alphabetical: true,
       },
     ],
 
-    // 对象属性排序（支持自动修复）
-    'perfectionist/sort-objects': [
+    'vue/component-tags-order': [
       'error',
       {
-        type: 'natural',
-        order: 'asc',
-        ignoreCase: true,
+        order: ['script', 'template', 'style', 'route'],
       },
     ],
 
-    // 接口/类型成员排序（支持自动修复）
-    'perfectionist/sort-interfaces': [
-      'error',
-      {
-        type: 'natural',
-        order: 'asc',
-        ignoreCase: true,
-      },
-    ],
+    'vue/multi-word-component-names': 'off',
 
-    // import 语句排序（支持自动修复）
-    'perfectionist/sort-imports': [
-      'error',
-      {
-        type: 'natural',
-        order: 'asc',
-        ignoreCase: true,
-        internalPattern: ['^@/'],
-        groups: [
-          'side-effect',
-          'side-effect-style',
-          'type',
-          ['builtin', 'external'],
-          'internal',
-          ['parent', 'sibling', 'index'],
-          'style',
-        ],
-        newlinesBetween: 1,
-      },
-    ],
-
-    // 命名导入排序，如 import { A, B, C }（支持自动修复）
-    'perfectionist/sort-named-imports': [
-      'error',
-      {
-        type: 'natural',
-        order: 'asc',
-        ignoreCase: true,
-      },
-    ],
+    'vue/no-mutating-props': 'off',
   },
   // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-import-resolver-typescript
   settings: {
@@ -174,17 +190,5 @@ module.exports = {
     'import/resolver': {
       typescript: {},
     },
-  },
-  globals: {
-    $t: true,
-    uni: true,
-    UniApp: true,
-    wx: true,
-    WechatMiniprogram: true,
-    getCurrentPages: true,
-    UniHelper: true,
-    Page: true,
-    App: true,
-    NodeJS: true,
   },
 }

@@ -6,17 +6,17 @@ import { PageEnum } from '@/enums/PageEnum'
 
 const props = withDefaults(
   defineProps<{
-    bgColor: string
-    bottomShadow: boolean
+    bgColor?: string
+    bottomShadow?: boolean
     clickBackIcon?: () => void
     clickHomeIcon?: () => void
-    frosted: boolean
-    opacity: number
-    placeholder: boolean
-    showBackIcon: boolean
-    showBorder: boolean
-    showHomeIcon: boolean
-    textColor: string
+    frosted?: boolean
+    opacity?: number
+    placeholder?: boolean
+    showBackIcon?: boolean
+    showBorder?: boolean
+    showHomeIcon?: boolean
+    textColor?: string
     title: string
   }>(),
   {

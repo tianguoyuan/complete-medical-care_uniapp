@@ -7,6 +7,7 @@ interface NavigateToOptions {
   url: "/pages/dashboard/dashboard" |
        "/pages/home/createUserFile" |
        "/pages/home/home" |
+       "/pages/home/selectFamilyMembers" |
        "/pages/message/message" |
        "/pages/mine/appSetting" |
        "/pages/mine/mine" |

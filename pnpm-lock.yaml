@@ -207,6 +207,9 @@ importers:
       eslint-plugin-perfectionist:
         specifier: ^5.9.0
         version: 5.9.0(eslint@8.57.1)(typescript@5.8.3)
+      eslint-plugin-prefer-function-declarations:
+        specifier: ^2.1.0
+        version: 2.1.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.8.3))(@typescript-eslint/utils@8.59.3(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1)
       eslint-plugin-prettier:
         specifier: ^5.2.1
         version: 5.5.5(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.5.3)
@@ -4546,6 +4549,13 @@ packages:
     peerDependencies:
       eslint: ^8.45.0 || ^9.0.0 || ^10.0.0
 
+  eslint-plugin-prefer-function-declarations@2.1.0:
+    resolution: {integrity: sha512-0ejiFV+rRupZjxTuZhGOO+3kAQa2n7i21tA7krtkxHNfEvkmp8ZM6ePR7BbPma65bhB8qF/v4qRTst5kf7V8dw==}
+    peerDependencies:
+      '@typescript-eslint/parser': '>= 5.44.0'
+      '@typescript-eslint/utils': '>= 5.44.0'
+      eslint: '>= 8.28.0'
+
   eslint-plugin-prettier@5.5.5:
     resolution: {integrity: sha512-hscXkbqUZ2sPithAuLm5MXL+Wph+U7wHngPBv9OMWwlP8iaflyxpjTYZkmdgB4/vPIhemRlBEoLrH7UC1n7aUw==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -4944,6 +4954,7 @@ packages:
   git-semver-tags@4.1.1:
     resolution: {integrity: sha512-OWyMt5zBe7xFs8vglMmhM9lRQzCWL3WjHtxNNfJTMngGym7pC1kh8sP6jevfydJ6LP3ZvGxfb6ABYgPUM0mtsA==}
     engines: {node: '>=10'}
+    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
     hasBin: true
 
   gitconfiglocal@1.0.0:
@@ -14188,6 +14199,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - typescript
+
+  eslint-plugin-prefer-function-declarations@2.1.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.8.3))(@typescript-eslint/utils@8.59.3(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1):
+    dependencies:
+      '@typescript-eslint/parser': 6.21.0(eslint@8.57.1)(typescript@5.8.3)
+      '@typescript-eslint/utils': 8.59.3(eslint@8.57.1)(typescript@5.8.3)
+      eslint: 8.57.1
 
   eslint-plugin-prettier@5.5.5(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.5.3):
     dependencies:

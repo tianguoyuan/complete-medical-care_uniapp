@@ -5,7 +5,7 @@ import { type CustomRequestOptions } from '@/interceptors/request'
  * @param options 请求参数
  * @returns 返回 Promise 对象
  */
-const http = <T>(options: CustomRequestOptions) => {
+function http<T>(options: CustomRequestOptions) {
   // 1. 返回 Promise 对象
   return new Promise<T>((resolve, reject) => {
     uni.request({

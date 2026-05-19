@@ -22,7 +22,7 @@ export default function useRequest<T>(
   const loading = ref(false)
   const error = ref(false)
   const data = ref<T | undefined>(options.initialData)
-  const run = async () => {
+  function runasync() {
     loading.value = true
     return func()
       .then((res) => {

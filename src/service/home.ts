@@ -4,6 +4,6 @@ import { http } from '@/utils/http'
 interface searchDefaultMsgRes {
   searchDefault: string
 }
-export const searchDefaultMsg = () => {
+export function searchDefaultMsg() {
   return http.get<searchDefaultMsgRes>('/search/defaultMsg')
 }

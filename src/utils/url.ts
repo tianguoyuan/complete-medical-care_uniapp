@@ -3,7 +3,7 @@
  * @param url string
  * @returns string
  */
-export const urlDecode = (url: string, i = 0): string => {
+export function urlDecode(url: string, i = 0): string {
   if (!url) return ''
   if (i >= 10) return url
   if (url.includes('/')) return url
@@ -16,7 +16,7 @@ export const urlDecode = (url: string, i = 0): string => {
  * @param url string
  * @returns string
  */
-export const urlEncode = (url: string, i = 0): string => {
+export function urlEncode(url: string, i = 0): string {
   if (!url) return ''
   if (i >= 10) return url
   if (url.includes(encodeURIComponent('/'))) return url

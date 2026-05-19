@@ -1,5 +1,6 @@
 import '@/style/index.scss'
 import 'virtual:uno.css'
+import '@tuniao/tn-icon/dist/index.css'
 
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import { createSSRApp } from 'vue'
@@ -7,7 +8,6 @@ import { createSSRApp } from 'vue'
 import App from './App.vue'
 import { prototypeInterceptor, requestInterceptor, routeInterceptor } from './interceptors'
 import store from './store'
-
 export function createApp() {
   const app = createSSRApp(App)
   app.use(store)

@@ -39,7 +39,7 @@ type PathType = (typeof tabbarList)[number]['path']
 const props = withDefaults(
   defineProps<{
     tabbarPath: PathType
-    topShadow: boolean
+    topShadow?: boolean
   }>(),
   {
     topShadow: true,

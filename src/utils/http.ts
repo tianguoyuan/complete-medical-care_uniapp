@@ -3,7 +3,7 @@ import { PageEnum } from '@/enums/PageEnum'
 import { type CustomRequestOptions } from '@/interceptors/request'
 import { useUserStore } from '@/store'
 
-export const http = <T>(options: CustomRequestOptions) => {
+export function http<T>(options: CustomRequestOptions) {
   // 1. 返回 Promise 对象
   return new Promise<IResData<T>>((resolve, reject) => {
     uni.showLoading({ title: '加载中...' })
@@ -67,7 +67,7 @@ export const http = <T>(options: CustomRequestOptions) => {
  * @param query 请求query参数
  * @returns
  */
-export const httpGet = <T>(url: string, query?: Record<string, any>) => {
+export function httpGet<T>(url: string, query?: Record<string, any>) {
   return http<T>({
     method: 'GET',
     query,
@@ -82,11 +82,7 @@ export const httpGet = <T>(url: string, query?: Record<string, any>) => {
  * @param query 请求query参数，post请求也支持query，很多微信接口都需要
  * @returns
  */
-export const httpPost = <T>(
-  url: string,
-  data?: Record<string, any>,
-  query?: Record<string, any>,
-) => {
+export function httpPost<T>(url: string, data?: Record<string, any>, query?: Record<string, any>) {
   return http<T>({
     data,
     method: 'POST',

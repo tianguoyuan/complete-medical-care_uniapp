@@ -7,7 +7,7 @@ interface UserGetPhoneCodeRes {
   code: string
 }
 // 获取验证码
-export const userGetPhoneCode = (data: UserGetPhoneCodeParams) => {
+export function userGetPhoneCode(data: UserGetPhoneCodeParams) {
   return http.post<UserGetPhoneCodeRes>('/user/getPhoneCode', data)
 }
 
@@ -20,7 +20,7 @@ interface UserLoginRes {
   token: string
   userId: string
 }
-export const userLogin = (data: UserLoginParams) => {
+export function userLogin(data: UserLoginParams) {
   return http.post<UserLoginRes>('/user/login', data)
 }
 
@@ -31,7 +31,7 @@ interface UserInfoParams {
 interface UserInfoRes {
   userId: string
 }
-export const getUserInfo = (data: UserInfoParams) => {
+export function getUserInfo(data: UserInfoParams) {
   return http.post<UserInfoRes>('/user/info', data)
 }
 
@@ -45,6 +45,6 @@ interface UserRegisterRes {
   token: string
   userId: string
 }
-export const userRegister = (data: UserRegisterParams) => {
+export function userRegister(data: UserRegisterParams) {
   return http.post<UserRegisterRes>('/user/register', data)
 }

@@ -49,7 +49,13 @@
     },
     {
       "path": "pages/home/createUserFile",
-      "type": "page"
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "新建居民档案"
+      },
+      "needLogin": false
     },
     {
       "path": "pages/home/home",
@@ -60,6 +66,15 @@
         "navigationBarTitleText": "首页"
       },
       "needLogin": false
+    },
+    {
+      "path": "pages/home/selectFamilyMembers",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "选择家庭成员"
+      }
     },
     {
       "path": "pages/message/message",

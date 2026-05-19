@@ -64,7 +64,7 @@ type ImageName = (typeof imageNames)[number]
  * @param imageName 图片名称
  * @returns 图片URL或导入的资源
  */
-export const getImage = (imageName: ImageName, suffix = '.svg'): string => {
+export function getImage(imageName: ImageName, suffix = '.svg'): string {
   // tabbar图片使用本地
   if (tabbarImage.includes(imageName as (typeof tabbarImage)[number]))
     return `/static/icons/${imageName + suffix}`

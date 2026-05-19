@@ -32,10 +32,16 @@ page {
   // 修改按钮背景色
   // --wot-button-primary-bg-color: green;
 }
-view,
-text {
-  transition: all 100ms;
-}
+// view,
+// text {
+//   transition: all 100ms;
+// }
+
+// /* 排除 picker-view 内部元素的 transition 干扰 */
+// uni-picker-view view,
+// uni-picker-view-column view {
+//   transition: none;
+// }
 
 // #container {
 //   height: 100vh;
