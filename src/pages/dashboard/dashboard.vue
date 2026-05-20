@@ -29,7 +29,7 @@ function pageToHome() {
       url: '/pages/home/home',
     })
   } else {
-    uni.navigateTo({
+    uni.redirectTo({
       url: '/pages/user/login',
     })
   }
@@ -39,19 +39,19 @@ function pageToHome() {
 <template>
   <view>
     <view :style="{ height: rectInfo.navBarInfo.height + 'px' }"></view>
-    <view class="px-6 relative">
+    <view class="relative px-6">
       <view
-        class="bg-[#6A6D6F] rounded-1.25 px-3.5 color-#fff absolute right-6 h-7.5 flex items-center"
+        class="absolute right-6 h-7.5 flex items-center rounded-1.25 bg-[#6A6D6F] px-3.5 color-#fff"
         @click="pageToHome"
       >
         <text>跳过</text>
         <text v-if="count !== 0" class="ml-0.5">{{ count }}</text>
       </view>
-      <image class="w-full mt-16 px-2" mode="widthFix" :src="getImage('dashboardCover')" />
+      <image class="mt-16 w-full px-2" mode="widthFix" :src="getImage('dashboardCover')" />
     </view>
-    <view class="absolute flex justify-center w-full bottom-13">
+    <view class="absolute bottom-13 w-full flex justify-center">
       <image class="h-7.75 w-40.5" :src="getImage('dashboardTitle')" />
-      <view class="pb-safe bg-#f99"></view>
+      <view class="bg-#f99 pb-safe"></view>
     </view>
   </view>
 </template>

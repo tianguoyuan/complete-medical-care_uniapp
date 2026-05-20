@@ -6,52 +6,28 @@ import { loadEnv } from 'vite'
 // 获取环境变量的范例
 const env = loadEnv(process.env.NODE_ENV!, path.resolve(process.cwd(), 'env'))
 const {
-  VITE_APP_TITLE,
   VITE_APP_DESC,
-  VITE_UNI_APPID,
-  VITE_WX_APPID,
   VITE_APP_PUBLIC_BASE,
   VITE_APP_ROUTER_MODE,
+  VITE_APP_TITLE,
   VITE_FALLBACK_LOCALE,
+  VITE_UNI_APPID,
+  VITE_WX_APPID,
 } = env
 
 export default defineManifestConfig({
-  name: VITE_APP_TITLE,
-  appid: VITE_UNI_APPID,
-  description: VITE_APP_DESC,
-  versionName: '1.0.0',
-  versionCode: '100',
-  transformPx: false,
-  locale: VITE_FALLBACK_LOCALE, // 'zh-Hans'
-  h5: {
-    router: {
-      base: VITE_APP_PUBLIC_BASE,
-      mode: VITE_APP_ROUTER_MODE,
-    },
-  },
   /* 5+App特有相关 */
   'app-plus': {
-    usingComponents: true,
-    nvueStyleCompiler: 'uni-app',
-    compilerVersion: 3,
     compatible: {
       ignoreVersion: true,
     },
-    splashscreen: {
-      alwaysShowBeforeRender: true,
-      waiting: true,
-      autoclose: true,
-      delay: 0,
-    },
-    /* 模块配置 */
-    modules: {},
+    compilerVersion: 3,
     /* 应用发布信息 */
     distribute: {
       /* android打包配置 */
       android: {
-        minSdkVersion: 30,
-        targetSdkVersion: 30,
         abiFilters: ['armeabi-v7a', 'arm64-v8a'],
+        minSdkVersion: 30,
         permissions: [
           '<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>',
           '<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>',
@@ -69,11 +45,8 @@ export default defineManifestConfig({
           '<uses-feature android:name="android.hardware.camera"/>',
           '<uses-permission android:name="android.permission.WRITE_SETTINGS"/>',
         ],
+        targetSdkVersion: 30,
       },
-      /* ios打包配置 */
-      ios: {},
-      /* SDK配置 */
-      sdkConfigs: {},
       /* 图标配置 */
       icons: {
         android: {
@@ -107,33 +80,34 @@ export default defineManifestConfig({
           },
         },
       },
+      /* ios打包配置 */
+      ios: {},
+      /* SDK配置 */
+      sdkConfigs: {},
     },
-  },
-  /* 快应用特有相关 */
-  quickapp: {},
-  /* 小程序特有相关 */
-  'mp-weixin': {
-    appid: VITE_WX_APPID,
-    setting: {
-      es6: true,
-      enhance: true,
-      swc: true,
-
-      urlCheck: true,
-      autoAudits: true,
-      postcss: true,
-      minified: true,
-      minifyWXSS: true,
-      minifyWXML: true,
-      uglifyFileName: true,
-      ignoreDevUnusedFiles: true,
+    /* 模块配置 */
+    modules: {},
+    nvueStyleCompiler: 'uni-app',
+    splashscreen: {
+      alwaysShowBeforeRender: true,
+      autoclose: true,
+      delay: 0,
+      waiting: true,
     },
     usingComponents: true,
-    // __usePrivacyCheck__: true,
   },
+  appid: VITE_UNI_APPID,
+  description: VITE_APP_DESC,
+  h5: {
+    router: {
+      base: VITE_APP_PUBLIC_BASE,
+      mode: VITE_APP_ROUTER_MODE,
+    },
+  },
+  locale: VITE_FALLBACK_LOCALE, // 'zh-Hans'
   'mp-alipay': {
-    usingComponents: true,
     styleIsolation: 'shared',
+    usingComponents: true,
   },
   'mp-baidu': {
     usingComponents: true,
@@ -141,8 +115,34 @@ export default defineManifestConfig({
   'mp-toutiao': {
     usingComponents: true,
   },
+  /* 小程序特有相关 */
+  'mp-weixin': {
+    appid: VITE_WX_APPID,
+    setting: {
+      autoAudits: true,
+      enhance: true,
+      es6: true,
+
+      ignoreDevUnusedFiles: true,
+      minified: true,
+      minifyWXML: true,
+      minifyWXSS: true,
+      postcss: true,
+      swc: true,
+      uglifyFileName: true,
+      urlCheck: true,
+    },
+    usingComponents: true,
+    // __usePrivacyCheck__: true,
+  },
+  name: VITE_APP_TITLE,
+  /* 快应用特有相关 */
+  quickapp: {},
+  transformPx: false,
   uniStatistics: {
     enable: false,
   },
+  versionCode: '100',
+  versionName: '1.0.0',
   vueVersion: '3',
 })

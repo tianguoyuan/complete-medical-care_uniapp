@@ -73,15 +73,15 @@ function pageTo(index: number) {
   >
     <TnTabbarItem v-for="(item, index) in tabbarList" :key="index" @click="pageTo(index)">
       <template #default>
-        <view v-if="item.title" class="h-100rpx flex-1 flex items-center justify-center">
+        <view v-if="item.title" class="h-100rpx flex flex-1 items-center justify-center">
           <view class="flex flex-col items-center justify-center text-3">
             <view>
               <image
                 v-show="index === tabbarStore.tabbarIndex"
-                class="w-5 h-5"
+                class="h-5 w-5"
                 :src="item.activeIcon"
               />
-              <image v-show="index !== tabbarStore.tabbarIndex" class="w-5 h-5" :src="item.icon" />
+              <image v-show="index !== tabbarStore.tabbarIndex" class="h-5 w-5" :src="item.icon" />
             </view>
             <view
               class="mt-1"
@@ -92,8 +92,8 @@ function pageTo(index: number) {
           </view>
         </view>
 
-        <view v-else class="flex-1 flex items-start">
-          <image class="w-9 h-9 mt-1" :src="(item as (typeof tabbarList)[0]).icon" />
+        <view v-else class="flex flex-1 items-start">
+          <image class="mt-1 h-9 w-9" :src="(item as (typeof tabbarList)[0]).icon" />
         </view>
       </template>
     </TnTabbarItem>

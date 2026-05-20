@@ -87,7 +87,7 @@ function handleClickHomeIcon() {
     <template #back>
       <view
         v-if="showLeftBox"
-        class="relative w-full h-8 flex items-center justify-center rounded-full bg-[rgba(0,0,0,.15)] text-3.75 box-border"
+        class="relative box-border h-8 w-full flex items-center justify-center rounded-full bg-[rgba(0,0,0,.15)] text-3.75"
         :class="[!props.showBackIcon || !props.showHomeIcon ? 'w-70%!' : '']"
       >
         <TnIcon
@@ -99,7 +99,7 @@ function handleClickHomeIcon() {
         />
         <view
           v-if="props.showBackIcon && props.showHomeIcon"
-          class="absolute left-50% top-50% h-60% translate-x--50% translate-y--50% bg-#fff opacity-20 w-1px"
+          class="absolute left-50% top-50% h-60% w-1px translate-x--50% translate-y--50% bg-#fff opacity-20"
         ></view>
         <TnIcon
           v-if="props.showHomeIcon"

@@ -119,13 +119,25 @@ defineExpose({
         <slot :name="item.slotName"></slot>
       </view>
       <TnFormItem v-else :label="item.label" :prop="item.prop">
-        <TnInput
-          v-if="item.type === 'input'"
-          v-model="modelValue[item.prop]"
-          :placeholder="item.placeholder"
-          :type="item.inputType || 'text'"
-          underline
-        />
+        <template v-if="item.type === 'input'">
+          <TnInput
+            v-if="item.inputType === 'textarea'"
+            v-model="modelValue[item.prop]"
+            border
+            confirm-type=""
+            :height="200"
+            :placeholder="item.placeholder"
+            show-word-limit
+            :type="item.inputType"
+          />
+          <TnInput
+            v-else
+            v-model="modelValue[item.prop]"
+            :placeholder="item.placeholder"
+            :type="item.inputType || 'text'"
+            underline
+          />
+        </template>
         <template v-else-if="item.type === 'select'">
           <Picker
             v-model="modelValue[item.prop]"

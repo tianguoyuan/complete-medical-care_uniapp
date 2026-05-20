@@ -1,3 +1,6 @@
+// 修补 @unocss/eslint-plugin，将 rules 提升到模块顶层（ESLint v8 兼容）
+require('./.eslint-plugin-unocss-local.cjs')
+
 module.exports = {
   env: {
     browser: true,
@@ -51,10 +54,11 @@ module.exports = {
     'vue',
     // 2. 加入 prettier 的 eslint 插件
     'prettier',
-    // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-import-resolver-typescript
+    // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-plugin-import
     'import',
     'perfectionist',
     'prefer-function-declarations',
+    '@unocss',
   ],
   rules: {
     '@typescript-eslint/consistent-type-imports': [
@@ -65,8 +69,12 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': 'off',
+
     '@typescript-eslint/no-redeclare': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
+    // UnoCSS class 排序
+    '@unocss/order': 'error',
+    '@unocss/order-attributify': 'off',
     'func-style': ['error', 'declaration', { allowArrowFunctions: false }],
     'import/default': 'off',
     // 对后缀的检测，否则 import 一个ts文件也会报错，需要手动添加'.ts', 增加了下面的配置后就不用了

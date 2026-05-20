@@ -35,12 +35,12 @@
           "<uses-feature android:name=\"android.hardware.camera\"/>",
           "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
         ],
-        "minSdkVersion": 30,
-        "targetSdkVersion": 30,
         "abiFilters": [
           "armeabi-v7a",
           "arm64-v8a"
-        ]
+        ],
+        "minSdkVersion": 30,
+        "targetSdkVersion": 30
       },
       "ios": {},
       "sdkConfigs": {},
@@ -92,16 +92,16 @@
     "appid": "",
     "setting": {
       "urlCheck": true,
-      "es6": true,
-      "enhance": true,
-      "swc": true,
       "autoAudits": true,
-      "postcss": true,
+      "enhance": true,
+      "es6": true,
+      "ignoreDevUnusedFiles": true,
       "minified": true,
-      "minifyWXSS": true,
       "minifyWXML": true,
-      "uglifyFileName": true,
-      "ignoreDevUnusedFiles": true
+      "minifyWXSS": true,
+      "postcss": true,
+      "swc": true,
+      "uglifyFileName": true
     },
     "usingComponents": true
   },

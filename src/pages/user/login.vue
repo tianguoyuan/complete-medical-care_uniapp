@@ -56,7 +56,7 @@ const formRef = ref<TnFormInstance | null>(null)
 async function onSubmit() {
   if (!formRef.value) return
   await formRef.value.validate()
-  userStore.changeToken(atob(formData.username))
+  userStore.changeToken(formData.username)
   uni.switchTab({
     url: '/pages/home/home',
   })
@@ -67,7 +67,7 @@ async function onSubmit() {
 <template>
   <view class="">
     <view class="relative">
-      <view class="absolute bg-#b6e9e5 h-65 w-30 left-0 z-1"></view>
+      <!-- <view class="absolute bg-#b6e9e5 h-65 w-30 left-0 z-1"></view> -->
       <view class="absolute left-3 z-2" :style="{ marginTop: navBarInfo.height + 30 + 'px' }">
         <view class="text-6">登录</view>
         <view class="mt-1 text-3.5">欢迎使用家医医生端</view>
@@ -75,7 +75,7 @@ async function onSubmit() {
 
       <image class="w-full" mode="widthFix" :src="getImage('userLoginBg')" />
     </view>
-    <view class="bg-#fff rounded-t-6 mt--6 z-3 relative h-300 py-7.5 px-3">
+    <view class="relative z-3 mt--6 h-300 rounded-t-6 bg-#fff px-3 py-7.5">
       <TnForm ref="formRef" label-position="top" :model="formData" :rules="formRules">
         <TnFormItem label="账号" prop="username">
           <TnInput v-model="formData.username" placeholder="请输入账号" />
@@ -94,7 +94,7 @@ async function onSubmit() {
         <TnFormItem>
           <!-- <tn-button type="primary" @click="onSubmit">登录</tn-button> -->
           <view
-            class="h-11.25 bg-#49B9AD rounded-2.5 flex justify-center items-center color-#fff text-3.75 mt-7"
+            class="mt-7 h-11.25 flex items-center justify-center rounded-2.5 bg-#49B9AD text-3.75 color-#fff"
             @click="onSubmit"
           >
             登录

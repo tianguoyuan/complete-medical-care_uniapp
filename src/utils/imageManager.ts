@@ -41,7 +41,13 @@ const mineImage = [
 // home
 const homeImage = ['homeCreate1', 'homeCreate2', 'homeCreate3'] as const
 
-const commonImage = ['commonArrowRight', 'commonBoy', 'commonGirl'] as const
+const commonImage = [
+  'commonArrowRight',
+  'commonBoy',
+  'commonGirl',
+  'commonSuccess',
+  'commonFail',
+] as const
 
 const imageNames = [
   ...tabbarImage,
@@ -53,7 +59,7 @@ const imageNames = [
 ] as const
 
 const isHttpImage = PLATFORM.isMp
-const imageBaseUrl = 'https://het-tea-uniapp.netlify.app'
+const imageBaseUrl = 'https://complete-medical-care-uniapp.netlify.app'
 /**
  * 图片名称类型
  */

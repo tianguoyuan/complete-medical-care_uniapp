@@ -92,19 +92,19 @@ function pageTo(item: (typeof createList.value)[number]) {
     <view class="bg-[linear-gradient(180deg,#E1FAF7_0.57%,#FFFFFF_100%)]">
       <view :style="{ height: navBarInfo.height + 'px' }"></view>
 
-      <view class="flex justify-between items-center px-3">
+      <view class="flex items-center justify-between px-3">
         <view class="flex items-center">
-          <view class="rounded-full border-2px border-solid border-#fff">
-            <image class="w-10 h-10" :src="getImage('mineAvatar')" />
+          <view class="border-2px border-#fff rounded-full border-solid">
+            <image class="h-10 w-10" :src="getImage('mineAvatar')" />
           </view>
           <view class="ml-2.5 text-4">阳兰广医生</view>
         </view>
-        <image class="w-5 h-5" :src="getImage('mineQrcode')" />
+        <image class="h-5 w-5" :src="getImage('mineQrcode')" />
       </view>
 
-      <view class="mt-5 mx-3">
-        <view class="bg-#49B9AD rounded-1.5 grid grid-cols-3 gap-5 py-5 relative">
-          <view class="bg-#49B9AD w-5 h-5 rounded-1 rotate-45 absolute top--1 left-2.5"></view>
+      <view class="mx-3 mt-5">
+        <view class="relative grid grid-cols-3 gap-5 rounded-1.5 bg-#49B9AD py-5">
+          <view class="absolute left-2.5 top--1 h-5 w-5 rotate-45 rounded-1 bg-#49B9AD"></view>
 
           <view v-for="(item, index) in countList" :key="index" class="flex flex-col items-center">
             <view class="text-6.25 color-#fff">{{ item.content }}</view>
@@ -119,8 +119,8 @@ function pageTo(item: (typeof createList.value)[number]) {
             class="flex flex-col items-center"
             @click="pageTo(item)"
           >
-            <image class="w-12.5 h-12.5" :src="item.icon" />
-            <view class="text-2.5 color-#1C2023 text-3.5">{{ item.title }}</view>
+            <image class="h-12.5 w-12.5" :src="item.icon" />
+            <view class="text-2.5 text-3.5 color-#1C2023">{{ item.title }}</view>
           </view>
         </view>
       </view>
@@ -131,7 +131,7 @@ function pageTo(item: (typeof createList.value)[number]) {
           <view class="flex items-center">
             <view class="text-4">{{ pItem.title }}</view>
             <view
-              class="bg-#49B9AD rounded-1.25 color-#fff rounded-bl-0 w-3.75 h-3.75 flex justify-center items-center ml-1"
+              class="ml-1 h-3.75 w-3.75 flex items-center justify-center rounded-1.25 rounded-bl-0 bg-#49B9AD color-#fff"
             >
               {{ pItem.count }}
             </view>
@@ -142,13 +142,13 @@ function pageTo(item: (typeof createList.value)[number]) {
         <view
           v-for="(item, index) in pItem.list"
           :key="index"
-          class="mt-3.75 flex flex-col border-0 border-solid border-#E3E4E5"
+          class="mt-3.75 flex flex-col border-0 border-#E3E4E5 border-solid"
           :class="pItem.list.length - 1 === index ? 'pb-0 border-0' : 'pb-3.5 border-b-1'"
         >
-          <view class="flex justify-between items-center">
+          <view class="flex items-center justify-between">
             <view class="flex items-center">
               <image
-                class="w-5 h-5"
+                class="h-5 w-5"
                 :src="getImage(item.sex === '1' ? 'commonBoy' : 'commonGirl')"
               />
 
@@ -160,13 +160,13 @@ function pageTo(item: (typeof createList.value)[number]) {
               </view>
             </view>
             <view
-              class="w-12.5 h-5 bg-#FFF2E8 color-#FA541C rounded-2.5 flex items-center justify-center"
+              class="h-5 w-12.5 flex items-center justify-center rounded-2.5 bg-#FFF2E8 color-#FA541C"
             >
               {{ item.statusText }}
             </view>
           </view>
-          <view v-for="(kItem, kIndex) in item.keys" :key="kIndex" class="flex mt-2.5">
-            <view class="text-3.75 ml-7.5 text-3.5 w-17.5">{{ kItem.name }}</view>
+          <view v-for="(kItem, kIndex) in item.keys" :key="kIndex" class="mt-2.5 flex">
+            <view class="ml-7.5 w-17.5 text-3.5 text-3.75">{{ kItem.name }}</view>
             <view class="ml-1.25">{{ kItem.value }}</view>
           </view>
         </view>

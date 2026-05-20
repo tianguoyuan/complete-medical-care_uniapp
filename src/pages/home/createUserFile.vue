@@ -140,7 +140,7 @@ const formConfig = ref<FormConfig>({
       {
         message: '请输入关系',
         required: true,
-        trigger: 'blur',
+        trigger: 'change',
       },
     ],
     gender: [
@@ -217,14 +217,18 @@ async function handleSubmit() {
   await formGenerateRef.value?.validate()
 
   console.log('formData', formData.value)
+
+  uni.navigateTo({
+    url: '/pages/home/editSignInfo',
+  })
 }
 </script>
 
 <template>
   <view class="min-h-screen">
-    <Navbar fixed show-back-icon title="新建居民档案" />
-    <view class="p-4 bg-white">
-      <view class="text-lg font-bold mb-4 text-gray-800">基本信息录入</view>
+    <Navbar fixed show-back-icon show-home-icon title="新建居民档案" />
+    <view class="bg-white p-4 pb-10">
+      <view class="mb-4 text-lg text-gray-800 font-bold">基本信息录入</view>
 
       <!-- 白色背景卡片包裹表单，更美观 -->
       <view class="rounded-xl">
@@ -233,10 +237,10 @@ async function handleSubmit() {
 
       <view class="mt-10">
         <view
-          class="w-full bg-#49B9AD color-#fff h-10 flex justify-center items-center rounded-2.5"
+          class="h-10 w-full flex items-center justify-center rounded-2.5 bg-#49B9AD color-#fff"
           @click="handleSubmit"
         >
-          提交
+          下一步
         </view>
       </view>
     </view>

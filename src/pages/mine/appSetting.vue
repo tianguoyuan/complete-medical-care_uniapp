@@ -60,7 +60,7 @@ function handleLogout() {
     <TnModal ref="modalRef" />
     <view v-for="(item, index) in appSettingList" :key="index" class="bg-white">
       <view
-        class="flex items-center justify-between py-4 mx-4 border-0 border-b border-#E3E4E5 border-solid"
+        class="mx-4 flex items-center justify-between border-0 border-b border-#E3E4E5 border-solid py-4"
       >
         <text class="text-3.75 text-gray-800">{{ item.title }}</text>
         <view class="flex items-center">
@@ -71,7 +71,7 @@ function handleLogout() {
     </view>
 
     <view
-      class="mt-12.5 color-#49B9AD border border-#49B9AD border-solid rounded-2.5 h-10 flex justify-center items-center mx-3 text-3.75"
+      class="mx-3 mt-12.5 h-10 flex items-center justify-center border border-#49B9AD rounded-2.5 border-solid text-3.75 color-#49B9AD"
       @click="handleLogout"
     >
       退出账号
