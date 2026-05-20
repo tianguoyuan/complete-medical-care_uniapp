@@ -8,6 +8,7 @@ import TnForm from '@tuniao/tnui-vue3-uniapp/components/form/src/form.vue'
 import TnInput from '@tuniao/tnui-vue3-uniapp/components/input/src/input.vue'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
+import { PageEnum } from '@/enums/PageEnum'
 import { useUserStore } from '@/store'
 import { getImage } from '@/utils/imageManager'
 
@@ -58,7 +59,7 @@ async function onSubmit() {
   await formRef.value.validate()
   userStore.changeToken(formData.username)
   uni.switchTab({
-    url: '/pages/home/home',
+    url: PageEnum.HOME_PATH,
   })
 }
 //

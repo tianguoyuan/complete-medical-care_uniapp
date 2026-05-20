@@ -8,7 +8,9 @@ interface NavigateToOptions {
        "/pages/home/createUserFile" |
        "/pages/home/editSignInfo" |
        "/pages/home/home" |
+       "/pages/home/pendingSignInfo" |
        "/pages/home/selectFamilyMembers" |
+       "/pages/home/signManage" |
        "/pages/home/submitSignInfo" |
        "/pages/message/message" |
        "/pages/mine/appSetting" |

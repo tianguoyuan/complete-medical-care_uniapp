@@ -2,6 +2,7 @@
 import TnTabbarItem from '@tuniao/tnui-vue3-uniapp/components/tabbar/src/tabbar-item.vue'
 import TnTabbar from '@tuniao/tnui-vue3-uniapp/components/tabbar/src/tabbar.vue'
 
+import { PageEnum } from '@/enums/PageEnum'
 import { StyleEnum } from '@/enums/StyleEnum'
 import { useTabbarStore } from '@/store/tabbar'
 import { getImage } from '@/utils/imageManager'
@@ -13,7 +14,7 @@ const tabbarList = [
   {
     activeIcon: getImage('homeActive'),
     icon: getImage('home'),
-    path: '/pages/home/home',
+    path: PageEnum.HOME_PATH,
     title: '首页',
   },
   {

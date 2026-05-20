@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
+import { PageEnum } from '@/enums/PageEnum'
 import { useUserStore } from '@/store'
 import { getImage } from '@/utils/imageManager'
 const rectInfo = useUniAppSystemRectInfo()
@@ -26,11 +27,11 @@ function pageToHome() {
 
   if (userStore.isLogin) {
     uni.switchTab({
-      url: '/pages/home/home',
+      url: PageEnum.HOME_PATH,
     })
   } else {
     uni.redirectTo({
-      url: '/pages/user/login',
+      url: PageEnum.LOGIN_PATH,
     })
   }
 }

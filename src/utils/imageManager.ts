@@ -47,6 +47,7 @@ const commonImage = [
   'commonGirl',
   'commonSuccess',
   'commonFail',
+  'commonEmpty',
 ] as const
 
 const imageNames = [

@@ -4,6 +4,7 @@ import type { TnModalInstance } from '@tuniao/tnui-vue3-uniapp/components/modal'
 import TnModal from '@tuniao/tnui-vue3-uniapp/components/modal/src/modal.vue'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
+import { PageEnum } from '@/enums/PageEnum'
 import { useUserStore } from '@/store'
 import { getImage } from '@/utils/imageManager'
 
@@ -44,7 +45,7 @@ function handleLogout() {
     confirm() {
       userStore.clearUserInfo()
       uni.reLaunch({
-        url: '/pages/user/login',
+        url: PageEnum.LOGIN_PATH,
       })
     },
     content: '是否退出登录？',

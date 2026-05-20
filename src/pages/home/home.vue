@@ -1,7 +1,11 @@
 <script lang="ts" setup>
+import type { SignListItem } from '@/components/SignList.vue'
+
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
+import SignList from '@/components/SignList.vue'
 import Tabbar from '@/components/Tabbar.vue'
+import { PageEnum } from '@/enums/PageEnum'
 import { useAppStore } from '@/store/app'
 import { getImage } from '@/utils/imageManager'
 import PLATFORM from '@/utils/platform'
@@ -26,7 +30,13 @@ const createList = ref([
   { icon: getImage('homeCreate3'), title: '服务管理', type: 'service' },
 ] as const)
 
-const listData = ref([
+const listData = ref<
+  {
+    count: string
+    title: string
+    list: SignListItem[]
+  }[]
+>([
   {
     count: '2',
     list: [
@@ -139,41 +149,11 @@ function pageTo(item: (typeof createList.value)[number]) {
           <view class="text-3">查看全部</view>
         </view>
 
-        <view
-          v-for="(item, index) in pItem.list"
-          :key="index"
-          class="mt-3.75 flex flex-col border-0 border-#E3E4E5 border-solid"
-          :class="pItem.list.length - 1 === index ? 'pb-0 border-0' : 'pb-3.5 border-b-1'"
-        >
-          <view class="flex items-center justify-between">
-            <view class="flex items-center">
-              <image
-                class="h-5 w-5"
-                :src="getImage(item.sex === '1' ? 'commonBoy' : 'commonGirl')"
-              />
-
-              <view class="ml-2.5">
-                <view class="flex items-end">
-                  <view class="text-3.75">{{ item.name }}</view>
-                  <view class="ml-1.25">{{ item.age }}</view>
-                </view>
-              </view>
-            </view>
-            <view
-              class="h-5 w-12.5 flex items-center justify-center rounded-2.5 bg-#FFF2E8 color-#FA541C"
-            >
-              {{ item.statusText }}
-            </view>
-          </view>
-          <view v-for="(kItem, kIndex) in item.keys" :key="kIndex" class="mt-2.5 flex">
-            <view class="ml-7.5 w-17.5 text-3.5 text-3.75">{{ kItem.name }}</view>
-            <view class="ml-1.25">{{ kItem.value }}</view>
-          </view>
-        </view>
+        <SignList :list="pItem.list" />
       </view>
     </view>
 
-    <Tabbar tabbar-path="/pages/home/home" />
+    <Tabbar :tabbar-path="PageEnum.HOME_PATH" />
   </view>
 </template>
 

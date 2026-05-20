@@ -186,6 +186,9 @@ module.exports = {
       },
     ],
 
+    // 模板中使用组件强制大驼峰
+    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
+
     'vue/multi-word-component-names': 'off',
 
     'vue/no-mutating-props': 'off',

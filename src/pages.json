@@ -77,12 +77,30 @@
       "needLogin": false
     },
     {
+      "path": "pages/home/pendingSignInfo",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "待处理签约申请"
+      }
+    },
+    {
       "path": "pages/home/selectFamilyMembers",
       "type": "page",
       "layout": "default",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTitleText": "选择家庭成员"
+      }
+    },
+    {
+      "path": "pages/home/signManage",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "签约管理"
       }
     },
     {
