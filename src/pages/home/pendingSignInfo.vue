@@ -20,7 +20,7 @@ const listData = ref<SignListItem[]>([
     ],
     name: '韦栋',
     sex: '1',
-    status: 'pending',
+    status: 'pendingReview',
     statusText: '待审核',
   },
 
@@ -33,7 +33,7 @@ const listData = ref<SignListItem[]>([
     ],
     name: '化姣',
     sex: '0',
-    status: 'pending',
+    status: 'pendingReview',
     statusText: '待审核',
   },
 ])

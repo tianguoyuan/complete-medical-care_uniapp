@@ -1,9 +1,173 @@
 <script lang="ts" setup>
+import type { SignListItem } from '@/components/SignList.vue'
+
+import TnSticky from '@tuniao/tnui-vue3-uniapp/components/sticky/src/sticky.vue'
+import TnTabsItem from '@tuniao/tnui-vue3-uniapp/components/tabs/src/tabs-item.vue'
+import TnTabs from '@tuniao/tnui-vue3-uniapp/components/tabs/src/tabs.vue'
+import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+
+import Navbar from '@/components/Navbar.vue'
+import SignList from '@/components/SignList.vue'
+import { StyleEnum } from '@/enums/StyleEnum'
+
+const { navBarInfo } = useUniAppSystemRectInfo()
+const currentTabIndex = ref(0)
+const tabsList = ref([
+  { title: '全部', value: 'all' },
+  { title: '待审核', value: 'pendingReview' },
+  { title: '待支付', value: 'pendingPayment' },
+  { title: '已签约', value: 'signed' },
+  { title: '已驳回', value: 'rejected' },
+])
+
+function handleTabChange(index: number | string) {
+  console.log('当前选中标签索引：', index)
+  const currentTab = tabsList.value[+index]
+  if (!currentTab) return undefined
+}
+
+const listData = ref<SignListItem[]>([
+  {
+    age: '58岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '老年人服务包' },
+    ],
+    name: '官兰伟',
+    sex: '1',
+    status: 'pendingReview',
+    statusText: '待审核',
+  },
+  {
+    age: '29岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '妇女保健包' },
+    ],
+    name: '凤珠德',
+    sex: '0',
+    status: 'rejected',
+    statusText: '已驳回',
+  },
+  {
+    age: '23岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '健康体验包' },
+    ],
+    name: '明兰',
+    sex: '0',
+    status: 'signed',
+    statusText: '已签约',
+  },
+  {
+    age: '10岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '幼儿年度体检包' },
+    ],
+    name: '思蓝',
+    sex: '0',
+    status: 'pendingPayment',
+    statusText: '待支付',
+  },
+  {
+    age: '58岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '老年人服务包' },
+    ],
+    name: '刘思浩',
+    sex: '1',
+    status: 'pendingReview',
+    statusText: '待审核',
+  },
+
+  {
+    age: '10岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '幼儿年度体检包' },
+    ],
+    name: '思蓝',
+    sex: '0',
+    status: 'pendingPayment',
+    statusText: '待支付',
+  },
+  {
+    age: '58岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '老年人服务包' },
+    ],
+    name: '刘思浩',
+    sex: '1',
+    status: 'pendingReview',
+    statusText: '待审核',
+  },
+
+  {
+    age: '10岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '幼儿年度体检包' },
+    ],
+    name: '思蓝',
+    sex: '0',
+    status: 'pendingPayment',
+    statusText: '待支付',
+  },
+  {
+    age: '58岁',
+    keys: [
+      { name: '身份证', value: '442355******2225844' },
+      { name: '签约团队', value: '阳兰广团队' },
+      { name: '服务包', value: '老年人服务包' },
+    ],
+    name: '刘思浩',
+    sex: '1',
+    status: 'pendingReview',
+    statusText: '待审核',
+  },
+])
+
+const filterListData = computed(() => {
+  const currentTab = tabsList.value[currentTabIndex.value]
+  if (!currentTab) return listData.value
+  if (currentTab.value === 'all') return listData.value
+  return listData.value.filter((item) => item.status === currentTab.value)
+})
+
 //
 </script>
 
 <template>
-  <view class=""></view>
+  <view class="">
+    <Navbar :bottom-shadow="false" fixed show-back-icon show-home-icon title="签约管理" />
+    <TnSticky :offset-top="+StyleEnum.NAV_BAR_HEIGHT_PX + navBarInfo.statusHeight">
+      <TnTabs
+        v-model="currentTabIndex"
+        bg-color="#fff"
+        height="40px"
+        :scroll="false"
+        @change="handleTabChange"
+      >
+        <TnTabsItem v-for="(item, index) in tabsList" :key="index" :title="item.title" />
+      </TnTabs>
+    </TnSticky>
+
+    <view class="px-3"><SignList :list="filterListData" /></view>
+
+    <view class="h-10 pb-safe"></view>
+  </view>
 </template>
 
 <style lang="scss" scoped>

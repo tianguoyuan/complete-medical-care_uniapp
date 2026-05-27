@@ -95,6 +95,15 @@
       }
     },
     {
+      "path": "pages/home/serviceManage",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "服务管理"
+      }
+    },
+    {
       "path": "pages/home/signManage",
       "type": "page",
       "layout": "default",

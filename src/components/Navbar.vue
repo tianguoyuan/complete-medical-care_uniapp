@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp'
 import TnIcon from '@tuniao/tnui-vue3-uniapp/components/icon/src/icon.vue'
 import TnNavbar from '@tuniao/tnui-vue3-uniapp/components/navbar/src/navbar.vue'
 
 import { PageEnum } from '@/enums/PageEnum'
+import { StyleEnum } from '@/enums/StyleEnum'
+const { navBarInfo } = useUniAppSystemRectInfo()
 
 const props = withDefaults(
   defineProps<{

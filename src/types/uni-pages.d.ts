@@ -10,6 +10,7 @@ interface NavigateToOptions {
        "/pages/home/home" |
        "/pages/home/pendingSignInfo" |
        "/pages/home/selectFamilyMembers" |
+       "/pages/home/serviceManage" |
        "/pages/home/signManage" |
        "/pages/home/submitSignInfo" |
        "/pages/message/message" |

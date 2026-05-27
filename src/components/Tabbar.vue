@@ -66,7 +66,7 @@ function pageTo(index: number) {
     v-if="!tabbarStore.hideTabbar"
     :bg-color="StyleEnum.MAIN_BG_COLOR"
     fixed
-    height="100rpx"
+    :height="StyleEnum.TAB_BAR_HEIGHT + 'rpx'"
     :model-value="tabbarStore.tabbarIndex"
     placeholder
     safe-area-inset-bottom

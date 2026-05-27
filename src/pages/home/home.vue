@@ -25,9 +25,9 @@ const countList = ref([
 ])
 
 const createList = ref([
-  { icon: getImage('homeCreate1'), title: '新建档案', type: 'create' },
-  { icon: getImage('homeCreate2'), title: '签约管理', type: 'signContract' },
-  { icon: getImage('homeCreate3'), title: '服务管理', type: 'service' },
+  { icon: getImage('homeCreate1'), title: '新建档案', type: 'createUserFile' },
+  { icon: getImage('homeCreate2'), title: '签约管理', type: 'signManage' },
+  { icon: getImage('homeCreate3'), title: '服务管理', type: 'serviceManage' },
 ] as const)
 
 const listData = ref<
@@ -49,7 +49,7 @@ const listData = ref<
         ],
         name: '韦栋',
         sex: '1',
-        status: 'pending',
+        status: 'pendingReview',
         statusText: '待审核',
       },
 
@@ -62,7 +62,7 @@ const listData = ref<
         ],
         name: '化姣',
         sex: '0',
-        status: 'pending',
+        status: 'pendingReview',
         statusText: '待审核',
       },
     ],
@@ -80,7 +80,7 @@ const listData = ref<
         ],
         name: '韦栋',
         sex: '1',
-        status: 'pending',
+        status: 'pendingReview',
         statusText: '待审核',
       },
     ],
@@ -89,9 +89,17 @@ const listData = ref<
 ])
 
 function pageTo(item: (typeof createList.value)[number]) {
-  if (item.type === 'create') {
+  if (item.type === 'createUserFile') {
     uni.navigateTo({
       url: '/pages/home/createUserFile',
+    })
+  } else if (item.type === 'signManage') {
+    uni.navigateTo({
+      url: '/pages/home/signManage',
+    })
+  } else if (item.type === 'serviceManage') {
+    uni.navigateTo({
+      url: '/pages/home/serviceManage',
     })
   }
 }

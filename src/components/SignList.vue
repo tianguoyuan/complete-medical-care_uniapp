@@ -13,13 +13,18 @@ import { getImage } from '@/utils/imageManager'
 //   status: 'pending',
 //   statusText: '待审核',
 // },
+// { title: '待审核', value: 'pendingReview' },
+// { title: '待支付', value: 'pendingPayment' },
+// { title: '已签约', value: 'signed' },
+// { title: '已驳回', value: 'rejected' },
+
 export interface SignListItem {
   age: string
   keys: { name: string; value: string }[]
   name: string
   sex: string
-  status: 'pending' | 'success' | 'fail'
-  statusText: string
+  status: 'pendingReview' | 'pendingPayment' | 'signed' | 'rejected'
+  statusText: '待审核' | '待支付' | '已签约' | '已驳回'
 }
 const props = defineProps<{
   list: SignListItem[]
