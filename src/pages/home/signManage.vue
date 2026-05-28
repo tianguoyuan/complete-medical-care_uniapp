@@ -20,12 +20,6 @@ const tabsList = ref([
   { title: '已驳回', value: 'rejected' },
 ])
 
-function handleTabChange(index: number | string) {
-  console.log('当前选中标签索引：', index)
-  const currentTab = tabsList.value[+index]
-  if (!currentTab) return undefined
-}
-
 const listData = ref<SignListItem[]>([
   {
     age: '58岁',
@@ -166,13 +160,7 @@ function handleSignItemClick(value: SignListItem, index: number) {
   <view class="">
     <Navbar :bottomShadow="false" fixed showBackIcon showHomeIcon title="签约管理" />
     <TnSticky :offsetTop="+StyleEnum.NAV_BAR_HEIGHT_PX + navBarInfo.statusHeight">
-      <TnTabs
-        v-model="currentTabIndex"
-        bgColor="#fff"
-        height="40px"
-        :scroll="false"
-        @change="handleTabChange"
-      >
+      <TnTabs v-model="currentTabIndex" bgColor="#fff" height="40px" :scroll="false">
         <TnTabsItem v-for="(item, index) in tabsList" :key="index" :title="item.title" />
       </TnTabs>
     </TnSticky>

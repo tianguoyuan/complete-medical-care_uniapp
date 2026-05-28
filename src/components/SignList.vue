@@ -22,9 +22,25 @@ export interface SignListItem {
   age: string
   keys: { name: string; value: string }[]
   name: string
+  serviceOrg?: '机构门诊'
   sex: string
-  status: 'pendingReview' | 'pendingPayment' | 'signed' | 'rejected'
-  statusText: '待审核' | '待支付' | '已签约' | '已驳回'
+  status:
+    | 'pendingReview'
+    | 'pendingPayment'
+    | 'signed'
+    | 'rejected'
+    // 服务管理
+    | 'serviceManagePendingReview'
+    | 'serviceManagePendingService'
+    | 'serviceManageComplete'
+  statusText:
+    | '待审核'
+    | '待支付'
+    | '已签约'
+    | '已驳回'
+    // 服务管理
+    | '待服务'
+    | '已完成'
 }
 const props = defineProps<{
   list: SignListItem[]
@@ -44,6 +60,14 @@ function statusClassFunc(status: SignListItem['status']) {
       return 'bg-#F5F7FB color-#606972'
     case 'rejected':
       return 'bg-#E2FFF8 color-#49B9AD'
+
+    // 服务管理
+    case 'serviceManagePendingReview':
+      return 'bg-#FFF2E8 color-#FA541C'
+    case 'serviceManagePendingService':
+      return 'bg-#FEF1F1 color-#F65755'
+    case 'serviceManageComplete':
+      return 'bg-#F5F7FB color-#606972'
     default:
       return ''
   }
@@ -55,8 +79,8 @@ function statusClassFunc(status: SignListItem['status']) {
   <view
     v-for="(item, index) in props.list"
     :key="index"
-    class="mt-3.75 flex flex-col border-0 border-#E3E4E5 border-solid"
-    :class="props.list.length - 1 === index ? 'pb-0 border-0' : 'pb-3.5 border-b-1'"
+    class="flex flex-col border-0 border-#E3E4E5 border-solid py-3.75"
+    :class="props.list.length - 1 === index ? 'border-0' : ' border-b-1'"
     @click="emits('click', item, index)"
   >
     <view class="flex items-center justify-between">
@@ -67,6 +91,7 @@ function statusClassFunc(status: SignListItem['status']) {
           <view class="flex items-end">
             <view class="text-3.75">{{ item.name }}</view>
             <view class="ml-1.25">{{ item.age }}</view>
+            <view class="ml-1.5 color-#49B9AD">{{ item.serviceOrg }}</view>
           </view>
         </view>
       </view>
@@ -77,8 +102,8 @@ function statusClassFunc(status: SignListItem['status']) {
         {{ item.statusText }}
       </view>
     </view>
-    <view v-for="(kItem, kIndex) in item.keys" :key="kIndex" class="mt-2.5 flex">
-      <view class="ml-7.5 w-17.5 text-3.5 text-3.75">{{ kItem.name }}</view>
+    <view v-for="(kItem, kIndex) in item.keys" :key="kIndex" class="mt-2.5 flex text-3.5">
+      <view class="ml-7.5 w-17.5">{{ kItem.name }}</view>
       <view class="ml-1.25">{{ kItem.value }}</view>
     </view>
   </view>

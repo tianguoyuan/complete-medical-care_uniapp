@@ -187,6 +187,17 @@ function handleClick(status: SignListItem['status']) {
         </view>
       </view>
     </view>
+
+    <view v-else-if="query.status === 'pendingPayment'" class="mt-4.5 bg-#fff py-1 pb-5">
+      <view class="mx-5 flex items-center justify-between text-3.75 pb-safe">
+        <view
+          class="ml-2.5 h-10 flex flex-1 items-center justify-center rounded-2.5 bg-#49B9AD color-#fff"
+          @click="handleClick('pendingPayment')"
+        >
+          提醒支付
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
