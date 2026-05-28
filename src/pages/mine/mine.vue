@@ -103,7 +103,7 @@ function handleSettingItemClick(item: { path: string }) {
         </view>
       </view>
     </view>
-    <Tabbar tabbar-path="/pages/mine/mine" />
+    <Tabbar tabbarPath="/pages/mine/mine" />
   </view>
 </template>
 

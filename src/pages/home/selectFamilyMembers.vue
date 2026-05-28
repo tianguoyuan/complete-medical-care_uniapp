@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar.vue'
 
 <template>
   <view class="">
-    <Navbar fixed show-back-icon title="新建居民档案" />
+    <Navbar fixed showBackIcon title="新建居民档案" />
   </view>
 </template>
 

@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar.vue'
 
 <template>
   <view class="">
-    <Navbar fixed show-back-icon show-home-icon title="服务管理" />
+    <Navbar fixed showBackIcon showHomeIcon title="服务管理" />
   </view>
 </template>
 

@@ -7,13 +7,6 @@ const env = loadEnv(process.env.NODE_ENV!, path.resolve(process.cwd(), 'env'))
 const { VITE_APP_TITLE } = env
 
 export default defineUniPages({
-  globalStyle: {
-    navigationStyle: 'default',
-    navigationBarTitleText: VITE_APP_TITLE,
-    navigationBarBackgroundColor: '#FFFFFF',
-    navigationBarTextStyle: 'black',
-    backgroundColor: '#FFFFFF',
-  },
   easycom: {
     autoscan: true,
     custom: {
@@ -21,21 +14,28 @@ export default defineUniPages({
         'z-paging/components/z-paging$1/z-paging$1.vue',
     },
   },
+  globalStyle: {
+    backgroundColor: '#FFFFFF',
+    navigationBarBackgroundColor: '#FFFFFF',
+    navigationBarTextStyle: 'black',
+    navigationBarTitleText: VITE_APP_TITLE,
+    navigationStyle: 'default',
+  },
   tabBar: {
-    custom: true,
-    color: '#999999',
-    selectedColor: '#018d71',
     backgroundColor: '#F8F8F8',
     borderStyle: 'black',
-    height: '50px',
+    color: '#999999',
+    custom: true,
     fontSize: '10px',
+    height: '50px',
     iconWidth: '24px',
-    spacing: '3px',
     list: [
       { pagePath: 'pages/home/home' },
       { pagePath: 'pages/resident/resident' },
       { pagePath: 'pages/message/message' },
       { pagePath: 'pages/mine/mine' },
     ],
+    selectedColor: '#018d71',
+    spacing: '3px',
   },
 })

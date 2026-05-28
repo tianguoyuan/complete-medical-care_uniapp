@@ -41,7 +41,7 @@ const listData = ref<SignListItem[]>([
 
 <template>
   <view class="bg-#F5F7FB" :style="{ minHeight: systemScreenHeight + 'px' }">
-    <Navbar fixed show-back-icon show-home-icon title="待处理签约申请" />
+    <Navbar fixed showBackIcon showHomeIcon title="待处理签约申请" />
     <view class="bg-#fff px-3 py-3.75">
       <SignList :list="listData" />
     </view>

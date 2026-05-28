@@ -108,8 +108,8 @@ defineExpose({
 <template>
   <TnForm
     ref="formRef"
-    label-position="left"
-    label-width="80px"
+    labelPosition="left"
+    labelWidth="80px"
     :model="modelValue"
     :rules="props.rules"
     size="sm"
@@ -124,10 +124,10 @@ defineExpose({
             v-if="item.inputType === 'textarea'"
             v-model="modelValue[item.prop]"
             border
-            confirm-type=""
+            confirmType=""
             :height="200"
             :placeholder="item.placeholder"
-            show-word-limit
+            showWordLimit
             :type="item.inputType"
           />
           <TnInput
@@ -146,7 +146,7 @@ defineExpose({
             @change="item.open = false"
           />
           <TnInput
-            :model-value="getSelectName(modelValue[item.prop], item.options)"
+            :modelValue="getSelectName(modelValue[item.prop], item.options)"
             :placeholder="item.placeholder"
             type="select"
             underline
@@ -158,7 +158,7 @@ defineExpose({
             v-model="modelValue[item.prop]"
             v-model:open="item.open"
             :data="item.options"
-            :immediate-change="false"
+            :immediateChange="false"
           />
         </template>
         <template v-else-if="item.type === 'date'">
@@ -180,7 +180,7 @@ defineExpose({
 
         <template v-else-if="item.type === 'regionPicker'">
           <TnInput
-            :model-value="displayRegionValue(item.prop)"
+            :modelValue="displayRegionValue(item.prop)"
             :placeholder="item.placeholder"
             type="select"
             underline

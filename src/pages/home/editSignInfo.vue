@@ -83,7 +83,7 @@ async function handleSubmit() {
 
 <template>
   <view class="">
-    <Navbar fixed show-back-icon show-home-icon title="新建居民档案" />
+    <Navbar fixed showBackIcon showHomeIcon title="新建居民档案" />
     <view class="bg-white p-4 pb-10">
       <view class="mb-4 text-lg text-gray-800 font-bold">签约信息</view>
       <view class="rounded-xl">

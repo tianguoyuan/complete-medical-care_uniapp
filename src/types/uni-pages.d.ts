@@ -12,6 +12,8 @@ interface NavigateToOptions {
        "/pages/home/selectFamilyMembers" |
        "/pages/home/serviceManage" |
        "/pages/home/signManage" |
+       "/pages/home/signManageComplate" |
+       "/pages/home/signManageInfo" |
        "/pages/home/submitSignInfo" |
        "/pages/message/message" |
        "/pages/mine/appSetting" |

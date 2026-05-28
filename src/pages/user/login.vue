@@ -77,7 +77,7 @@ async function onSubmit() {
       <image class="w-full" mode="widthFix" :src="getImage('userLoginBg')" />
     </view>
     <view class="relative z-3 mt--6 h-300 rounded-t-6 bg-#fff px-3 py-7.5">
-      <TnForm ref="formRef" label-position="top" :model="formData" :rules="formRules">
+      <TnForm ref="formRef" labelPosition="top" :model="formData" :rules="formRules">
         <TnFormItem label="账号" prop="username">
           <TnInput v-model="formData.username" placeholder="请输入账号" />
         </TnFormItem>
@@ -86,7 +86,7 @@ async function onSubmit() {
           <TnInput v-model="formData.password" placeholder="请输入密码" type="password" />
         </TnFormItem>
         <TnFormItem label="" prop="agreement">
-          <TnCheckbox v-model="formData.agreement" active-color="#49B9AD">
+          <TnCheckbox v-model="formData.agreement" activeColor="#49B9AD">
             <text class="text-3 color-#1C2023">同意协议</text>
             <text class="text-3 color-#49B9AD">《用户隐私政策》</text>
           </TnCheckbox>

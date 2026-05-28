@@ -67,13 +67,13 @@ function handleClickHomeIcon() {
 
 <template>
   <TnNavbar
-    :bg-color="props.bgColor"
-    :bottom-shadow="props.bottomShadow"
+    :bgColor="props.bgColor"
+    :bottomShadow="props.bottomShadow"
     fixed
     :frosted="props.frosted"
     :opacity="props.opacity"
     :placeholder="props.placeholder"
-    :text-color="props.textColor"
+    :textColor="props.textColor"
   >
     <!-- :status-height="navBarInfo.statusHeight"
     height="90rpx" -->
@@ -96,7 +96,7 @@ function handleClickHomeIcon() {
         <TnIcon
           v-if="props.showBackIcon"
           color="#fff"
-          :custom-class="[props.showBackIcon && props.showHomeIcon ? 'flex-1' : ''].join(' ')"
+          :customClass="[props.showBackIcon && props.showHomeIcon ? 'flex-1' : ''].join(' ')"
           name="left-arrow"
           @click="handleClickBackIcon"
         />
@@ -107,7 +107,7 @@ function handleClickHomeIcon() {
         <TnIcon
           v-if="props.showHomeIcon"
           color="#fff"
-          :custom-class="[props.showBackIcon && props.showHomeIcon ? 'flex-1' : ''].join(' ')"
+          :customClass="[props.showBackIcon && props.showHomeIcon ? 'flex-1' : ''].join(' ')"
           name="home-capsule-fill"
           @click="handleClickHomeIcon"
         />

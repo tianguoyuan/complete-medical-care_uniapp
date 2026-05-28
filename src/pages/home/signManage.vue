@@ -146,16 +146,29 @@ const filterListData = computed(() => {
   return listData.value.filter((item) => item.status === currentTab.value)
 })
 
+function handleSignItemClick(value: SignListItem, index: number) {
+  console.log('点击了签约项：', value, index)
+  if (value.status === 'signed') {
+    uni.navigateTo({
+      url: `/pages/home/signManageComplate?status=${value.status}&name=${value.name}`,
+    })
+  } else {
+    uni.navigateTo({
+      url: `/pages/home/signManageInfo?status=${value.status}&name=${value.name}`,
+    })
+  }
+}
+
 //
 </script>
 
 <template>
   <view class="">
-    <Navbar :bottom-shadow="false" fixed show-back-icon show-home-icon title="签约管理" />
-    <TnSticky :offset-top="+StyleEnum.NAV_BAR_HEIGHT_PX + navBarInfo.statusHeight">
+    <Navbar :bottomShadow="false" fixed showBackIcon showHomeIcon title="签约管理" />
+    <TnSticky :offsetTop="+StyleEnum.NAV_BAR_HEIGHT_PX + navBarInfo.statusHeight">
       <TnTabs
         v-model="currentTabIndex"
-        bg-color="#fff"
+        bgColor="#fff"
         height="40px"
         :scroll="false"
         @change="handleTabChange"
@@ -164,7 +177,7 @@ const filterListData = computed(() => {
       </TnTabs>
     </TnSticky>
 
-    <view class="px-3"><SignList :list="filterListData" /></view>
+    <view class="px-3"><SignList :list="filterListData" @click="handleSignItemClick" /></view>
 
     <view class="h-10 pb-safe"></view>
   </view>

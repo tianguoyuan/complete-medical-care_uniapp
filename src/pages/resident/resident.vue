@@ -11,7 +11,7 @@ const { navBarInfo } = useUniAppSystemRectInfo()
 
 <template>
   <view class="">
-    <Tabbar tabbar-path="/pages/resident/resident" />
+    <Tabbar tabbarPath="/pages/resident/resident" />
   </view>
 </template>
 

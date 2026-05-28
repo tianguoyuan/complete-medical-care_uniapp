@@ -161,7 +161,7 @@ function pageTo(item: (typeof createList.value)[number]) {
       </view>
     </view>
 
-    <Tabbar :tabbar-path="PageEnum.HOME_PATH" />
+    <Tabbar :tabbarPath="PageEnum.HOME_PATH" />
   </view>
 </template>
 

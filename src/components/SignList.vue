@@ -29,6 +29,25 @@ export interface SignListItem {
 const props = defineProps<{
   list: SignListItem[]
 }>()
+
+const emits = defineEmits<{
+  click: [value: SignListItem, index: number]
+}>()
+
+function statusClassFunc(status: SignListItem['status']) {
+  switch (status) {
+    case 'pendingReview':
+      return 'bg-#FFF2E8 color-#FA541C'
+    case 'pendingPayment':
+      return 'bg-#FEF1F1 color-#F65755'
+    case 'signed':
+      return 'bg-#F5F7FB color-#606972'
+    case 'rejected':
+      return 'bg-#E2FFF8 color-#49B9AD'
+    default:
+      return ''
+  }
+}
 //
 </script>
 
@@ -38,6 +57,7 @@ const props = defineProps<{
     :key="index"
     class="mt-3.75 flex flex-col border-0 border-#E3E4E5 border-solid"
     :class="props.list.length - 1 === index ? 'pb-0 border-0' : 'pb-3.5 border-b-1'"
+    @click="emits('click', item, index)"
   >
     <view class="flex items-center justify-between">
       <view class="flex items-center">
@@ -51,7 +71,8 @@ const props = defineProps<{
         </view>
       </view>
       <view
-        class="h-5 w-12.5 flex items-center justify-center rounded-2.5 bg-#FFF2E8 color-#FA541C"
+        class="h-5 w-12.5 flex items-center justify-center rounded-2.5 text-2.5"
+        :class="statusClassFunc(item.status)"
       >
         {{ item.statusText }}
       </view>

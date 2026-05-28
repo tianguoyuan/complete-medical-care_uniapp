@@ -1,28 +1,29 @@
 import Uni from '@dcloudio/vite-plugin-uni'
-import dayjs from 'dayjs'
-import path from 'node:path'
-import { defineConfig, loadEnv } from 'vite'
-// @see https://uni-helper.js.org/vite-plugin-uni-pages
-import UniPages from '@uni-helper/vite-plugin-uni-pages'
 // @see https://uni-helper.js.org/vite-plugin-uni-layouts
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
+// @see https://github.com/uni-helper/vite-plugin-uni-manifest
+import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
+// @see https://uni-helper.js.org/vite-plugin-uni-pages
+import UniPages from '@uni-helper/vite-plugin-uni-pages'
 // @see https://github.com/uni-helper/vite-plugin-uni-platform
 // 需要与 @uni-helper/vite-plugin-uni-pages 插件一起使用
 import UniPlatform from '@uni-helper/vite-plugin-uni-platform'
-// @see https://github.com/uni-helper/vite-plugin-uni-manifest
-import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
+import dayjs from 'dayjs'
+import path from 'node:path'
 // @see https://unocss.dev/
 import { visualizer } from 'rollup-plugin-visualizer'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import { defineConfig, loadEnv } from 'vite'
 import ViteRestart from 'vite-plugin-restart'
-import { copyNativeRes } from './vite-plugins/copyNativeRes'
-import pkg from './package.json'
 
-const { dependencies, devDependencies, name, version, engines } = pkg
+import pkg from './package.json'
+import { copyNativeRes } from './vite-plugins/copyNativeRes'
+
+const { dependencies, devDependencies, engines, name, version } = pkg
 const __APP_INFO__ = {
-  pkg: { dependencies, devDependencies, name, version, engines },
   lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+  pkg: { dependencies, devDependencies, engines, name, version },
 }
 
 // https://vitejs.dev/config/
@@ -45,25 +46,61 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, path.resolve(process.cwd(), 'env'))
   const {
     VITE_APP_PORT,
-    VITE_SERVER_BASEURL,
-    VITE_DELETE_CONSOLE,
-    VITE_SHOW_SOURCEMAP,
     VITE_APP_PROXY,
     VITE_APP_PROXY_PREFIX,
+    VITE_DELETE_CONSOLE,
+    VITE_SERVER_BASEURL,
+    VITE_SHOW_SOURCEMAP,
   } = env
   console.log('环境变量 env -> ', env)
 
   return {
+    build: {
+      esbuild: {
+        supported: {
+          bigint: true,
+        },
+      },
+      // 开发环境不用压缩
+      minify: mode === 'development' ? false : 'terser',
+      // 方便非h5端调试
+      sourcemap: VITE_SHOW_SOURCEMAP === 'true', // 默认是false
+      target: 'es6',
+      terserOptions: {
+        compress: {
+          // eslint-disable-next-line camelcase
+          drop_console: VITE_DELETE_CONSOLE === 'true',
+          // eslint-disable-next-line camelcase
+          drop_debugger: true,
+        },
+      },
+    },
+
+    css: {
+      postcss: {
+        plugins: [
+          // autoprefixer({
+          //   // 指定目标浏览器
+          //   overrideBrowserslist: ['> 1%', 'last 2 versions'],
+          // }),
+        ],
+      },
+    },
+    define: {
+      __APP_INFO__: JSON.stringify(__APP_INFO__),
+      __UNI_PLATFORM__: JSON.stringify(UNI_PLATFORM),
+      __VITE_APP_PROXY__: JSON.stringify(VITE_APP_PROXY),
+    },
     envDir: './env', // 自定义env目录
 
     plugins: [
       UniPages({
+        dts: 'src/types/uni-pages.d.ts',
         exclude: ['**/components/**/**.*'],
         routeBlockLang: 'json5', // 虽然设了默认值，但是vue文件还是要加上 lang="json5", 这样才能很好地格式化
         // homePage 通过 vue 文件的 route-block 的type="home"来设定
         // pages 目录为 src/pages，分包目录不能配置在pages目录下
         subPackages: ['src/pagesA'], // 是个数组，可以配置多个，但是不能为pages里面的目录
-        dts: 'src/types/uni-pages.d.ts',
       }),
       UniLayouts(),
       UniPlatform(),
@@ -71,23 +108,23 @@ export default defineConfig(({ command, mode }) => {
       // UniXXX 需要在 Uni 之前引入
       Uni(),
       {
-        // 临时解决 dcloudio 官方的 @dcloudio/uni-mp-compiler 出现的编译 BUG
-        // 参考 github issue: https://github.com/dcloudio/uni-app/issues/4952
-        // 自定义插件禁用 vite:vue 插件的 devToolsEnabled，强制编译 vue 模板时 inline 为 true
-        name: 'fix-vite-plugin-vue',
         configResolved(config) {
           const plugin = config.plugins.find((p) => p.name === 'vite:vue')
           if (plugin && plugin.api && plugin.api.options) {
             plugin.api.options.devToolsEnabled = false
           }
         },
+        // 临时解决 dcloudio 官方的 @dcloudio/uni-mp-compiler 出现的编译 BUG
+        // 参考 github issue: https://github.com/dcloudio/uni-app/issues/4952
+        // 自定义插件禁用 vite:vue 插件的 devToolsEnabled，强制编译 vue 模板时 inline 为 true
+        name: 'fix-vite-plugin-vue',
       },
       UnoCSS(),
       AutoImport({
-        imports: ['vue', 'uni-app'],
-        dts: 'src/types/auto-import.d.ts',
         dirs: ['src/hooks'], // 自动导入 hooks
+        dts: 'src/types/auto-import.d.ts',
         eslintrc: { enabled: true },
+        imports: ['vue', 'uni-app'],
         vueTemplate: true, // default false
       }),
 
@@ -106,30 +143,14 @@ export default defineConfig(({ command, mode }) => {
       UNI_PLATFORM === 'h5' &&
         mode === 'production' &&
         visualizer({
-          filename: './node_modules/.cache/visualizer/stats.html',
-          open: true,
-          gzipSize: true,
           brotliSize: true,
+          filename: './node_modules/.cache/visualizer/stats.html',
+          gzipSize: true,
+          open: true,
         }),
       // 只有在 app 平台时才启用 copyNativeRes 插件
       UNI_PLATFORM === 'app' && copyNativeRes(),
     ],
-    define: {
-      __UNI_PLATFORM__: JSON.stringify(UNI_PLATFORM),
-      __VITE_APP_PROXY__: JSON.stringify(VITE_APP_PROXY),
-      __APP_INFO__: JSON.stringify(__APP_INFO__),
-    },
-    css: {
-      postcss: {
-        plugins: [
-          // autoprefixer({
-          //   // 指定目标浏览器
-          //   overrideBrowserslist: ['> 1%', 'last 2 versions'],
-          // }),
-        ],
-      },
-    },
-
     resolve: {
       alias: {
         '@': path.join(process.cwd(), './src'),
@@ -137,37 +158,19 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     server: {
-      host: '0.0.0.0',
       hmr: true,
+      host: '0.0.0.0',
       port: Number.parseInt(VITE_APP_PORT, 10),
       // 仅 H5 端生效，其他端不生效（其他端走build，不走devServer)
       proxy: JSON.parse(VITE_APP_PROXY)
         ? {
             [VITE_APP_PROXY_PREFIX]: {
-              target: VITE_SERVER_BASEURL,
               changeOrigin: true,
               rewrite: (path) => path.replace(new RegExp(`^${VITE_APP_PROXY_PREFIX}`), ''),
+              target: VITE_SERVER_BASEURL,
             },
           }
         : undefined,
-    },
-    build: {
-      // 方便非h5端调试
-      sourcemap: VITE_SHOW_SOURCEMAP === 'true', // 默认是false
-      target: 'es6',
-      // 开发环境不用压缩
-      minify: mode === 'development' ? false : 'terser',
-      terserOptions: {
-        compress: {
-          drop_console: VITE_DELETE_CONSOLE === 'true',
-          drop_debugger: true,
-        },
-      },
-      esbuild: {
-        supported: {
-          bigint: true,
-        },
-      },
     },
   }
 })

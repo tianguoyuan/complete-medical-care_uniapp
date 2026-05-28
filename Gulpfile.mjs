@@ -1,8 +1,8 @@
+import { rm } from 'fs/promises'
 import gulp from 'gulp'
 // // 修改文件插件
 // import jsonEditor from 'gulp-json-editor'
 import path from 'path'
-import { rm } from 'fs/promises'
 
 // 小程序图片使用线上地址, 不使用本地图片
 const iconsDirs = [
@@ -11,7 +11,7 @@ const iconsDirs = [
 ]
 
 async function cleanMpIcons() {
-  await Promise.all(iconsDirs.map((dir) => rm(dir, { recursive: true, force: true })))
+  await Promise.all(iconsDirs.map((dir) => rm(dir, { force: true, recursive: true })))
 }
 
 // 兼容 gulp CLI：`gulp cleanMpIcons`

@@ -15,7 +15,7 @@ const appStore = useAppStore()
       'min-height': `${appStore.systemScreenHeight}px`,
     }"
   >
-    <Navbar show-back-icon show-home-icon title="Demo" />
+    <Navbar showBackIcon showHomeIcon title="Demo" />
     <view>demo - page</view>
   </view>
 </template>

@@ -21,11 +21,11 @@ const emits = defineEmits<{
 <template>
   <view class="">
     <Navbar
-      bg-color="transparent"
-      :bottom-shadow="false"
+      bgColor="transparent"
+      :bottomShadow="false"
       fixed
-      show-back-icon
-      show-home-icon
+      showBackIcon
+      showHomeIcon
       :title="props.title"
     />
     <view

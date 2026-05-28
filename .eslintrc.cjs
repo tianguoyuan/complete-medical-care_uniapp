@@ -72,9 +72,12 @@ module.exports = {
 
     '@typescript-eslint/no-redeclare': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
-    // UnoCSS class 排序
     '@unocss/order': 'error',
     '@unocss/order-attributify': 'off',
+    // UnoCSS class 排序
+    // 变量、函数、属性等必须使用小驼峰命名
+    camelcase: ['error', { properties: 'always' }],
+
     'func-style': ['error', 'declaration', { allowArrowFunctions: false }],
     'import/default': 'off',
     // 对后缀的检测，否则 import 一个ts文件也会报错，需要手动添加'.ts', 增加了下面的配置后就不用了
@@ -158,6 +161,9 @@ module.exports = {
     // 3. 注意要加上这一句，开启 prettier 自动修复的功能
     'prettier/prettier': 'error',
 
+    // 模板属性必须用小驼峰，禁止 kebab-case
+    'vue/attribute-hyphenation': ['error', 'never'],
+
     // 属性排序规则
     'vue/attributes-order': [
       'error',
@@ -179,19 +185,20 @@ module.exports = {
       },
     ],
 
+    // 模板中使用组件强制大驼峰
+    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
+
     'vue/component-tags-order': [
       'error',
       {
         order: ['script', 'template', 'style', 'route'],
       },
     ],
-
-    // 模板中使用组件强制大驼峰
-    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
-
     'vue/multi-word-component-names': 'off',
-
     'vue/no-mutating-props': 'off',
+
+    // prop 定义名称必须用小驼峰
+    'vue/prop-name-casing': ['error', 'camelCase'],
   },
   // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-import-resolver-typescript
   settings: {

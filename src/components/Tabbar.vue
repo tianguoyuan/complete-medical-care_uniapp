@@ -64,13 +64,13 @@ function pageTo(index: number) {
   <view v-if="!PLATFORM.isH5" class="h-12.5" />
   <TnTabbar
     v-if="!tabbarStore.hideTabbar"
-    :bg-color="StyleEnum.MAIN_BG_COLOR"
+    :bgColor="StyleEnum.MAIN_BG_COLOR"
     fixed
     :height="StyleEnum.TAB_BAR_HEIGHT + 'rpx'"
-    :model-value="tabbarStore.tabbarIndex"
+    :modelValue="tabbarStore.tabbarIndex"
     placeholder
-    safe-area-inset-bottom
-    :top-shadow="props.topShadow"
+    safeAreaInsetBottom
+    :topShadow="props.topShadow"
   >
     <TnTabbarItem v-for="(item, index) in tabbarList" :key="index" @click="pageTo(index)">
       <template #default>
