@@ -73,7 +73,11 @@ const filterListData = computed(() => {
   return listData.value.filter((item) => item.status === currentTab.value)
 })
 
-function handleSignItemClick() {}
+function handleSignItemClick(item: SignListItem) {
+  uni.navigateTo({
+    url: `/pages/home/serviceManageInfo?name=${item.name}&status=${item.status}`,
+  })
+}
 //
 </script>
 

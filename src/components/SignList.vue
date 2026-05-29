@@ -33,6 +33,7 @@ export interface SignListItem {
     | 'serviceManagePendingReview'
     | 'serviceManagePendingService'
     | 'serviceManageComplete'
+    | 'serviceManageRejected'
   statusText:
     | '待审核'
     | '待支付'

@@ -104,6 +104,24 @@
       }
     },
     {
+      "path": "pages/home/serviceManageComplate",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "服务结果"
+      }
+    },
+    {
+      "path": "pages/home/serviceManageInfo",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "服务详情"
+      }
+    },
+    {
       "path": "pages/home/signManage",
       "type": "page",
       "layout": "default",

@@ -35,6 +35,7 @@ const listData = ref<
     count: string
     title: string
     list: SignListItem[]
+    type: 'signManage' | 'serviceManage'
   }[]
 >([
   {
@@ -67,6 +68,7 @@ const listData = ref<
       },
     ],
     title: '申请签约',
+    type: 'signManage',
   },
   {
     count: '3',
@@ -85,6 +87,7 @@ const listData = ref<
       },
     ],
     title: '服务申请',
+    type: 'serviceManage',
   },
 ])
 
@@ -102,6 +105,18 @@ function pageTo(item: (typeof createList.value)[number]) {
       url: '/pages/home/serviceManage',
     })
   }
+}
+
+function handleListClick(item: SignListItem) {
+  uni.navigateTo({
+    url: `/pages/home/signManageInfo?name=${item.name}&status=${item.status}`,
+  })
+}
+
+function handleLookAll(type: 'signManage' | 'serviceManage') {
+  uni.navigateTo({
+    url: `/pages/home/${type}`,
+  })
 }
 </script>
 
@@ -154,10 +169,10 @@ function pageTo(item: (typeof createList.value)[number]) {
               {{ pItem.count }}
             </view>
           </view>
-          <view class="text-3">查看全部</view>
+          <view class="text-3" @click="handleLookAll(pItem.type)">查看全部</view>
         </view>
 
-        <SignList :list="pItem.list" />
+        <SignList :list="pItem.list" @click="handleListClick" />
       </view>
     </view>
 

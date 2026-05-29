@@ -11,6 +11,8 @@ interface NavigateToOptions {
        "/pages/home/pendingSignInfo" |
        "/pages/home/selectFamilyMembers" |
        "/pages/home/serviceManage" |
+       "/pages/home/serviceManageComplate" |
+       "/pages/home/serviceManageInfo" |
        "/pages/home/signManage" |
        "/pages/home/signManageComplate" |
        "/pages/home/signManageInfo" |
