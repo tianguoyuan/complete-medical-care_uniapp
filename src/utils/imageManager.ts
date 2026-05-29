@@ -8,14 +8,14 @@ import PLATFORM from './platform'
 
 // Tabbar 图标
 const tabbarImage = [
-  'home',
-  'homeActive',
-  'resident',
-  'residentActive',
-  'message',
-  'messageActive',
-  'mine',
-  'mineActive',
+  'tabbarHome',
+  'tabbarHomeActive',
+  'tabbarResident',
+  'tabbarResidentActive',
+  'tabbarMessage',
+  'tabbarMessageActive',
+  'tabbarMine',
+  'tabbarMineActive',
 ] as const
 
 // dashboard 图标

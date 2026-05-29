@@ -1,17 +1,29 @@
-import { rm } from 'fs/promises'
+import { readdir, rm, stat } from 'fs/promises'
 import gulp from 'gulp'
-// // 修改文件插件
-// import jsonEditor from 'gulp-json-editor'
 import path from 'path'
 
-// 小程序图片使用线上地址, 不使用本地图片
 const iconsDirs = [
   path.resolve(process.cwd(), 'dist/build/mp-weixin/static/icons'),
   path.resolve(process.cwd(), 'dist/dev/mp-weixin/static/icons'),
 ]
 
 async function cleanMpIcons() {
-  await Promise.all(iconsDirs.map((dir) => rm(dir, { force: true, recursive: true })))
+  await Promise.all(
+    iconsDirs.map(async (dir) => {
+      try {
+        await stat(dir)
+      } catch {
+        return
+      }
+      const files = await readdir(dir)
+      await Promise.all(
+        files
+          // 会保留 tabbar 开头的文件， 删除其他文件
+          .filter((file) => !file.startsWith('tabbar'))
+          .map((file) => rm(path.join(dir, file), { force: true, recursive: true })),
+      )
+    }),
+  )
 }
 
 // 兼容 gulp CLI：`gulp cleanMpIcons`

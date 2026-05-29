@@ -7,7 +7,7 @@ const { navBarInfo } = useUniAppSystemRectInfo()
 
 const appStore = useAppStore()
 function back() {
-  navigation.back()
+  uni.navigateBack()
 }
 //
 </script>
@@ -17,10 +17,9 @@ function back() {
     class=""
     :style="{ minHeight: appStore.systemScreenHeight + 'px', backgroundColor: '#D8F2FC' }"
   >
-    <!-- 占位顶部 -->
     <view
       :style="{
-        height: navBarInfo.height + navBarInfo.statusHeight + 'px',
+        height: navBarInfo.height + 'px',
       }"
     ></view>
     <view

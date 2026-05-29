@@ -12,26 +12,26 @@ const tabbarStore = useTabbarStore()
 
 const tabbarList = [
   {
-    activeIcon: getImage('homeActive'),
-    icon: getImage('home'),
+    activeIcon: getImage('tabbarHomeActive'),
+    icon: getImage('tabbarHome'),
     path: PageEnum.HOME_PATH,
     title: '首页',
   },
   {
-    activeIcon: getImage('residentActive'),
-    icon: getImage('resident'),
+    activeIcon: getImage('tabbarResidentActive'),
+    icon: getImage('tabbarResident'),
     path: '/pages/resident/resident',
     title: '居民',
   },
   {
-    activeIcon: getImage('messageActive'),
-    icon: getImage('message'),
+    activeIcon: getImage('tabbarMessageActive'),
+    icon: getImage('tabbarMessage'),
     path: '/pages/message/message',
     title: '消息',
   },
   {
-    activeIcon: getImage('mineActive'),
-    icon: getImage('mine'),
+    activeIcon: getImage('tabbarMineActive'),
+    icon: getImage('tabbarMine'),
     path: '/pages/mine/mine',
     title: '我的',
   },
