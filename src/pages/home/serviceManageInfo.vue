@@ -94,6 +94,8 @@ onLoad((options) => {
       name: options.name,
       status: options.status as SignListItem['status'],
     }
+
+    console.log('query.value', query.value)
   }
 })
 
@@ -132,16 +134,21 @@ const alertConfig = computed<AlertProps>(() => {
   }
 })
 
-function handleClick(status: SignListItem['status']) {
-  if (status === 'serviceManageRejected') {
-    // 驳回
-    uni.navigateTo({
-      url: `/pages/home/signManageComplate?status=${status}`,
+export type ServiceManageSubmitButtonFlag = 'rejected' | 'approved' | 'cancel' | 'complete'
+function handleClick(status: ServiceManageSubmitButtonFlag) {
+  const name = query.value.name
+  if (['rejected', 'approved', 'cancel'].includes(status)) {
+    uni.redirectTo({
+      url: `/pages/home/serviceManageComplate?status=${status}&name=${name}`,
     })
-  } else if (status === 'pendingPayment') {
-    // 审核通过
-    uni.navigateTo({
-      url: '/pages/home/signManageComplate?status=pendingPayment',
+  } else if (status === 'complete') {
+    uni.redirectTo({
+      url: `/pages/home/serviceManageInfo?status=serviceManageComplete&name=${name}`,
+    })
+  } else {
+    console.log('333')
+    uni.redirectTo({
+      url: `/pages/home/serviceManageInfo?status=${status}&name=${name}`,
     })
   }
 }
@@ -182,7 +189,7 @@ function handleClick(status: SignListItem['status']) {
         </view>
         <view
           class="ml-2.5 h-10 flex flex-1 items-center justify-center rounded-2.5 bg-#49B9AD color-#fff"
-          @click="handleClick('pendingPayment')"
+          @click="handleClick('approved')"
         >
           审核通过
         </view>
@@ -196,13 +203,13 @@ function handleClick(status: SignListItem['status']) {
       <view class="mx-5 flex items-center justify-between text-3.75 pb-safe">
         <view
           class="h-10 flex flex-1 items-center justify-center border-1 border-#F65755 rounded-2.5 border-solid color-#F65755"
-          @click="handleClick('rejected')"
+          @click="handleClick('cancel')"
         >
           取消预约
         </view>
         <view
           class="ml-2.5 h-10 flex flex-1 items-center justify-center rounded-2.5 bg-#49B9AD color-#fff"
-          @click="handleClick('pendingPayment')"
+          @click="handleClick('complete')"
         >
           完成服务
         </view>

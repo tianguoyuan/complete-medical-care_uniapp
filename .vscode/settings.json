@@ -17,12 +17,6 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[dotenv]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -54,5 +48,6 @@
     "WechatMiniprogram",
     "Weixin"
   ],
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "prettier.prettierPath": "./node_modules/prettier"
 }

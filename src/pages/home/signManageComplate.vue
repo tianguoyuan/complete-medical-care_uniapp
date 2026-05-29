@@ -42,11 +42,11 @@ const alertConfig = computed<SuccessFailConfig>(() => {
       }
     default:
       return {
-        cancelText: '取消',
-        confirmText: '确定',
-        content: ['签约成功！'],
-        subtitle: '恭喜您，签约成功！',
-        title: '签约成功',
+        cancelText: '',
+        confirmText: '',
+        content: [],
+        subtitle: '',
+        title: '',
         type: 'success',
       }
   }

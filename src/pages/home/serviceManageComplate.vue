@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { ServiceManageSubmitButtonFlag } from './serviceManageInfo.vue'
 import type { SignListItem } from '@/components/SignList.vue'
 import type { SuccessFailConfig } from '@/components/SuccessFail.vue'
 
@@ -8,11 +9,11 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const query = ref<{ status: SignListItem['status'] }>()
+const query = ref<{ status: ServiceManageSubmitButtonFlag }>()
 onLoad((options) => {
   if (options && options.status) {
     query.value = {
-      status: options.status as SignListItem['status'],
+      status: options.status as ServiceManageSubmitButtonFlag,
     }
   }
 })
@@ -22,31 +23,40 @@ const alertConfig = computed<SuccessFailConfig>(() => {
     case 'rejected':
       return {
         cancelText: '返回首页',
-        confirmText: '查看签约详情',
-        content: [
-          '您已驳回了该居民的签约申请，',
-          '原因：服务包不适用您的当前年龄，请重新选择后提交',
-        ],
-        subtitle: '签约失败',
-        title: '签约失败',
+        confirmText: '查看服务详情',
+        content: ['您已驳回了该居民的服务申请，', ' 驳回原因：本周临时工作变动不能安排上门服务'],
+        subtitle: '审核不通过',
+        title: '审核驳回',
         type: 'fail',
       }
-    case 'pendingPayment':
+
+    case 'approved':
       return {
         cancelText: '返回首页',
-        confirmText: '查看签约详情',
-        content: ['您已通过该居民的签约申请，居民支付后可完成签约'],
-        subtitle: '签约申请审核通过，等待居民支付',
-        title: '签约成功',
+        confirmText: '查看预约详情',
+        content: [],
+        subtitle: '预约服务申请审核通过',
+        title: '审核通过',
         type: 'success',
       }
+
+    case 'cancel':
+      return {
+        cancelText: '返回首页',
+        confirmText: '查看预约详情',
+        content: ['您已取消了该居民的服务预约，', ' 取消原因：本周临时工作变动不能安排上门服务'],
+        subtitle: '预约服务取消成功',
+        title: '取消成功',
+        type: 'fail',
+      }
+
     default:
       return {
-        cancelText: '取消',
-        confirmText: '确定',
-        content: ['签约成功！'],
-        subtitle: '恭喜您，签约成功！',
-        title: '签约成功',
+        cancelText: '',
+        confirmText: '',
+        content: [],
+        subtitle: '',
+        title: '',
         type: 'success',
       }
   }

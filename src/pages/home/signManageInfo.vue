@@ -134,13 +134,13 @@ onLoad((options) => {
 function handleClick(status: SignListItem['status']) {
   if (status === 'rejected') {
     // 驳回
-    uni.navigateTo({
+    uni.redirectTo({
       url: '/pages/home/signManageComplate?status=rejected',
     })
   } else if (status === 'pendingPayment') {
     // 审核通过
-    uni.navigateTo({
-      url: '/pages/home/signManageComplate?status=pendingPayment',
+    uni.redirectTo({
+      url: `/pages/home/signManageComplate?status=${status}`,
     })
   }
 }

@@ -30,10 +30,11 @@ export interface SignListItem {
     | 'signed'
     | 'rejected'
     // 服务管理
-    | 'serviceManagePendingReview'
-    | 'serviceManagePendingService'
-    | 'serviceManageComplete'
-    | 'serviceManageRejected'
+    | 'serviceManagePendingReview' // 待审核
+    | 'serviceManagePendingService' // 待服务
+    | 'serviceManageComplete' // 服务完成
+    | 'serviceManageRejected' // 驳回
+
   statusText:
     | '待审核'
     | '待支付'
