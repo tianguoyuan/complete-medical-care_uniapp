@@ -135,9 +135,6 @@
   "name": "unibest",
   "repository": "https://github.com/tianguoyuan/hey-tea_uniapp",
   "repository-gitee": "https://gitee.com/mynametian/hey-tea_uniapp",
-  "resolutions": {
-    "bin-wrapper": "npm:bin-wrapper-china"
-  },
   "scripts": {
     "build": "uni build",
     "build:app": "uni build -p app",
