@@ -118,6 +118,12 @@ function handleLookAll(type: 'signManage' | 'serviceManage') {
     url: `/pages/home/${type}`,
   })
 }
+
+function pageToScanQrcode() {
+  uni.navigateTo({
+    url: '/pages/mine/scanQrcode',
+  })
+}
 </script>
 
 <template>
@@ -132,7 +138,7 @@ function handleLookAll(type: 'signManage' | 'serviceManage') {
           </view>
           <view class="ml-2.5 text-4">阳兰广医生</view>
         </view>
-        <image class="h-5 w-5" :src="getImage('mineQrcode')" />
+        <image class="h-5 w-5" :src="getImage('mineQrcode')" @click="pageToScanQrcode" />
       </view>
 
       <view class="mx-3 mt-5">

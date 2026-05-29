@@ -42,6 +42,12 @@ function handleSettingItemClick(item: { path: string }) {
     url: item.path,
   })
 }
+
+function pageToScanQrcode() {
+  uni.navigateTo({
+    url: '/pages/mine/scanQrcode',
+  })
+}
 </script>
 
 <template>
@@ -65,7 +71,7 @@ function handleSettingItemClick(item: { path: string }) {
             <image class="ml--1.5 mt-2 h-5.25 w-17.5 shrink-0" :src="getImage('mineUserTag')" />
           </view>
         </view>
-        <image class="h-5 w-5" :src="getImage('mineQrcode')" />
+        <image class="h-5 w-5" :src="getImage('mineQrcode')" @click="pageToScanQrcode" />
       </view>
 
       <!-- 信息标签 -->

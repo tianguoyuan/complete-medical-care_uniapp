@@ -20,6 +20,7 @@ interface NavigateToOptions {
        "/pages/message/message" |
        "/pages/mine/appSetting" |
        "/pages/mine/mine" |
+       "/pages/mine/scanQrcode" |
        "/pages/resident/resident" |
        "/pages/user/login" |
        "/pagesA/demo/demo" |

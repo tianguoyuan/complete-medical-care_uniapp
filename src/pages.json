@@ -187,6 +187,15 @@
       "needLogin": false
     },
     {
+      "path": "pages/mine/scanQrcode",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "扫码签约"
+      }
+    },
+    {
       "path": "pages/resident/resident",
       "type": "page",
       "layout": "default",
