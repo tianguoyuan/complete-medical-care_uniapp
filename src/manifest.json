@@ -92,7 +92,7 @@
     "appid": "wx2b8a370a5e83450d",
     "setting": {
       "urlCheck": true,
-      "autoAudits": true,
+      "autoAudits": false,
       "enhance": true,
       "es6": true,
       "ignoreDevUnusedFiles": true,

@@ -119,7 +119,7 @@ export default defineManifestConfig({
   'mp-weixin': {
     appid: VITE_WX_APPID,
     setting: {
-      autoAudits: true,
+      autoAudits: false,
       enhance: true,
       es6: true,
 
