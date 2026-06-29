@@ -49,7 +49,11 @@ const commonImage = [
   'commonSuccess',
   'commonFail',
   'commonEmpty',
+  'commonSearch',
+  'commonFemale',
+  'commonMale',
 ] as const
+const residentImage = ['residentTag1', 'residentTag2', 'residentTag3'] as const
 
 const imageNames = [
   ...tabbarImage,
@@ -58,6 +62,7 @@ const imageNames = [
   ...mineImage,
   ...homeImage,
   ...commonImage,
+  ...residentImage,
 ] as const
 
 const isHttpImage = PLATFORM.isMp

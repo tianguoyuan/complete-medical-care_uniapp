@@ -196,6 +196,15 @@
       }
     },
     {
+      "path": "pages/resident/message",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "群发消息"
+      }
+    },
+    {
       "path": "pages/resident/resident",
       "type": "page",
       "layout": "default",
@@ -204,6 +213,10 @@
         "navigationBarTitleText": "居民"
       },
       "needLogin": false
+    },
+    {
+      "path": "pages/resident/tag",
+      "type": "page"
     },
     {
       "path": "pages/user/login",

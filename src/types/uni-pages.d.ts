@@ -21,7 +21,9 @@ interface NavigateToOptions {
        "/pages/mine/appSetting" |
        "/pages/mine/mine" |
        "/pages/mine/scanQrcode" |
+       "/pages/resident/message" |
        "/pages/resident/resident" |
+       "/pages/resident/tag" |
        "/pages/user/login" |
        "/pagesA/demo/demo" |
        "/pagesA/webview/webview";
