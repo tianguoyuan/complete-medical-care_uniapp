@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { ListDataItem } from '@/components/UserTagList.vue'
+
 import { TnInput } from '@tuniao/tnui-vue3-uniapp'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
@@ -111,6 +113,11 @@ function handleClickTag(path: string) {
     url: path,
   })
 }
+function tagClick(tag: ListDataItem) {
+  uni.navigateTo({
+    url: `/pages/home/signManageInfo?name=${tag.name}`,
+  })
+}
 </script>
 
 <template>
@@ -138,7 +145,7 @@ function handleClickTag(path: string) {
       <view>
         <view v-for="(item, index) in userList" :key="index">
           <view class="h-9 bg-#F5F7FB pl-3.25 pt-3.75">{{ item.sort }}</view>
-          <UserTagList :listData="item.userList" />
+          <UserTagList :listData="item.userList" @tag-click="tagClick" />
         </view>
       </view>
     </view>

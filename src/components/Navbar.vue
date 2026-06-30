@@ -80,6 +80,10 @@ function handleClickHomeIcon() {
     <view class="text-4">
       <slot name="title" />
       {{ props.title }}
+
+      <view class="absolute bottom-0 right-3 top-0 w-21.75 flex items-center justify-end">
+        <slot name="right" />
+      </view>
     </view>
 
     <!-- border -->

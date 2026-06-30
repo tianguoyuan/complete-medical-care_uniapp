@@ -1,23 +1,32 @@
 <script lang="ts" setup>
 import { getImage } from '@/utils/imageManager'
 
-//
-const props = defineProps<{
-  listData: {
-    age: string
-    name: string
-    sex: string
-    tagList: {
-      bgc: string
-      color: string
-      title: string
-    }[]
+export interface ListDataItem {
+  age: string
+  name: string
+  sex: string
+  tagList: {
+    bgc: string
+    color: string
+    title: string
   }[]
+}
+const props = defineProps<{
+  listData: ListDataItem[]
+}>()
+
+const emits = defineEmits<{
+  (e: 'tagClick', tag: ListDataItem): void
 }>()
 </script>
 
 <template>
-  <view v-for="(item, index) in props.listData" :key="index" class="">
+  <view
+    v-for="(item, index) in props.listData"
+    :key="index"
+    class=""
+    @click="emits('tagClick', item)"
+  >
     <view class="flex items-center px-3 py-4 pb-0">
       <image
         class="h-10 w-10"

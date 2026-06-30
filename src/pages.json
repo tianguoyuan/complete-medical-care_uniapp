@@ -162,10 +162,9 @@
       "type": "page",
       "layout": "default",
       "style": {
-        "navigationStyle": "default",
+        "navigationStyle": "custom",
         "navigationBarTitleText": "消息"
-      },
-      "needLogin": false
+      }
     },
     {
       "path": "pages/mine/appSetting",
@@ -200,8 +199,8 @@
       "type": "page",
       "layout": "default",
       "style": {
-        "navigationStyle": "default",
-        "navigationBarTitleText": "群发消息"
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "服务消息"
       }
     },
     {
@@ -216,7 +215,12 @@
     },
     {
       "path": "pages/resident/tag",
-      "type": "page"
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "设置标签"
+      }
     },
     {
       "path": "pages/user/login",

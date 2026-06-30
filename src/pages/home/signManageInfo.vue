@@ -77,7 +77,7 @@ const signInfoList = ref<FormInfoItem[]>([
 
 interface SignManageInfoPageQuery {
   name: SignListItem['name']
-  status: SignListItem['status']
+  status?: SignListItem['status']
 }
 
 defineOptions({
@@ -123,7 +123,7 @@ const alertConfig = computed<AlertProps>(() => {
   }
 })
 onLoad((options) => {
-  if (options && options.status && options.name) {
+  if (options && options.name) {
     query.value = {
       name: options.name,
       status: options.status as SignListItem['status'],
@@ -154,7 +154,7 @@ function handleClick(status: SignListItem['status']) {
     }"
   >
     <Navbar fixed showBackIcon showHomeIcon title="签约详情" />
-    <Alert v-bind="alertConfig" />
+    <Alert v-if="query.status" v-bind="alertConfig" />
 
     <view class="bg-#fff px-3">
       <view class="text-4 line-height-13">居民信息</view>
@@ -197,6 +197,9 @@ function handleClick(status: SignListItem['status']) {
           提醒支付
         </view>
       </view>
+    </view>
+    <view v-else class="bg-#fff pb-5">
+      <view class="pb-safe"></view>
     </view>
   </view>
 </template>

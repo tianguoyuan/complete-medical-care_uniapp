@@ -66,7 +66,7 @@ function handleLogout() {
         <text class="text-3.75 text-gray-800">{{ item.title }}</text>
         <view class="flex items-center">
           <text v-if="item.rightText" class="mr-2.5 color-#C5C8CB">{{ item.rightText }}</text>
-          <image v-if="item.rightIcon" class="h2.5" mode="heightFix" :src="item.rightIcon" />
+          <image v-if="item.rightIcon" class="h-2.5 w-2.5" mode="heightFix" :src="item.rightIcon" />
         </view>
       </view>
     </view>

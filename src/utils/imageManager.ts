@@ -52,6 +52,7 @@ const commonImage = [
   'commonSearch',
   'commonFemale',
   'commonMale',
+  'commonAdd',
 ] as const
 const residentImage = ['residentTag1', 'residentTag2', 'residentTag3'] as const
 
