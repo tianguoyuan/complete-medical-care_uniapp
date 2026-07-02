@@ -37,6 +37,10 @@ const mineImage = [
   'mineTag2',
   'mineUserTag',
   'mineScanQrcodeBgCover',
+  'mineMyTeamList1',
+  'mineMyTeamList2',
+  'mineMyTeamList3',
+  'mineMyTeamList4',
 ] as const
 
 // home

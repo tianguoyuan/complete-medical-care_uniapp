@@ -20,6 +20,7 @@ interface NavigateToOptions {
        "/pages/message/message" |
        "/pages/mine/appSetting" |
        "/pages/mine/mine" |
+       "/pages/mine/myTeam" |
        "/pages/mine/scanQrcode" |
        "/pages/resident/message" |
        "/pages/resident/resident" |

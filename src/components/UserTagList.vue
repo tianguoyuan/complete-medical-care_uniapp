@@ -42,7 +42,7 @@ const emits = defineEmits<{
           />
         </view>
         <view class="mr-2.5 mt-1.25 flex pr-9">
-          <view v-for="(j, k) in item.tagList" :key="k" class="">
+          <view v-for="(j, k) in item.tagList" :key="k" class="mr-1.5">
             <view
               class="rounded-full px-2.5 text-2.5 text-2.5 line-height-4"
               :style="{

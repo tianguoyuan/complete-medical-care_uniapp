@@ -1,7 +1,13 @@
 <script lang="ts" setup>
+import type { TnActionSheetInstance } from '@tuniao/tnui-vue3-uniapp'
+import type { TnNotifyInstance } from '@tuniao/tnui-vue3-uniapp/components/notify'
+
+import TnActionSheet from '@tuniao/tnui-vue3-uniapp/components/action-sheet/src/action-sheet.vue'
+import TnNotify from '@tuniao/tnui-vue3-uniapp/components/notify/src/notify.vue'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
 import Tabbar from '@/components/Tabbar.vue'
+import { useTabbarStore } from '@/store/tabbar'
 import { getImage } from '@/utils/imageManager'
 import PLATFORM from '@/utils/platform'
 //
@@ -9,25 +15,27 @@ onLoad(() => PLATFORM.isApp && uni.hideTabBar())
 
 const { navBarInfo } = useUniAppSystemRectInfo()
 
+const tabbarStore = useTabbarStore()
+
 const settingList = ref([
   {
     icon: getImage('mineList1'),
-    path: '/pages/mine/appSetting',
+    path: '/pages/mine/myTeam',
     title: '我的医生团队',
   },
   {
     icon: getImage('mineList2'),
-    path: '/pages/mine/appSetting',
+    path: '/pages/home/signManage',
     title: '签约管理',
   },
   {
     icon: getImage('mineList3'),
-    path: '/pages/mine/appSetting',
+    path: '/pages/home/serviceManage',
     title: '服务管理',
   },
   {
     icon: getImage('mineList4'),
-    path: '/pages/mine/appSetting',
+    path: 'userGuide.pdf',
     title: '使用指南',
   },
   {
@@ -38,6 +46,34 @@ const settingList = ref([
 ])
 
 function handleSettingItemClick(item: { path: string }) {
+  const url = item.path
+  if (item.path === 'userGuide.pdf') {
+    // #ifdef H5
+    window.open(url)
+    // #endif
+
+    // #ifdef MP-WEIXIN || APP-PLUS
+    uni.showLoading({ title: '加载中' })
+    uni.downloadFile({
+      fail: () => {
+        uni.hideLoading()
+        uni.showToast({ icon: 'none', title: '下载失败' })
+      },
+      success: (res) => {
+        uni.hideLoading()
+        if (res.statusCode === 200) {
+          uni.openDocument({
+            filePath: res.tempFilePath,
+            fileType: 'pdf',
+            showMenu: true,
+          })
+        }
+      },
+      url,
+    })
+    // #endif
+    return
+  }
   uni.navigateTo({
     url: item.path,
   })
@@ -48,16 +84,46 @@ function pageToScanQrcode() {
     url: '/pages/mine/scanQrcode',
   })
 }
+const actionSheetRef = ref<TnActionSheetInstance>()
+const notifyRef = ref<TnNotifyInstance>()
+
+function openActionSheet() {
+  tabbarStore.changeHideTabbar(true)
+  actionSheetRef.value?.show({
+    actions: [
+      { text: '周家洛团队', value: '1' },
+      { text: '李明明团队', value: '2' },
+    ],
+    cancel: () => {
+      console.log('取消按钮被点击')
+      tabbarStore.changeHideTabbar(false)
+      return true
+    },
+    select: (index: number, value?: string | number) => {
+      console.log('选项被点击', index, value)
+      tabbarStore.changeHideTabbar(false)
+
+      // notifyRef.value?.show({
+      //   msg: '操作成功',
+      // })
+      return true
+    },
+  })
+}
 </script>
 
 <template>
   <view class="">
+    <TnActionSheet ref="actionSheetRef" />
+    <!-- <TnNotify ref="notifyRef" /> -->
+
     <view class="bg-#49B9AD">
       <view>
         <view :style="{ height: navBarInfo.height + 'px' }"></view>
         <view class="flex justify-end">
           <view
             class="h-8.25 w-18.75 flex items-center justify-center rounded-l-full bg-[rgba(0,0,0,.15)] px-3.25 color-#fff"
+            @click="openActionSheet"
           >
             切换团队
           </view>
