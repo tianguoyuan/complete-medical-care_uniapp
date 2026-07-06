@@ -101,7 +101,7 @@ export default defineManifestConfig({
   h5: {
     router: {
       base: VITE_APP_PUBLIC_BASE,
-      mode: VITE_APP_ROUTER_MODE,
+      mode: VITE_APP_ROUTER_MODE as 'hash' | 'history' | undefined,
     },
   },
   locale: VITE_FALLBACK_LOCALE, // 'zh-Hans'

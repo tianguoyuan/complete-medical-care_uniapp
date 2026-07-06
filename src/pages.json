@@ -9,7 +9,7 @@
     "backgroundColor": "#FFFFFF",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uniapp",
+    "navigationBarTitleText": "全套医疗APP",
     "navigationStyle": "default"
   },
   "tabBar": {
