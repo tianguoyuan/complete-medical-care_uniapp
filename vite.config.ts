@@ -57,7 +57,7 @@ export default defineConfig(({ command, mode }) => {
   console.log('环境变量 env -> ', env)
 
   return {
-    base: VITE_APP_PUBLIC_BASE,
+    base: mode === 'development' ? '' : VITE_APP_PUBLIC_BASE,
     build: {
       esbuild: {
         supported: {
