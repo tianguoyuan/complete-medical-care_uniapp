@@ -33,7 +33,7 @@ const settingList = ref([
   },
   {
     icon: getImage('mineList4'),
-    path: '/static/userGuide.pdf',
+    path: import.meta.env.VITE_APP_PUBLIC_BASE + 'static/userGuide.pdf',
     title: '使用指南',
   },
   {
@@ -45,7 +45,7 @@ const settingList = ref([
 
 function handleSettingItemClick(item: { path: string }) {
   const url = item.path
-  if (item.path === '/static/userGuide.pdf') {
+  if (url.slice(-4) === '.pdf') {
     // #ifdef H5
     window.open(url)
     // #endif
