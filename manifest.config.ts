@@ -100,7 +100,7 @@ export default defineManifestConfig({
   description: VITE_APP_DESC,
   h5: {
     router: {
-      base: process.env.NODE_ENV === 'development' ? '/' : VITE_APP_PUBLIC_BASE,
+      base: VITE_APP_PUBLIC_BASE,
       mode: VITE_APP_ROUTER_MODE as 'hash' | 'history' | undefined,
     },
   },

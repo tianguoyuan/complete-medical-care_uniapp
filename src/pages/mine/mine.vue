@@ -33,7 +33,7 @@ const settingList = ref([
   },
   {
     icon: getImage('mineList4'),
-    path: 'userGuide.pdf',
+    path: '/static/userGuide.pdf',
     title: '使用指南',
   },
   {
@@ -45,7 +45,7 @@ const settingList = ref([
 
 function handleSettingItemClick(item: { path: string }) {
   const url = item.path
-  if (item.path === 'userGuide.pdf') {
+  if (item.path === '/static/userGuide.pdf') {
     // #ifdef H5
     window.open(url)
     // #endif
