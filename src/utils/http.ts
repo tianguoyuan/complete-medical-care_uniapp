@@ -1,18 +1,45 @@
+import { debounce } from 'throttle-debounce'
+
 import { HttpEnum } from '@/enums/HttpEnum'
 import { PageEnum } from '@/enums/PageEnum'
 import { type CustomRequestOptions } from '@/interceptors/request'
 import { useUserStore } from '@/store'
 
-export function http<T>(options: CustomRequestOptions) {
-  // 1. 返回 Promise 对象
-  return new Promise<IResData<T>>((resolve, reject) => {
+function createLoadingManager() {
+  let count = 0
+  let shown = false
+  const show = debounce(200, function () {
     uni.showLoading({ title: '加载中...' })
+    shown = true
+  })
+  return {
+    hideLoading() {
+      if (--count <= 0) {
+        count = 0
+        show.cancel()
+        if (shown) {
+          uni.hideLoading()
+          shown = false
+        }
+      }
+    },
+    showLoading() {
+      if (count++ === 0) show()
+    },
+  }
+}
+
+const { hideLoading, showLoading } = createLoadingManager()
+
+export function http<T>(options: CustomRequestOptions) {
+  return new Promise<IResData<T>>((resolve, reject) => {
+    !options.hideErrorToast && showLoading()
     uni.request({
       ...options,
       dataType: 'json',
       // 响应失败
       fail(err) {
-        uni.hideLoading()
+        hideLoading()
 
         uni.showToast({
           duration: 1000 * 2,
@@ -26,7 +53,7 @@ export function http<T>(options: CustomRequestOptions) {
       // #endif
       // 响应成功
       success(res) {
-        uni.hideLoading()
+        hideLoading()
         const userStore = useUserStore()
 
         const result = res.data as IResData<T>

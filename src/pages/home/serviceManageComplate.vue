@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { ServiceManageSubmitButtonFlag } from './serviceManageInfo.vue'
-import type { SignListItem } from '@/components/SignList.vue'
 import type { SuccessFailConfig } from '@/components/SuccessFail.vue'
 
 import SuccessFail from '@/components/SuccessFail.vue'

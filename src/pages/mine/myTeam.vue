@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
-
 import Navbar from '@/components/Navbar.vue'
 import { useAppStore } from '@/store/app'
 import { getImage } from '@/utils/imageManager'

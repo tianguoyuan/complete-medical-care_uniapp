@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import type { AlertProps } from '@/components/Alert.vue'
-import type { FormItemConfig } from '@/components/FormGenerate.vue'
 import type { FormInfoItem } from '@/components/FormInfo.vue'
 import type { SignListItem } from '@/components/SignList.vue'
 
 import Alert from '@/components/Alert.vue'
-import FormGenerate from '@/components/FormGenerate.vue'
 import FormInfo from '@/components/FormInfo.vue'
 import Navbar from '@/components/Navbar.vue'
 import { useAppStore } from '@/store/app'

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import TnButton from '@tuniao/tnui-vue3-uniapp/components/button/src/button.vue'
 import { ref } from 'vue'
 
 // 引入组件和类型定义

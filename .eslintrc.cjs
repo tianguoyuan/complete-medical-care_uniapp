@@ -22,7 +22,6 @@ module.exports = {
     './.eslintrc-auto-import.json',
   ],
   globals: {
-    $t: true,
     App: true,
     getCurrentPages: true,
     NodeJS: true,
@@ -58,6 +57,7 @@ module.exports = {
     'import',
     'perfectionist',
     'prefer-function-declarations',
+    'unused-imports',
     '@unocss',
   ],
   rules: {
@@ -160,6 +160,12 @@ module.exports = {
 
     // 3. 注意要加上这一句，开启 prettier 自动修复的功能
     'prettier/prettier': 'error',
+    'unused-imports/no-unused-imports': 'error',
+
+    'unused-imports/no-unused-vars': [
+      'error',
+      { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^_' },
+    ],
 
     // 模板属性必须用小驼峰，禁止 kebab-case
     'vue/attribute-hyphenation': ['error', 'never'],

@@ -2,14 +2,18 @@
 import type { SignListItem } from '@/components/SignList.vue'
 
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
+import { useI18n } from 'vue-i18n'
 
 import SignList from '@/components/SignList.vue'
 import Tabbar from '@/components/Tabbar.vue'
 import { PageEnum } from '@/enums/PageEnum'
 import { useAppStore } from '@/store/app'
 import { getImage } from '@/utils/imageManager'
-import PLATFORM from '@/utils/platform'
 //
+import PLATFORM from '@/utils/platform'
+
+const { t } = useI18n()
+
 onLoad(() => PLATFORM.isApp && uni.hideTabBar())
 
 const { navBarInfo } = useUniAppSystemRectInfo()
@@ -136,7 +140,7 @@ function pageToScanQrcode() {
           <view class="border-2px border-#fff rounded-full border-solid">
             <image class="h-10 w-10" :src="getImage('mineAvatar')" />
           </view>
-          <view class="ml-2.5 text-4">阳兰广医生</view>
+          <view class="ml-2.5 text-4">阳兰广医生{{ t('app.name') }}</view>
         </view>
         <image class="h-5 w-5" :src="getImage('mineQrcode')" @click="pageToScanQrcode" />
       </view>

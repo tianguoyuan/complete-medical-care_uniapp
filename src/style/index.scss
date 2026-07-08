@@ -1,17 +1,4 @@
-// @import './iconfont.css';
 @import '@tuniao/tn-style/dist/uniapp/index.css';
-.test {
-  // 可以通过 @apply 多个样式封装整体样式
-  @apply mt-4 ml-4;
-
-  padding-top: 4px;
-  color: red;
-}
-
-// .tn-tabbar,
-// .tn-navbar {
-//   opacity: 0.3;
-// }
 
 :root,
 page {
@@ -25,37 +12,8 @@ page {
   touch-action: manipulation;
   user-select: none;
 
-  // background-color: #f8f9fa;
   background-color: #fff;
-
-  // 修改按主题色
-  // --wot-color-theme: #37c2bc;
-
-  // 修改按钮背景色
-  // --wot-button-primary-bg-color: green;
 }
-// view,
-// text {
-//   transition: all 100ms;
-// }
-
-// /* 排除 picker-view 内部元素的 transition 干扰 */
-// uni-picker-view view,
-// uni-picker-view-column view {
-//   transition: none;
-// }
-
-// #container {
-//   height: 100vh;
-// }
-// /* Avoid Chrome to see Safari hack */
-// @supports (-webkit-touch-callout: none) {
-//   #container {
-//     /* The hack for Safari */
-//     // 作用：height: -webkit-fill-available 让元素填充其包含块的可用空间，类似于设置高度为100%，但更加灵活。
-//     height: -webkit-fill-available;
-//   }
-// }
 /* stylelint-disable selector-type-no-unknown */
 button::after {
   border: none;

@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import type { TnActionSheetInstance } from '@tuniao/tnui-vue3-uniapp'
-import type { TnNotifyInstance } from '@tuniao/tnui-vue3-uniapp/components/notify'
 
 import TnActionSheet from '@tuniao/tnui-vue3-uniapp/components/action-sheet/src/action-sheet.vue'
-import TnNotify from '@tuniao/tnui-vue3-uniapp/components/notify/src/notify.vue'
 import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
 import Tabbar from '@/components/Tabbar.vue'
@@ -85,7 +83,6 @@ function pageToScanQrcode() {
   })
 }
 const actionSheetRef = ref<TnActionSheetInstance>()
-const notifyRef = ref<TnNotifyInstance>()
 
 function openActionSheet() {
   tabbarStore.changeHideTabbar(true)
@@ -102,10 +99,10 @@ function openActionSheet() {
     select: (index: number, value?: string | number) => {
       console.log('选项被点击', index, value)
       tabbarStore.changeHideTabbar(false)
-
-      // notifyRef.value?.show({
-      //   msg: '操作成功',
-      // })
+      uni.showToast({
+        icon: 'none',
+        title: '操作成功',
+      })
       return true
     },
   })
@@ -115,7 +112,6 @@ function openActionSheet() {
 <template>
   <view class="">
     <TnActionSheet ref="actionSheetRef" />
-    <!-- <TnNotify ref="notifyRef" /> -->
 
     <view class="bg-#49B9AD">
       <view>

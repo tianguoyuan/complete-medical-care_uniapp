@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
-
 import { onHide, onLaunch, onShow } from '@dcloudio/uni-app'
 
 import { navigateToInterceptor } from './interceptors/route'
@@ -12,22 +10,34 @@ function setAppInfo(options: { path: string }) {
   navigateToInterceptor.invoke({ url: '/' + options.path })
   const windowInfo = uni.getWindowInfo()
   console.log('屏幕高度：', windowInfo.screenHeight, windowInfo)
-  appStore.changeSystemScreenHeight(windowInfo.screenHeight)
+  appStore.systemScreenHeight = windowInfo.screenHeight
 }
+
+// #ifndef MP
+let launchOptions: { path: string } | null = null
+function onResize() {
+  if (launchOptions) {
+    setAppInfo(launchOptions)
+  }
+}
+// #endif
+
 onLaunch((options) => {
   console.log('App Launch', options)
-  // 首次进入判断页面是否需要登录
   if (!options) return
   setAppInfo(options)
   // #ifndef MP
-  window.addEventListener('resize', () => setAppInfo(options))
+  launchOptions = options
+  window.addEventListener('resize', onResize)
   // #endif
 })
-onReady(() => {})
 onShow(() => {
   console.log('App Show')
 })
 onHide(() => {
+  // #ifndef MP
+  window.removeEventListener('resize', onResize)
+  // #endif
   console.log('App Hide')
 })
 </script>

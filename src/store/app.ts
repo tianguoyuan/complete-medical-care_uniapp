@@ -1,19 +1,9 @@
 import { defineStore } from 'pinia'
 
-export const useAppStore = defineStore(
-  'app',
-  () => {
-    const systemScreenHeight = ref(0)
+export const useAppStore = defineStore('app', () => {
+  const systemScreenHeight = ref(0)
 
-    function changeSystemScreenHeight(v: number) {
-      systemScreenHeight.value = v
-    }
-    return {
-      changeSystemScreenHeight,
-      systemScreenHeight,
-    }
-  },
-  {
-    persist: true,
-  },
-)
+  return {
+    systemScreenHeight,
+  }
+})

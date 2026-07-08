@@ -11,8 +11,16 @@ export type CustomRequestOptions = UniApp.RequestOptions & {
   hideErrorToast?: boolean
 } & IUniUploadFileOptions // 添加uni.uploadFile参数类型
 
-// 请求基准地址
-const baseUrl = getEnvBaseUrl()
+let baseUrl: string | null = null
+
+function getBaseUrl() {
+  if (!baseUrl) {
+    baseUrl = getEnvBaseUrl()
+  }
+  return baseUrl
+}
+
+const isProxy = JSON.parse(__VITE_APP_PROXY__)
 
 // 拦截器配置
 const httpInterceptor = {
@@ -30,22 +38,18 @@ const httpInterceptor = {
     // 非 http 开头需拼接地址
     if (!options.url.startsWith('http')) {
       // #ifdef H5
-      // console.log(__VITE_APP_PROXY__)
-      if (JSON.parse(__VITE_APP_PROXY__)) {
-        // 啥都不需要做
+      if (isProxy) {
         options.url = import.meta.env.VITE_APP_PROXY_PREFIX + options.url
       } else {
-        options.url = baseUrl + options.url
+        options.url = getBaseUrl() + options.url
       }
       // #endif
       // 非H5正常拼接
       // #ifndef H5
-      options.url = baseUrl + options.url
+      options.url = getBaseUrl() + options.url
       // #endif
       // TIPS: 如果需要对接多个后端服务，也可以在这里处理，拼接成所需要的地址
     }
-    // 1. 请求超时
-    options.timeout = 10000 // 10s
     // 2. （可选）添加小程序端请求头标识
     options.header = {
       platform, // 可选，与 uniapp 定义的平台一致，告诉后台来源

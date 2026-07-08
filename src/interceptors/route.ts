@@ -7,7 +7,6 @@ import { PageEnum } from '@/enums/PageEnum'
 import { useUserStore } from '@/store'
 import { needLoginPages as _needLoginPages, getNeedLoginPages } from '@/utils'
 
-// TODO Check
 const loginRoute = PageEnum.LOGIN_PATH
 
 function isLogined() {
@@ -54,10 +53,9 @@ export const navigateToInterceptor = {
       return true
     }
 
-    // const redirectRoute = `${loginRoute}?redirect=${encodeURIComponent(url)}`
-    // uni.reLaunch({ url: redirectRoute })
-    // console.log('拦截登录页面', url)
-    // return false
+    const redirectRoute = `${loginRoute}?redirect=${encodeURIComponent(url)}`
+    uni.reLaunch({ url: redirectRoute })
+    return false
   },
 }
 

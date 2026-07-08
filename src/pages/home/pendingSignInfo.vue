@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import type { SignListItem } from '@/components/SignList.vue'
 
-import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp'
-
 import Navbar from '@/components/Navbar.vue'
 import SignList from '@/components/SignList.vue'
 import { useAppStore } from '@/store/app'

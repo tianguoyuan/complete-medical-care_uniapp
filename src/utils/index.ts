@@ -1,6 +1,6 @@
 import { pages, subPackages, tabBar } from '@/pages.json'
 
-import PLATFORM, { isMpWeixin } from './platform'
+import { isMpWeixin } from './platform'
 
 function getLastPage() {
   // getCurrentPages() 至少有1个元素，所以不再额外判断
@@ -45,10 +45,11 @@ export function currRoute() {
 }
 
 function ensureDecodeURIComponent(url: string) {
-  if (url.startsWith('%')) {
-    return ensureDecodeURIComponent(decodeURIComponent(url))
+  let result = url
+  while (result.startsWith('%')) {
+    result = decodeURIComponent(result)
   }
-  return url
+  return result
 }
 /**
  * 解析 url 得到 path 和 query

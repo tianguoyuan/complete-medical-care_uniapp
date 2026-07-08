@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { FormRules, TnFormInstance } from '@tuniao/tnui-vue3-uniapp'
 
-import TnButton from '@tuniao/tnui-vue3-uniapp/components/button/src/button.vue'
 import TnCheckbox from '@tuniao/tnui-vue3-uniapp/components/checkbox/src/checkbox.vue'
 import TnFormItem from '@tuniao/tnui-vue3-uniapp/components/form/src/form-item.vue'
 import TnForm from '@tuniao/tnui-vue3-uniapp/components/form/src/form.vue'

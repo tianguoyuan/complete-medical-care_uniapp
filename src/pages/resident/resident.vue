@@ -2,7 +2,6 @@
 import type { ListDataItem } from '@/components/UserTagList.vue'
 
 import { TnInput } from '@tuniao/tnui-vue3-uniapp'
-import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 
 import Tabbar from '@/components/Tabbar.vue'
 import UserTagList from '@/components/UserTagList.vue'
@@ -12,8 +11,6 @@ import PLATFORM from '@/utils/platform'
 
 //
 onLoad(() => PLATFORM.isApp && uni.hideTabBar())
-
-const { navBarInfo } = useUniAppSystemRectInfo()
 
 const appStore = useAppStore()
 

@@ -21,10 +21,10 @@ import ViteRestart from 'vite-plugin-restart'
 import pkg from './package.json'
 import { copyNativeRes } from './vite-plugins/copyNativeRes'
 
-const { dependencies, devDependencies, engines, name, version } = pkg
+const { name, version } = pkg
 const __APP_INFO__ = {
   lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-  pkg: { dependencies, devDependencies, engines, name, version },
+  pkg: { name, version },
 }
 
 // https://vitejs.dev/config/
@@ -49,6 +49,7 @@ export default defineConfig(({ command, mode }) => {
     VITE_APP_PORT,
     VITE_APP_PROXY,
     VITE_APP_PROXY_PREFIX,
+    VITE_APP_PUBLIC_BASE,
     VITE_DELETE_CONSOLE,
     VITE_SERVER_BASEURL,
     VITE_SHOW_SOURCEMAP,
@@ -56,6 +57,7 @@ export default defineConfig(({ command, mode }) => {
   console.log('环境变量 env -> ', env)
 
   return {
+    base: VITE_APP_PUBLIC_BASE,
     build: {
       esbuild: {
         supported: {
@@ -130,8 +132,7 @@ export default defineConfig(({ command, mode }) => {
       }),
 
       ViteRestart({
-        // 通过这个插件，在修改vite.config.js文件则不需要重新运行也生效配置
-        restart: ['vite.config.js'],
+        restart: ['vite.config.ts'],
       }),
       // h5环境增加 BUILD_TIME 和 BUILD_BRANCH
       UNI_PLATFORM === 'h5' && {

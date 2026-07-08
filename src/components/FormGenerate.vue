@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import type { FormItemRule, FormRules, TnFormInstance } from '@tuniao/tnui-vue3-uniapp'
-import type { Arrayable } from '@tuniao/tnui-vue3-uniapp/utils'
+import type { FormRules, TnFormInstance } from '@tuniao/tnui-vue3-uniapp'
 
-import TnButton from '@tuniao/tnui-vue3-uniapp/components/button/src/button.vue'
 import TnCheckboxGroup from '@tuniao/tnui-vue3-uniapp/components/checkbox/src/checkbox-group.vue'
 import TnCheckbox from '@tuniao/tnui-vue3-uniapp/components/checkbox/src/checkbox.vue'
 import TnDateTimePicker from '@tuniao/tnui-vue3-uniapp/components/date-time-picker/src/date-time-picker.vue'
@@ -14,7 +12,7 @@ import TnPicker from '@tuniao/tnui-vue3-uniapp/components/picker/src/picker.vue'
 import regionData from '@tuniao/tnui-vue3-uniapp/components/region-picker/libs/region-data.json'
 import TnRegionPicker from '@tuniao/tnui-vue3-uniapp/components/region-picker/src/region-picker.vue'
 import TnSwitch from '@tuniao/tnui-vue3-uniapp/components/switch/src/switch.vue'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 export interface FormConfig {
   config: FormItemConfig[]
