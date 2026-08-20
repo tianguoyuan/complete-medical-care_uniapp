@@ -5,26 +5,10 @@
 
 interface NavigateToOptions {
   url: "/pages/dashboard/dashboard" |
-       "/pages/home/createUserFile" |
-       "/pages/home/editSignInfo" |
        "/pages/home/home" |
-       "/pages/home/pendingSignInfo" |
-       "/pages/home/selectFamilyMembers" |
-       "/pages/home/serviceManage" |
-       "/pages/home/serviceManageComplate" |
-       "/pages/home/serviceManageInfo" |
-       "/pages/home/signManage" |
-       "/pages/home/signManageComplate" |
-       "/pages/home/signManageInfo" |
-       "/pages/home/submitSignInfo" |
        "/pages/message/message" |
-       "/pages/mine/appSetting" |
        "/pages/mine/mine" |
-       "/pages/mine/myTeam" |
-       "/pages/mine/scanQrcode" |
-       "/pages/resident/message" |
        "/pages/resident/resident" |
-       "/pages/resident/tag" |
        "/pages/user/login" |
        "/pagesA/demo/demo" |
        "/pagesA/webview/webview";

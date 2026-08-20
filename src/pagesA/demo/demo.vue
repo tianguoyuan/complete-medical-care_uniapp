@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import { useUniAppSystemRectInfo } from '@tuniao/tnui-vue3-uniapp/hooks'
 import { useI18n } from 'vue-i18n'
 
 import Navbar from '@/components/Navbar.vue'
 import { useAppStore } from '@/store/app'
+
+const { navBarInfo } = useUniAppSystemRectInfo()
 
 const appStore = useAppStore()
 const { locale, t } = useI18n()
@@ -19,7 +22,20 @@ function switchLang() {
       'min-height': `${appStore.systemScreenHeight}px`,
     }"
   >
-    <Navbar showBackIcon showHomeIcon title="Demo" />
+    <!-- 自定义navbar -->
+    <view class="bg-[linear-gradient(180deg,#E1FAF7_0.57%,#FFFFFF_100%)]">
+      <view class="color-#000" :style="{ height: navBarInfo.height + 'px' }">
+        <view :style="{ height: navBarInfo.statusHeight + 'px' }"></view>
+        <view
+          class="flex items-center justify-center"
+          :style="{ height: navBarInfo.height - navBarInfo.statusHeight + 'px' }"
+        >
+          deom
+        </view>
+      </view>
+    </view>
+
+    <!-- <Navbar showBackIcon showHomeIcon title="Demo" /> -->
     <view>demo - page</view>
     <view class="p-4">
       <view class="mb-4 text-lg font-bold">i18n 示例</view>

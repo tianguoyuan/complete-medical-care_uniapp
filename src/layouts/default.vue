@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 // #ifdef MP
-uni.showShareMenu()
+// uni.showShareMenu()
 // #endif
 </script>
 
