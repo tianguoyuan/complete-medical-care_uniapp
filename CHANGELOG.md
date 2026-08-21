@@ -1,5 +1,49 @@
 ## 变更日志
 
+## 1.1.0 (2026-08-21)
+
+### ✨ Features | 新功能
+
+- ✨ 创建选择家庭成员页面 ([10baeb3](https://github.com/tianguoyuan/hey-tea_uniapp/commit/10baeb374a3d96d63296eaa2ee2432138ac8a0a7))
+- ✨ 登录页面编写 ([9d88890](https://github.com/tianguoyuan/hey-tea_uniapp/commit/9d88890dba60ad5d1b827fb19ca97dcdf4b01560))
+- ✨ 服务管理详情界面 ([beb8ebf](https://github.com/tianguoyuan/hey-tea_uniapp/commit/beb8ebff91c51e7fd3f34388c2db20a95d3b48d6))
+- ✨ 服务管理页面编写 ([03bbdd7](https://github.com/tianguoyuan/hey-tea_uniapp/commit/03bbdd7338af7606d62f23cf99ce882456a15bf6))
+- ✨ 服务结果页面编写 ([3faadfc](https://github.com/tianguoyuan/hey-tea_uniapp/commit/3faadfc749c47f3d66c023bfc9c76bd6f2db8d26))
+- ✨ 居民页面编写 ([ead995a](https://github.com/tianguoyuan/hey-tea_uniapp/commit/ead995ac655baa3e4bf6ebe6498160331513277c))
+- ✨ 居民页面完善 ([9573ca6](https://github.com/tianguoyuan/hey-tea_uniapp/commit/9573ca6624f71b32d83077d6065b99cc554d557e))
+- ✨ 签约管理页面编写 ([63c252d](https://github.com/tianguoyuan/hey-tea_uniapp/commit/63c252dd6f5209c1471f781567b33acdafcf3fcc))
+- ✨ 扫码签约页面编写 ([e0a28dd](https://github.com/tianguoyuan/hey-tea_uniapp/commit/e0a28ddd81c273b3e058498361a8dec6654431c5))
+- ✨ 我的页面编写 ([cfba7d2](https://github.com/tianguoyuan/hey-tea_uniapp/commit/cfba7d2c45555a1e34f7c1e493667f3daaebe94a))
+- ✨ 我的页面编写 ([97e8fe7](https://github.com/tianguoyuan/hey-tea_uniapp/commit/97e8fe73d110d6ad2f94d4bed7e1660f4170a11c))
+- ✨ 新建档案页面创建 ([0143cc9](https://github.com/tianguoyuan/hey-tea_uniapp/commit/0143cc9940c2f6211728b65ac8a6c1149493c697))
+- ✨ 新建档案页面完善 ([86dc5f3](https://github.com/tianguoyuan/hey-tea_uniapp/commit/86dc5f31c834833e2c517491b1912e1aa9b1f086))
+- ✨ 新建居民档案页面编写 ([a272681](https://github.com/tianguoyuan/hey-tea_uniapp/commit/a272681c934a349b7fd7ccae0b199b120b83b44f))
+- ✨ 引导页面编写 ([2d2888f](https://github.com/tianguoyuan/hey-tea_uniapp/commit/2d2888f2ebb7eb5cf5a54ee1633d5674d1d4e39b))
+- ✨ 增加apk安装包 ([6546ff8](https://github.com/tianguoyuan/hey-tea_uniapp/commit/6546ff8d490d195fec244c4eb71321b2a5e614a3))
+- ✨ appSetting 页面编写 ([65f735c](https://github.com/tianguoyuan/hey-tea_uniapp/commit/65f735c1a5df2ab3b0fd877d560cbf04290d615e))
+- ✨ eslint排序 ([ec5ea9e](https://github.com/tianguoyuan/hey-tea_uniapp/commit/ec5ea9edbacd608db669f2520d9960c921083549))
+- ✨ tabbar页面创建 ([ad31b70](https://github.com/tianguoyuan/hey-tea_uniapp/commit/ad31b702336a0d0fcb3f5ac4726160a381eddba6))
+- ✨ unocss排序增加 ([a62248b](https://github.com/tianguoyuan/hey-tea_uniapp/commit/a62248b2bd1ea23bfd62f47b20bc2a402c1fef2f))
+- ✨ user/login页面完善 ([6ee79d4](https://github.com/tianguoyuan/hey-tea_uniapp/commit/6ee79d4283e5a8f187117122bd2c8772984c9195))
+
+### 🐛 Bug Fixes | Bug 修复
+
+- 🐛 /static/userGuide.pdf ([d837c26](https://github.com/tianguoyuan/hey-tea_uniapp/commit/d837c2603452fd98c7e5fa024870dadbba7c3f89))
+- 🐛 使用指南 ([d30baa3](https://github.com/tianguoyuan/hey-tea_uniapp/commit/d30baa37136e7b545f810c6980940f73e45ddffa))
+- 🐛 图片地址修改 ([ab8dc16](https://github.com/tianguoyuan/hey-tea_uniapp/commit/ab8dc167150b3bf890690a4eab0a470ed325e839))
+- 🐛 退出登录增加 modal ([a486bf1](https://github.com/tianguoyuan/hey-tea_uniapp/commit/a486bf187514189b86da7fb1f2f904ad999e08ab))
+- 🐛 文件路径 ([69b163e](https://github.com/tianguoyuan/hey-tea_uniapp/commit/69b163e10290b1abbc171b69ee3a440761cf8a58))
+- 🐛 修复警告 ([ed26855](https://github.com/tianguoyuan/hey-tea_uniapp/commit/ed268557878f15ac7f256697c30eea8f6c61e8f1))
+- 🐛 页面高度，输入框抖动修复 ([78d6708](https://github.com/tianguoyuan/hey-tea_uniapp/commit/78d67086808314a0a1dc42a618b2598408aeaa1c))
+- 🐛 只能function创建函数 ([a524f50](https://github.com/tianguoyuan/hey-tea_uniapp/commit/a524f508ed196890bdc1f23d411a254f0682d019))
+- 🐛 appid增加 ([c02dfdd](https://github.com/tianguoyuan/hey-tea_uniapp/commit/c02dfddbfd71006e0961be78be1037404cd3a8db))
+- 🐛 backgroundImage不会拼接网站前缀 ([1be7850](https://github.com/tianguoyuan/hey-tea_uniapp/commit/1be785019719e4c3b1534d453e83cc087e551eb6))
+- 🐛 eslint报错 ([d86ddcb](https://github.com/tianguoyuan/hey-tea_uniapp/commit/d86ddcbe612ea7917ee760f8b808ab3e1c48f307))
+- 🐛 eslint警告修复 ([3f821fe](https://github.com/tianguoyuan/hey-tea_uniapp/commit/3f821fef72f61b7828a6ec48a4a6575fcf966b67))
+- 🐛 packageManager ([41e4f37](https://github.com/tianguoyuan/hey-tea_uniapp/commit/41e4f37d9c825704db6c1d1422adc534eecd3bbb))
+- 🐛 tabbar页面标题修改 ([9e0eb48](https://github.com/tianguoyuan/hey-tea_uniapp/commit/9e0eb486c12c9669c7eeed4dd84663ab0cb4d9e4))
+- 🐛 update ([df028a9](https://github.com/tianguoyuan/hey-tea_uniapp/commit/df028a98c59bcc06c1fbeec5a24b31437e77e98a))
+
 ### 1.0.1 (2026-01-23)
 
 ### [2.6.1](https://github.com/feige996/unibest/compare/v2.6.0...v2.6.1) (2025-01-08)
