@@ -1,5 +1,11 @@
 ## 变更日志
 
+### [1.1.2](https://github.com/tianguoyuan/hey-tea_uniapp/compare/v1.1.1...v1.1.2) (2026-08-21)
+
+### 🐛 Bug Fixes | Bug 修复
+
+- 🐛 netlify无法构建 ([3a1a1a5](https://github.com/tianguoyuan/hey-tea_uniapp/commit/3a1a1a57b76ff91e5d7d5ad489674d9ef06c6cd6))
+
 ### [1.1.1](https://github.com/tianguoyuan/hey-tea_uniapp/compare/v1.1.0...v1.1.1) (2026-08-21)
 
 ### 🐛 Bug Fixes | Bug 修复
