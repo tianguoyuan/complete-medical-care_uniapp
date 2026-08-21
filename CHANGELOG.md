@@ -1,5 +1,11 @@
 ## 变更日志
 
+### [1.1.1](https://github.com/tianguoyuan/hey-tea_uniapp/compare/v1.1.0...v1.1.1) (2026-08-21)
+
+### 🐛 Bug Fixes | Bug 修复
+
+- 🐛 uniapp组件小写中划线写法 ([9f40f00](https://github.com/tianguoyuan/hey-tea_uniapp/commit/9f40f00d62a6d3a13471a21a9c1f1c4a5c81d445))
+
 ## 1.1.0 (2026-08-21)
 
 ### ✨ Features | 新功能
