@@ -41,8 +41,10 @@ const props = withDefaults(
   defineProps<{
     tabbarPath: PathType
     topShadow?: boolean
+    placeholder?: boolean
   }>(),
   {
+    placeholder: true,
     topShadow: true,
   },
 )
@@ -68,7 +70,7 @@ function pageTo(index: number) {
     fixed
     :height="StyleEnum.TAB_BAR_HEIGHT + 'rpx'"
     :modelValue="tabbarStore.tabbarIndex"
-    placeholder
+    :placeholder="props.placeholder"
     safeAreaInsetBottom
     :topShadow="props.topShadow"
   >
