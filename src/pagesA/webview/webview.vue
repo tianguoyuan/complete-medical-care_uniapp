@@ -9,7 +9,7 @@ onLoad((query) => {
 
 <template>
   <view>
-    <WebView v-if="url" :src="url" />
+    <web-view v-if="url" :src="url" />
   </view>
 </template>
 
